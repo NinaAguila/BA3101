@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 26, 2023 at 03:33 AM
+-- Generation Time: Oct 26, 2023 at 03:37 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -57,7 +57,6 @@ DROP TABLE IF EXISTS `tbcoun`;
 CREATE TABLE IF NOT EXISTS `tbcoun` (
   `counno` int NOT NULL,
   `counpass` varchar(255) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
   `reportno` int DEFAULT NULL,
   PRIMARY KEY (`counno`),
   KEY `reportno` (`reportno`)
@@ -67,12 +66,12 @@ CREATE TABLE IF NOT EXISTS `tbcoun` (
 -- Dumping data for table `tbcoun`
 --
 
-INSERT INTO `tbcoun` (`counno`, `counpass`, `status`, `reportno`) VALUES
-(1, 'counselorpass1', NULL, 201),
-(2, 'counselorpass2', NULL, 202),
-(3, 'counselorpass3', NULL, 203),
-(4, 'counselorpass4', NULL, 204),
-(5, 'counselorpass5', NULL, 205);
+INSERT INTO `tbcoun` (`counno`, `counpass`, `reportno`) VALUES
+(1, 'counselorpass1', 201),
+(2, 'counselorpass2', 202),
+(3, 'counselorpass3', 203),
+(4, 'counselorpass4', 204),
+(5, 'counselorpass5', 205);
 
 -- --------------------------------------------------------
 
