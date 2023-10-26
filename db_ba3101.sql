@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 26, 2023 at 03:05 AM
+-- Generation Time: Oct 26, 2023 at 03:25 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -24,23 +24,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admins`
+-- Table structure for table `tbadmin`
 --
 
-DROP TABLE IF EXISTS `admins`;
-CREATE TABLE IF NOT EXISTS `admins` (
+DROP TABLE IF EXISTS `tbadmin`;
+CREATE TABLE IF NOT EXISTS `tbadmin` (
   `adminno` int NOT NULL,
   `adminpass` varchar(255) DEFAULT NULL,
-  `counno` int DEFAULT NULL,
-  PRIMARY KEY (`adminno`),
-  KEY `counno` (`counno`)
+  `counno` int DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `admins`
+-- Dumping data for table `tbadmin`
 --
 
-INSERT INTO `admins` (`adminno`, `adminpass`, `counno`) VALUES
+INSERT INTO `tbadmin` (`adminno`, `adminpass`, `counno`) VALUES
+(1, 'adminpass1', 1),
+(2, 'adminpass2', 2),
+(3, 'adminpass3', 3),
+(4, 'adminpass4', 4),
+(5, 'adminpass5', 5),
 (1, 'adminpass1', 1),
 (2, 'adminpass2', 2),
 (3, 'adminpass3', 3),
@@ -50,23 +53,26 @@ INSERT INTO `admins` (`adminno`, `adminpass`, `counno`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `counselors`
+-- Table structure for table `tbcoun`
 --
 
-DROP TABLE IF EXISTS `counselors`;
-CREATE TABLE IF NOT EXISTS `counselors` (
+DROP TABLE IF EXISTS `tbcoun`;
+CREATE TABLE IF NOT EXISTS `tbcoun` (
   `counno` int NOT NULL,
   `counpass` varchar(255) DEFAULT NULL,
-  `reportno` int DEFAULT NULL,
-  PRIMARY KEY (`counno`),
-  KEY `reportno` (`reportno`)
+  `reportno` int DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `counselors`
+-- Dumping data for table `tbcoun`
 --
 
-INSERT INTO `counselors` (`counno`, `counpass`, `reportno`) VALUES
+INSERT INTO `tbcoun` (`counno`, `counpass`, `reportno`) VALUES
+(1, 'counselorpass1', 201),
+(2, 'counselorpass2', 202),
+(3, 'counselorpass3', 203),
+(4, 'counselorpass4', 204),
+(5, 'counselorpass5', 205),
 (1, 'counselorpass1', 201),
 (2, 'counselorpass2', 202),
 (3, 'counselorpass3', 203),
@@ -76,24 +82,27 @@ INSERT INTO `counselors` (`counno`, `counpass`, `reportno`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reports`
+-- Table structure for table `tbreports`
 --
 
-DROP TABLE IF EXISTS `reports`;
-CREATE TABLE IF NOT EXISTS `reports` (
+DROP TABLE IF EXISTS `tbreports`;
+CREATE TABLE IF NOT EXISTS `tbreports` (
   `reportno` int NOT NULL,
   `reporttype` varchar(255) DEFAULT NULL,
   `report` text,
-  `studno` int DEFAULT NULL,
-  PRIMARY KEY (`reportno`),
-  KEY `studno` (`studno`)
+  `studno` int DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `reports`
+-- Dumping data for table `tbreports`
 --
 
-INSERT INTO `reports` (`reportno`, `reporttype`, `report`, `studno`) VALUES
+INSERT INTO `tbreports` (`reportno`, `reporttype`, `report`, `studno`) VALUES
+(101, 'Academic Grievance', 'I have a concern about the grading in my History course.', 1),
+(102, 'Campus Facilities Grievance', 'There is a problem with the heating in my dormitory room.', 2),
+(103, 'Discrimination Grievance', 'I believe I have experienced discrimination in the workplace.', 3),
+(104, 'Housing Grievance', 'I would like to request a room change due to noisy neighbors.', 4),
+(105, 'Financial Aid Grievance', 'I am experiencing issues with my financial aid application.', 5),
 (101, 'Academic Grievance', 'I have a concern about the grading in my History course.', 1),
 (102, 'Campus Facilities Grievance', 'There is a problem with the heating in my dormitory room.', 2),
 (103, 'Discrimination Grievance', 'I believe I have experienced discrimination in the workplace.', 3),
@@ -103,24 +112,27 @@ INSERT INTO `reports` (`reportno`, `reporttype`, `report`, `studno`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `students`
+-- Table structure for table `tbstud`
 --
 
-DROP TABLE IF EXISTS `students`;
-CREATE TABLE IF NOT EXISTS `students` (
+DROP TABLE IF EXISTS `tbstud`;
+CREATE TABLE IF NOT EXISTS `tbstud` (
   `studno` int NOT NULL,
   `studpass` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
-  `reportno` int NOT NULL,
-  PRIMARY KEY (`studno`),
-  KEY `reportno` (`reportno`)
+  `reportno` int NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `students`
+-- Dumping data for table `tbstud`
 --
 
-INSERT INTO `students` (`studno`, `studpass`, `status`, `reportno`) VALUES
+INSERT INTO `tbstud` (`studno`, `studpass`, `status`, `reportno`) VALUES
+(1, 'password1', '1', 101),
+(2, 'password2', '2', 102),
+(3, 'password3', '3', 103),
+(4, 'password4', '1', 104),
+(5, 'password5', '2', 105),
 (1, 'password1', '1', 101),
 (2, 'password2', '2', 102),
 (3, 'password3', '3', 103),
