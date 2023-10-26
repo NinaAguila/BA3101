@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3308
--- Generation Time: Oct 23, 2023 at 08:29 AM
--- Server version: 8.0.18
--- PHP Version: 7.3.12
+-- Host: 127.0.0.1:3306
+-- Generation Time: Oct 26, 2023 at 02:15 AM
+-- Server version: 8.0.31
+-- PHP Version: 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,47 +24,99 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbempinfo`
+-- Table structure for table `tblapplicantlogin`
 --
 
-DROP TABLE IF EXISTS `tbempinfo`;
-CREATE TABLE IF NOT EXISTS `tbempinfo` (
-  `empid` int(11) NOT NULL AUTO_INCREMENT,
-  `lastname` varchar(25) NOT NULL,
-  `firstname` varchar(25) NOT NULL,
-  `department` varchar(20) NOT NULL,
-  PRIMARY KEY (`empid`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+DROP TABLE IF EXISTS `tblapplicantlogin`;
+CREATE TABLE IF NOT EXISTS `tblapplicantlogin` (
+  `New Applicant ID` int NOT NULL,
+  `Username` varchar(25) NOT NULL,
+  `Password` varchar(25) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `tbempinfo`
+-- Dumping data for table `tblapplicantlogin`
 --
 
-INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
-(1, 'aguila', 'nina', 'cics');
+INSERT INTO `tblapplicantlogin` (`New Applicant ID`, `Username`, `Password`) VALUES
+(1, 'dey', 'drei'),
+(2, 'mark', 'makmak'),
+(3, 'gez', 'lasin'),
+(4, 'jake', 'rain'),
+(5, 'seth', 'aldous');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbstudinfo`
+-- Table structure for table `tblapplicationform`
 --
 
-DROP TABLE IF EXISTS `tbstudinfo`;
-CREATE TABLE IF NOT EXISTS `tbstudinfo` (
-  `studid` int(11) NOT NULL AUTO_INCREMENT,
-  `lastname` varchar(25) NOT NULL,
-  `firstname` varchar(25) NOT NULL,
-  `course` varchar(20) NOT NULL,
-  PRIMARY KEY (`studid`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+DROP TABLE IF EXISTS `tblapplicationform`;
+CREATE TABLE IF NOT EXISTS `tblapplicationform` (
+  `ApplicationID` int NOT NULL,
+  `First Name` varchar(20) NOT NULL,
+  `Middle Name` varchar(20) NOT NULL,
+  `Last Name` varchar(20) NOT NULL,
+  `Email` varchar(20) NOT NULL,
+  `Number` varchar(20) NOT NULL,
+  `Job Position` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `tbstudinfo`
+-- Dumping data for table `tblapplicationform`
 --
 
-INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
-(1, 'parker', 'peter', 'bsit'),
-(2, 'kent', 'clark', 'bscs');
+INSERT INTO `tblapplicationform` (`ApplicationID`, `First Name`, `Middle Name`, `Last Name`, `Email`, `Number`, `Job Position`) VALUES
+(1, 'John', 'D', 'Doey', '222@gmail.com', '09485784652', 'Maintenance'),
+(2, 'Seth', 'D', 'Dog', '111@gmail.com', '09824563871', 'Professor'),
+(3, 'Russel', 'V', 'Wayne', '333@gmail.com', '09874626451', 'Maintenance'),
+(4, 'Michael', 'S', 'Luffy', '444@gmail.com', '09837465836', 'Staff'),
+(5, 'Chi', 'P', 'Liz', '555@gmail.com', '09658327562', 'Professor');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbldept`
+--
+
+DROP TABLE IF EXISTS `tbldept`;
+CREATE TABLE IF NOT EXISTS `tbldept` (
+  `Job Position` varchar(25) NOT NULL,
+  `Department Name` varchar(25) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tbldept`
+--
+
+INSERT INTO `tbldept` (`Job Position`, `Department Name`) VALUES
+('Maintenance', 'CICS'),
+('Professor', 'CIT'),
+('Staff', 'CAS'),
+('Professor', 'CABE'),
+('Staff', 'CICS');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblhr`
+--
+
+DROP TABLE IF EXISTS `tblhr`;
+CREATE TABLE IF NOT EXISTS `tblhr` (
+  `ApplicationID` int NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tblhr`
+--
+
+INSERT INTO `tblhr` (`ApplicationID`) VALUES
+(1),
+(2),
+(3),
+(4),
+(5);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
