@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3308
--- Generation Time: Oct 23, 2023 at 08:29 AM
--- Server version: 8.0.18
--- PHP Version: 7.3.12
+-- Host: 127.0.0.1:3306
+-- Generation Time: Oct 26, 2023 at 01:33 AM
+-- Server version: 8.0.31
+-- PHP Version: 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,47 +24,95 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbempinfo`
+-- Table structure for table `tbadmin`
 --
 
-DROP TABLE IF EXISTS `tbempinfo`;
-CREATE TABLE IF NOT EXISTS `tbempinfo` (
-  `empid` int(11) NOT NULL AUTO_INCREMENT,
-  `lastname` varchar(25) NOT NULL,
-  `firstname` varchar(25) NOT NULL,
-  `department` varchar(20) NOT NULL,
-  PRIMARY KEY (`empid`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+DROP TABLE IF EXISTS `tbadmin`;
+CREATE TABLE IF NOT EXISTS `tbadmin` (
+  `Username` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `Password` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `tbempinfo`
+-- Dumping data for table `tbadmin`
 --
 
-INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
-(1, 'aguila', 'nina', 'cics');
+INSERT INTO `tbadmin` (`Username`, `Password`) VALUES
+('admin', '123');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbstudinfo`
+-- Table structure for table `tbclient`
 --
 
-DROP TABLE IF EXISTS `tbstudinfo`;
-CREATE TABLE IF NOT EXISTS `tbstudinfo` (
-  `studid` int(11) NOT NULL AUTO_INCREMENT,
-  `lastname` varchar(25) NOT NULL,
-  `firstname` varchar(25) NOT NULL,
-  `course` varchar(20) NOT NULL,
-  PRIMARY KEY (`studid`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+DROP TABLE IF EXISTS `tbclient`;
+CREATE TABLE IF NOT EXISTS `tbclient` (
+  `plate_Number` varchar(50) NOT NULL,
+  `vehicle_Type` char(50) DEFAULT NULL,
+  `first_Name` char(50) DEFAULT NULL,
+  `last_Name` char(50) DEFAULT NULL,
+  `sr_Code` varchar(50) DEFAULT NULL,
+  `Department` char(50) DEFAULT NULL,
+  `type` char(50) DEFAULT NULL,
+  PRIMARY KEY (`plate_Number`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `tbstudinfo`
+-- Dumping data for table `tbclient`
 --
 
-INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
-(1, 'parker', 'peter', 'bsit'),
-(2, 'kent', 'clark', 'bscs');
+INSERT INTO `tbclient` (`plate_Number`, `vehicle_Type`, `first_Name`, `last_Name`, `sr_Code`, `Department`, `type`) VALUES
+('VFA-175', 'Car', 'Rafael', 'Acda', '21-37452', NULL, 'Student'),
+('BAV-163', 'Car', 'Dioneces', 'Alimoren', NULL, 'CICS', 'Professor'),
+('BAK-875', 'Car', 'Francis', 'Balazon', NULL, 'CICS', 'Professor'),
+('BAT-347', 'Car', 'Jonnah', 'Melo', NULL, 'CICS', 'Professor'),
+('DAD-808', 'Car', 'Ryndel', 'Amorado', NULL, 'CICS', 'Professor');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblogs`
+--
+
+DROP TABLE IF EXISTS `tblogs`;
+CREATE TABLE IF NOT EXISTS `tblogs` (
+  `plate_Number` varchar(50) NOT NULL,
+  `recordDate` date DEFAULT NULL,
+  `time_In` time DEFAULT NULL,
+  `time_Out` time DEFAULT NULL,
+  KEY `plate_Number` (`plate_Number`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbstaff`
+--
+
+DROP TABLE IF EXISTS `tbstaff`;
+CREATE TABLE IF NOT EXISTS `tbstaff` (
+  `user_ID` int NOT NULL AUTO_INCREMENT,
+  `last_Name` char(50) DEFAULT NULL,
+  `first_Name` char(50) DEFAULT NULL,
+  `Gender` char(50) DEFAULT NULL,
+  `Contact` varchar(11) DEFAULT NULL,
+  `Address` char(50) DEFAULT NULL,
+  `Email` varchar(50) DEFAULT NULL,
+  `Password` char(50) DEFAULT NULL,
+  PRIMARY KEY (`user_ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tbstaff`
+--
+
+INSERT INTO `tbstaff` (`user_ID`, `last_Name`, `first_Name`, `Gender`, `Contact`, `Address`, `Email`, `Password`) VALUES
+(16, 'Castillo', 'Dianne', 'Female', '09063524024', 'San Lucas Lipa City', 'dayan@gmail.com,', 'dayan'),
+(17, 'Alday', 'Keon', 'Male', '09012356792', 'Brgy. Dos Lipa City', 'keon@gmail.com', 'keon'),
+(18, 'Caniete', 'Cristel', 'Female', '09446531859', 'San Juan Batangas', 'cristel@gmail.com', 'cristel'),
+(19, 'Cuya', 'Lester', 'Male', '09877361128', 'San Juan Batangas', 'lester@gmail.com', 'lester'),
+(20, 'Acda', 'Rafael', 'Male', '09053127397', 'Cumba Lipa City', 'rafael@gmail.com', 'rafael');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
