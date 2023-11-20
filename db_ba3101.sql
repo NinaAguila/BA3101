@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 20, 2023 at 09:09 AM
+-- Generation Time: Nov 20, 2023 at 09:44 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `tbempinfo` (
   `firstname` varchar(25) NOT NULL,
   `department` varchar(20) NOT NULL,
   PRIMARY KEY (`empid`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbempinfo`
@@ -60,6 +60,24 @@ CREATE TABLE IF NOT EXISTS `tbl_account` (
   `userType` varchar(255) NOT NULL,
   PRIMARY KEY (`userID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_office`
+--
+
+DROP TABLE IF EXISTS `tbl_office`;
+CREATE TABLE IF NOT EXISTS `tbl_office` (
+  `officeAccID` int NOT NULL AUTO_INCREMENT,
+  `officeImg` blob NOT NULL,
+  `officeName` varchar(255) NOT NULL,
+  `officeEmail` varchar(255) NOT NULL,
+  `officePass` varchar(255) NOT NULL,
+  `employeeID` int NOT NULL,
+  PRIMARY KEY (`officeAccID`),
+  KEY `empID(FK)` (`employeeID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -126,6 +144,12 @@ INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `tbl_office`
+--
+ALTER TABLE `tbl_office`
+  ADD CONSTRAINT `empID(FK)` FOREIGN KEY (`employeeID`) REFERENCES `tbempinfo` (`empid`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `tbl_reqhistory`
