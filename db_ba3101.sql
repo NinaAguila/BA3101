@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 20, 2023 at 08:59 AM
+-- Generation Time: Nov 20, 2023 at 09:09 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_ba3101`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbempinfo`
+--
+
+DROP TABLE IF EXISTS `tbempinfo`;
+CREATE TABLE IF NOT EXISTS `tbempinfo` (
+  `empid` int NOT NULL AUTO_INCREMENT,
+  `lastname` varchar(25) NOT NULL,
+  `firstname` varchar(25) NOT NULL,
+  `department` varchar(20) NOT NULL,
+  PRIMARY KEY (`empid`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tbempinfo`
+--
+
+INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
+(1, 'aguila', 'nina', 'cics');
 
 -- --------------------------------------------------------
 
@@ -77,6 +99,29 @@ CREATE TABLE IF NOT EXISTS `tbl_requests` (
   PRIMARY KEY (`reqID`),
   KEY `userID(tbl_req)` (`userID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbstudinfo`
+--
+
+DROP TABLE IF EXISTS `tbstudinfo`;
+CREATE TABLE IF NOT EXISTS `tbstudinfo` (
+  `studid` int NOT NULL AUTO_INCREMENT,
+  `lastname` varchar(25) NOT NULL,
+  `firstname` varchar(25) NOT NULL,
+  `course` varchar(20) NOT NULL,
+  PRIMARY KEY (`studid`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tbstudinfo`
+--
+
+INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
+(1, 'parker', 'peter', 'bsit'),
+(2, 'kent', 'clark', 'bscs');
 
 --
 -- Constraints for dumped tables
