@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2023 at 08:20 AM
+-- Generation Time: Nov 23, 2023 at 02:59 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,6 +24,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbempaccount`
+--
+
+CREATE TABLE `tbempaccount` (
+  `empid` int(11) NOT NULL,
+  `department_id` int(11) DEFAULT NULL,
+  `emp_email` varchar(255) NOT NULL,
+  `emp_profile` longblob DEFAULT NULL,
+  `emp_password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbempinfo`
 --
 
@@ -32,7 +46,7 @@ CREATE TABLE `tbempinfo` (
   `lastname` varchar(25) NOT NULL,
   `firstname` varchar(25) NOT NULL,
   `department` varchar(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbempinfo`
@@ -44,6 +58,27 @@ INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbstudentaccount`
+--
+
+CREATE TABLE `tbstudentaccount` (
+  `studid` int(11) NOT NULL,
+  `department_id` int(11) DEFAULT NULL,
+  `student_email` varchar(255) NOT NULL,
+  `student_profile` longblob DEFAULT NULL,
+  `student_password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbstudentaccount`
+--
+
+INSERT INTO `tbstudentaccount` (`studid`, `department_id`, `student_email`, `student_profile`, `student_password`) VALUES
+(2, 2, 'kent@gmail.com', NULL, '123');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbstudinfo`
 --
 
@@ -51,17 +86,17 @@ CREATE TABLE `tbstudinfo` (
   `studid` int(11) NOT NULL,
   `lastname` varchar(25) NOT NULL,
   `firstname` varchar(25) NOT NULL,
-  `course` varchar(20) NOT NULL,
-  `department_id` int(11) DEFAULT NULL
+  `course` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbstudinfo`
 --
 
-INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`, `department_id`) VALUES
-(1, 'parker', 'peter', 'bsit', NULL),
-(2, 'kent', 'clark', 'bscs', NULL);
+INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
+(1, 'parker', 'peter', 'bsit'),
+(2, 'kent', 'clark', 'bscs'),
+(3, 'morales', 'verlon', 'bsit');
 
 -- --------------------------------------------------------
 
@@ -72,19 +107,17 @@ INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`, `departme
 CREATE TABLE `tb_admin` (
   `admin_ID` int(11) NOT NULL,
   `admin_name` varchar(255) NOT NULL,
-  `admin_password` varchar(20) NOT NULL
+  `admin_password` varchar(20) NOT NULL,
+  `admin_email` varchar(255) NOT NULL,
+  `admin_profile` longblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tb_admin`
 --
 
-INSERT INTO `tb_admin` (`admin_ID`, `admin_name`, `admin_password`) VALUES
-(101, 'Francis Balazon', 'Francis101'),
-(102, 'Alimoren Dioneces', 'Dioneces102 '),
-(103, 'Richelle Sulit', 'Sulit103 '),
-(104, 'Ganiela Catapia', 'Ganiela104 '),
-(105, 'Lea Salonga', 'Lea105 ');
+INSERT INTO `tb_admin` (`admin_ID`, `admin_name`, `admin_password`, `admin_email`, `admin_profile`) VALUES
+(1, 'admin', '123', 'admin@gmail.com', NULL);
 
 -- --------------------------------------------------------
 
@@ -96,7 +129,7 @@ CREATE TABLE `tb_attendees` (
   `attendee_id` int(11) NOT NULL,
   `event_id` int(11) NOT NULL,
   `student_id` int(11) DEFAULT NULL,
-  `faculty_id` int(11) DEFAULT NULL,
+  `empid` int(11) DEFAULT NULL,
   `rso_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -116,11 +149,9 @@ CREATE TABLE `tb_department` (
 --
 
 INSERT INTO `tb_department` (`department_id`, `department_name`) VALUES
-(2201, 'CICS'),
-(2202, 'CABE'),
-(2203, 'YPMAP'),
-(2204, 'CICS'),
-(2205, 'CABE');
+(1, 'CICS'),
+(2, 'CABE'),
+(3, 'CE');
 
 -- --------------------------------------------------------
 
@@ -133,43 +164,22 @@ CREATE TABLE `tb_event` (
   `event_title` varchar(255) NOT NULL,
   `event_detail` text NOT NULL,
   `event_date` date NOT NULL,
-  `department_id` int(11) DEFAULT NULL
+  `header_image` longblob DEFAULT NULL,
+  `department_id` int(11) DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tb_event`
---
-
-INSERT INTO `tb_event` (`event_id`, `event_title`, `event_detail`, `event_date`, `department_id`) VALUES
-(3101, 'SportFest', 'Gather everyone', '2023-10-28', NULL),
-(3102, 'Night Fest', 'Gather Everyone', '2023-10-29', NULL),
-(3103, 'Valentines Day', 'Gather Everyone', '2024-02-14', NULL),
-(3104, 'CICS Day', 'Gather Everyone', '2023-10-31', NULL),
-(3105, 'Christmas Party', 'Gather Everyone', '2023-12-22', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_faculty`
+-- Table structure for table `tb_event_images`
 --
 
-CREATE TABLE `tb_faculty` (
-  `faculty_id` int(11) NOT NULL,
-  `faculty_name` varchar(255) NOT NULL,
-  `faculty_password` varchar(20) NOT NULL,
-  `department_id` int(11) DEFAULT NULL
+CREATE TABLE `tb_event_images` (
+  `image_id` int(11) NOT NULL,
+  `event_id` int(11) DEFAULT NULL,
+  `image_filename` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tb_faculty`
---
-
-INSERT INTO `tb_faculty` (`faculty_id`, `faculty_name`, `faculty_password`, `department_id`) VALUES
-(1, 'CICS', '01BSUCICS', NULL),
-(2, 'CICS', '02BSUCICS', NULL),
-(3, 'CICS', '03BSUCICS', NULL),
-(4, 'CICS', '04BSUCICS', NULL),
-(5, 'CICS', '05BSUCICS', NULL);
 
 -- --------------------------------------------------------
 
@@ -181,23 +191,28 @@ CREATE TABLE `tb_rso` (
   `rso_id` int(11) NOT NULL,
   `rso_name` varchar(255) NOT NULL,
   `rso_password` varchar(20) NOT NULL,
-  `department_id` int(11) DEFAULT NULL
+  `department_id` int(11) DEFAULT NULL,
+  `rso_email` varchar(255) NOT NULL,
+  `rso_profile` longblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tb_rso`
 --
 
-INSERT INTO `tb_rso` (`rso_id`, `rso_name`, `rso_password`, `department_id`) VALUES
-(1101, 'CICS', '1101CICS', NULL),
-(1102, 'CABE', '1101CABE', NULL),
-(1103, 'YPMAP', '1101YPMAP', NULL),
-(1104, 'JPCS', '1101JPCS', NULL),
-(1105, 'CIT', '1105CIT', NULL);
+INSERT INTO `tb_rso` (`rso_id`, `rso_name`, `rso_password`, `department_id`, `rso_email`, `rso_profile`) VALUES
+(1, 'rso', '123', 2, 'rso@gmail.com', NULL);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `tbempaccount`
+--
+ALTER TABLE `tbempaccount`
+  ADD PRIMARY KEY (`empid`),
+  ADD KEY `fk_department_emp` (`department_id`);
 
 --
 -- Indexes for table `tbempinfo`
@@ -206,17 +221,24 @@ ALTER TABLE `tbempinfo`
   ADD PRIMARY KEY (`empid`);
 
 --
+-- Indexes for table `tbstudentaccount`
+--
+ALTER TABLE `tbstudentaccount`
+  ADD PRIMARY KEY (`studid`),
+  ADD KEY `fk_department_student` (`department_id`);
+
+--
 -- Indexes for table `tbstudinfo`
 --
 ALTER TABLE `tbstudinfo`
-  ADD PRIMARY KEY (`studid`),
-  ADD KEY `fk_department` (`department_id`);
+  ADD PRIMARY KEY (`studid`);
 
 --
 -- Indexes for table `tb_admin`
 --
 ALTER TABLE `tb_admin`
-  ADD PRIMARY KEY (`admin_ID`);
+  ADD PRIMARY KEY (`admin_ID`),
+  ADD UNIQUE KEY `unique_admin_email` (`admin_email`);
 
 --
 -- Indexes for table `tb_attendees`
@@ -225,7 +247,7 @@ ALTER TABLE `tb_attendees`
   ADD PRIMARY KEY (`attendee_id`),
   ADD KEY `event_id` (`event_id`),
   ADD KEY `student_id` (`student_id`),
-  ADD KEY `faculty_id` (`faculty_id`),
+  ADD KEY `empid` (`empid`),
   ADD KEY `rso_id` (`rso_id`);
 
 --
@@ -242,17 +264,18 @@ ALTER TABLE `tb_event`
   ADD KEY `department_id` (`department_id`);
 
 --
--- Indexes for table `tb_faculty`
+-- Indexes for table `tb_event_images`
 --
-ALTER TABLE `tb_faculty`
-  ADD PRIMARY KEY (`faculty_id`),
-  ADD KEY `department_id` (`department_id`);
+ALTER TABLE `tb_event_images`
+  ADD PRIMARY KEY (`image_id`),
+  ADD KEY `event_id` (`event_id`);
 
 --
 -- Indexes for table `tb_rso`
 --
 ALTER TABLE `tb_rso`
   ADD PRIMARY KEY (`rso_id`),
+  ADD UNIQUE KEY `unique_rso_email` (`rso_email`),
   ADD KEY `department_id` (`department_id`);
 
 --
@@ -269,13 +292,13 @@ ALTER TABLE `tbempinfo`
 -- AUTO_INCREMENT for table `tbstudinfo`
 --
 ALTER TABLE `tbstudinfo`
-  MODIFY `studid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `studid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_admin`
 --
 ALTER TABLE `tb_admin`
-  MODIFY `admin_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `admin_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_attendees`
@@ -287,62 +310,82 @@ ALTER TABLE `tb_attendees`
 -- AUTO_INCREMENT for table `tb_department`
 --
 ALTER TABLE `tb_department`
-  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2206;
+  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_event`
 --
 ALTER TABLE `tb_event`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3106;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tb_faculty`
+-- AUTO_INCREMENT for table `tb_event_images`
 --
-ALTER TABLE `tb_faculty`
-  MODIFY `faculty_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `tb_event_images`
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_rso`
 --
 ALTER TABLE `tb_rso`
-  MODIFY `rso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1106;
+  MODIFY `rso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `tbstudinfo`
+-- Constraints for table `tbempaccount`
 --
-ALTER TABLE `tbstudinfo`
-  ADD CONSTRAINT `fk_department` FOREIGN KEY (`department_id`) REFERENCES `tb_department` (`department_id`);
+ALTER TABLE `tbempaccount`
+  ADD CONSTRAINT `fk_department_emp` FOREIGN KEY (`department_id`) REFERENCES `tb_department` (`department_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_empinfo_changes` FOREIGN KEY (`empid`) REFERENCES `tbempinfo` (`empid`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbstudentaccount`
+--
+ALTER TABLE `tbstudentaccount`
+  ADD CONSTRAINT `fk_department_student` FOREIGN KEY (`department_id`) REFERENCES `tb_department` (`department_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_studinfo_changes` FOREIGN KEY (`studid`) REFERENCES `tbstudinfo` (`studid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_attendees`
 --
 ALTER TABLE `tb_attendees`
-  ADD CONSTRAINT `tb_attendees_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `tb_event` (`event_id`),
-  ADD CONSTRAINT `tb_attendees_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `tbstudinfo` (`studid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `tb_attendees_ibfk_3` FOREIGN KEY (`faculty_id`) REFERENCES `tb_faculty` (`faculty_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `tb_attendees_ibfk_4` FOREIGN KEY (`rso_id`) REFERENCES `tb_rso` (`rso_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `tb_attendees_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `tb_event` (`event_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tb_attendees_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `tbstudinfo` (`studid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tb_attendees_ibfk_3` FOREIGN KEY (`empid`) REFERENCES `tbempinfo` (`empid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tb_attendees_ibfk_4` FOREIGN KEY (`rso_id`) REFERENCES `tb_rso` (`rso_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_event`
 --
 ALTER TABLE `tb_event`
-  ADD CONSTRAINT `tb_event_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `tb_department` (`department_id`);
+  ADD CONSTRAINT `tb_event_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `tb_department` (`department_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tb_faculty`
+-- Constraints for table `tb_event_images`
 --
-ALTER TABLE `tb_faculty`
-  ADD CONSTRAINT `tb_faculty_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `tb_department` (`department_id`);
+ALTER TABLE `tb_event_images`
+  ADD CONSTRAINT `tb_event_images_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `tb_event` (`event_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_rso`
 --
 ALTER TABLE `tb_rso`
-  ADD CONSTRAINT `tb_rso_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `tb_department` (`department_id`);
+  ADD CONSTRAINT `tb_rso_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `tb_department` (`department_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+DELIMITER $$
+--
+-- Events
+--
+CREATE DEFINER=`root`@`localhost` EVENT `update_event_status` ON SCHEDULE EVERY 1 SECOND STARTS '2023-11-23 01:52:27' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
+    UPDATE tb_event SET status = 'upcoming' WHERE event_date > CURRENT_TIMESTAMP;
+    UPDATE tb_event SET status = 'ongoing' WHERE DATE(event_date) = CURDATE();
+    UPDATE tb_event SET status = 'ended' WHERE event_date < CURRENT_TIMESTAMP;
+END$$
+
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
