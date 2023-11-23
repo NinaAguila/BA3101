@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 23, 2023 at 02:28 AM
+-- Generation Time: Nov 23, 2023 at 02:35 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -81,7 +81,7 @@ INSERT INTO `tbcoun` (`counno`, `counpass`, `empid`) VALUES
 
 DROP TABLE IF EXISTS `tbempinfo`;
 CREATE TABLE IF NOT EXISTS `tbempinfo` (
-  `empid` varchar(50) NOT NULL,
+  `empid` int NOT NULL AUTO_INCREMENT,
   `lastname` varchar(25) NOT NULL,
   `firstname` varchar(25) NOT NULL,
   `department` varchar(20) NOT NULL,
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `tbempinfo` (
 --
 
 INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
-('1', 'aguila', 'nina', 'cics');
+(1, 'aguila', 'nina', 'cics');
 
 -- --------------------------------------------------------
 
@@ -147,11 +147,11 @@ CREATE TABLE IF NOT EXISTS `tbstud` (
 --
 
 INSERT INTO `tbstud` (`studno`, `studpass`, `studid`) VALUES
-('21-34780', 'bonjlaygo', '21-34780'),
-('21-39414', 'ivanrubion', '21-39414'),
-('21-30073', 'belletrayfalgar', '21-30073'),
-('21-39325', 'johnronaldlopez', '21-39325'),
-('21-31054', 'sethtada', '21-31054');
+('21-34780', 'bonjlaygo', '2134780'),
+('21-39414', 'ivanrubion', '2139414'),
+('21-30073', 'belletrayfalgar', '2130073'),
+('21-39325', 'johnronaldlopez', '2139325'),
+('21-31054', 'sethtada', '2131054');
 
 -- --------------------------------------------------------
 
@@ -161,7 +161,7 @@ INSERT INTO `tbstud` (`studno`, `studpass`, `studid`) VALUES
 
 DROP TABLE IF EXISTS `tbstudinfo`;
 CREATE TABLE IF NOT EXISTS `tbstudinfo` (
-  `studid` varchar(50) NOT NULL,
+  `studid` int NOT NULL AUTO_INCREMENT,
   `lastname` varchar(25) NOT NULL,
   `firstname` varchar(25) NOT NULL,
   `course` varchar(20) NOT NULL,
@@ -173,11 +173,11 @@ CREATE TABLE IF NOT EXISTS `tbstudinfo` (
 --
 
 INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
-('21-39325', 'Lopez', 'John Ronald', 'BSIT-BA-3101'),
-('21-30073', 'Trayfalgar', 'Belle Colleen', 'BSIT-BA-3101'),
-('21-31054', 'Tada', 'Seth Aldous', 'BSIT-BA-3101'),
-('21-39414', 'Rubion', 'Ivan Gabriel', 'BSIT-BA-3101'),
-('21-34780', 'Laygo', 'Bonjohn Benedict', 'BSIT-BA-3101');
+(2139325, 'Lopez', 'John Ronald', 'BSIT-BA-3101'),
+(2130073, 'Trayfalgar', 'Belle Colleen', 'BSIT-BA-3101'),
+(2131054, 'Tada', 'Seth Aldous', 'BSIT-BA-3101'),
+(2139414, 'Rubion', 'Ivan Gabriel', 'BSIT-BA-3101'),
+(2134780, 'Laygo', 'Bonjohn Benedict', 'BSIT-BA-3101');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
