@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 22, 2023 at 11:27 AM
+-- Generation Time: Nov 23, 2023 at 02:06 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -54,7 +54,7 @@ INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
 
 DROP TABLE IF EXISTS `tbstudinfo`;
 CREATE TABLE IF NOT EXISTS `tbstudinfo` (
-  `studid` int NOT NULL AUTO_INCREMENT,
+  `studid` int NOT NULL,
   `lastname` varchar(25) NOT NULL,
   `firstname` varchar(25) NOT NULL,
   `course` varchar(20) NOT NULL,
@@ -131,19 +131,21 @@ CREATE TABLE IF NOT EXISTS `tb_studentacc` (
   `Student_Acc_ID` int NOT NULL AUTO_INCREMENT,
   `Student_User` varchar(50) NOT NULL,
   `Student_Password` varchar(50) NOT NULL,
-  PRIMARY KEY (`Student_Acc_ID`)
+  `studid` int DEFAULT NULL,
+  PRIMARY KEY (`Student_Acc_ID`),
+  KEY `fk_tb_studentacc_studid` (`studid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tb_studentacc`
 --
 
-INSERT INTO `tb_studentacc` (`Student_Acc_ID`, `Student_User`, `Student_Password`) VALUES
-(1, 'test_user', 'test_pass'),
-(2, 'raz', 'raz_pass'),
-(3, 'solis', 'solis_pass'),
-(4, 'niel', 'niel_pass'),
-(5, 'alvin', 'alvin_pass');
+INSERT INTO `tb_studentacc` (`Student_Acc_ID`, `Student_User`, `Student_Password`, `studid`) VALUES
+(1, 'test_user', 'test_pass', 1),
+(2, 'raz', 'raz_pass', 2),
+(3, 'solis', 'solis_pass', 3),
+(4, 'niel', 'niel_pass', 4),
+(5, 'alvin', 'alvin_pass', 5);
 
 -- --------------------------------------------------------
 
