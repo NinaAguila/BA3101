@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2023 at 02:59 AM
+-- Generation Time: Nov 23, 2023 at 03:40 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -32,8 +32,16 @@ CREATE TABLE `tbempaccount` (
   `department_id` int(11) DEFAULT NULL,
   `emp_email` varchar(255) NOT NULL,
   `emp_profile` longblob DEFAULT NULL,
-  `emp_password` varchar(255) NOT NULL
+  `emp_password` varchar(255) NOT NULL,
+  `role_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbempaccount`
+--
+
+INSERT INTO `tbempaccount` (`empid`, `department_id`, `emp_email`, `emp_profile`, `emp_password`, `role_id`) VALUES
+(1, 1, 'aguila@gmail.com', NULL, '123', 2);
 
 -- --------------------------------------------------------
 
@@ -53,7 +61,8 @@ CREATE TABLE `tbempinfo` (
 --
 
 INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
-(1, 'aguila', 'nina', 'cics');
+(1, 'aguila', 'nina', 'cics'),
+(2, 'almario', 'arvin', 'cics');
 
 -- --------------------------------------------------------
 
@@ -74,7 +83,7 @@ CREATE TABLE `tbstudentaccount` (
 --
 
 INSERT INTO `tbstudentaccount` (`studid`, `department_id`, `student_email`, `student_profile`, `student_password`) VALUES
-(2, 2, 'kent@gmail.com', NULL, '123');
+(3, 1, 'verlon@gmail.com', NULL, '123');
 
 -- --------------------------------------------------------
 
@@ -97,27 +106,6 @@ INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
 (1, 'parker', 'peter', 'bsit'),
 (2, 'kent', 'clark', 'bscs'),
 (3, 'morales', 'verlon', 'bsit');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_admin`
---
-
-CREATE TABLE `tb_admin` (
-  `admin_ID` int(11) NOT NULL,
-  `admin_name` varchar(255) NOT NULL,
-  `admin_password` varchar(20) NOT NULL,
-  `admin_email` varchar(255) NOT NULL,
-  `admin_profile` longblob DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tb_admin`
---
-
-INSERT INTO `tb_admin` (`admin_ID`, `admin_name`, `admin_password`, `admin_email`, `admin_profile`) VALUES
-(1, 'admin', '123', 'admin@gmail.com', NULL);
 
 -- --------------------------------------------------------
 
@@ -169,6 +157,13 @@ CREATE TABLE `tb_event` (
   `status` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tb_event`
+--
+
+INSERT INTO `tb_event` (`event_id`, `event_title`, `event_detail`, `event_date`, `header_image`, `department_id`, `status`) VALUES
+(1, 'Hackathon 1', 'Coding Competiton', '2023-11-30', NULL, 1, 'ongoing');
+
 -- --------------------------------------------------------
 
 --
@@ -180,6 +175,25 @@ CREATE TABLE `tb_event_images` (
   `event_id` int(11) DEFAULT NULL,
   `image_filename` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_roles`
+--
+
+CREATE TABLE `tb_roles` (
+  `role_id` int(11) NOT NULL,
+  `role_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_roles`
+--
+
+INSERT INTO `tb_roles` (`role_id`, `role_name`) VALUES
+(1, 'Admin'),
+(2, 'Teacher');
 
 -- --------------------------------------------------------
 
@@ -212,7 +226,8 @@ INSERT INTO `tb_rso` (`rso_id`, `rso_name`, `rso_password`, `department_id`, `rs
 --
 ALTER TABLE `tbempaccount`
   ADD PRIMARY KEY (`empid`),
-  ADD KEY `fk_department_emp` (`department_id`);
+  ADD KEY `fk_department_emp` (`department_id`),
+  ADD KEY `fk_emp_roles` (`role_id`);
 
 --
 -- Indexes for table `tbempinfo`
@@ -232,13 +247,6 @@ ALTER TABLE `tbstudentaccount`
 --
 ALTER TABLE `tbstudinfo`
   ADD PRIMARY KEY (`studid`);
-
---
--- Indexes for table `tb_admin`
---
-ALTER TABLE `tb_admin`
-  ADD PRIMARY KEY (`admin_ID`),
-  ADD UNIQUE KEY `unique_admin_email` (`admin_email`);
 
 --
 -- Indexes for table `tb_attendees`
@@ -271,6 +279,13 @@ ALTER TABLE `tb_event_images`
   ADD KEY `event_id` (`event_id`);
 
 --
+-- Indexes for table `tb_roles`
+--
+ALTER TABLE `tb_roles`
+  ADD PRIMARY KEY (`role_id`),
+  ADD UNIQUE KEY `unique_role_name` (`role_name`);
+
+--
 -- Indexes for table `tb_rso`
 --
 ALTER TABLE `tb_rso`
@@ -286,19 +301,13 @@ ALTER TABLE `tb_rso`
 -- AUTO_INCREMENT for table `tbempinfo`
 --
 ALTER TABLE `tbempinfo`
-  MODIFY `empid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `empid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbstudinfo`
 --
 ALTER TABLE `tbstudinfo`
   MODIFY `studid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `tb_admin`
---
-ALTER TABLE `tb_admin`
-  MODIFY `admin_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_attendees`
@@ -316,13 +325,19 @@ ALTER TABLE `tb_department`
 -- AUTO_INCREMENT for table `tb_event`
 --
 ALTER TABLE `tb_event`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_event_images`
 --
 ALTER TABLE `tb_event_images`
   MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_roles`
+--
+ALTER TABLE `tb_roles`
+  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_rso`
@@ -339,6 +354,7 @@ ALTER TABLE `tb_rso`
 --
 ALTER TABLE `tbempaccount`
   ADD CONSTRAINT `fk_department_emp` FOREIGN KEY (`department_id`) REFERENCES `tb_department` (`department_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_emp_roles` FOREIGN KEY (`role_id`) REFERENCES `tb_roles` (`role_id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_empinfo_changes` FOREIGN KEY (`empid`) REFERENCES `tbempinfo` (`empid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -379,7 +395,7 @@ DELIMITER $$
 --
 -- Events
 --
-CREATE DEFINER=`root`@`localhost` EVENT `update_event_status` ON SCHEDULE EVERY 1 SECOND STARTS '2023-11-23 01:52:27' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
+CREATE DEFINER=`root`@`localhost` EVENT `update_event_status` ON SCHEDULE EVERY 1 SECOND STARTS '2023-11-23 02:34:38' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
     UPDATE tb_event SET status = 'upcoming' WHERE event_date > CURRENT_TIMESTAMP;
     UPDATE tb_event SET status = 'ongoing' WHERE DATE(event_date) = CURDATE();
     UPDATE tb_event SET status = 'ended' WHERE event_date < CURRENT_TIMESTAMP;
