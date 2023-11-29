@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   PRIMARY KEY (`adminID`),
   UNIQUE KEY `email` (`email`),
   KEY `empid` (`empid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Dumping data for table `admin`
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `applicant` (
   `name` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`applicantID`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Dumping data for table `applicant`
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `application` (
   KEY `jobID` (`jobID`),
   KEY `applicantID` (`applicantID`),
   KEY `hrID` (`hrID`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Dumping data for table `application`
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `hr` (
   PRIMARY KEY (`HRID`),
   UNIQUE KEY `email` (`email`),
   KEY `empid` (`empid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Dumping data for table `hr`
@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `jobpost` (
   `salary` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`jobID`),
   KEY `adminID` (`adminID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Dumping data for table `jobpost`
@@ -160,13 +160,12 @@ INSERT INTO `jobpost` (`jobID`, `adminID`, `jobType`, `department`, `description
 
 DROP TABLE IF EXISTS `tbempinfo`;
 CREATE TABLE IF NOT EXISTS `tbempinfo` (
-  `empid` int NOT NULL AUTO_INCREMENT,
+  `empid` int(11) NOT NULL AUTO_INCREMENT,
   `lastname` varchar(25) NOT NULL,
   `firstname` varchar(25) NOT NULL,
   `department` varchar(20) NOT NULL,
   PRIMARY KEY (`empid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 --
 -- Dumping data for table `tbempinfo`
 --
@@ -183,12 +182,12 @@ INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
 
 DROP TABLE IF EXISTS `tbstudinfo`;
 CREATE TABLE IF NOT EXISTS `tbstudinfo` (
-  `studid` int NOT NULL AUTO_INCREMENT,
+  `studid` int(11) NOT NULL AUTO_INCREMENT,
   `lastname` varchar(25) NOT NULL,
   `firstname` varchar(25) NOT NULL,
   `course` varchar(20) NOT NULL,
   PRIMARY KEY (`studid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Constraints for dumped tables
