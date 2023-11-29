@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Nov 29, 2023 at 05:30 AM
--- Server version: 8.0.31
--- PHP Version: 8.0.26
+-- Host: 127.0.0.1:3308
+-- Generation Time: Oct 23, 2023 at 08:29 AM
+-- Server version: 8.0.18
+-- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,6 +20,7 @@ SET time_zone = "+00:00";
 
 --
 -- Database: `db_ba3101`
+--
 --
 
 -- --------------------------------------------------------
@@ -38,13 +40,6 @@ CREATE TABLE IF NOT EXISTS `admin` (
   KEY `empid` (`empid`)
 ) ;
 
---
--- Dumping data for table `admin`
---
-
-INSERT INTO `admin` (`adminID`, `empid`, `email`, `password`) VALUES
-(2, 1, 'dreipurio@gmail.com', 'dey');
-
 -- --------------------------------------------------------
 
 --
@@ -60,13 +55,6 @@ CREATE TABLE IF NOT EXISTS `applicant` (
   PRIMARY KEY (`applicantID`),
   UNIQUE KEY `email` (`email`)
 ) ;
-
---
--- Dumping data for table `applicant`
---
-
-INSERT INTO `applicant` (`applicantID`, `email`, `password`, `name`) VALUES
-(1, 'mark@gmail.com', 'mark', 'Mark Joseph Fruelda');
 
 -- --------------------------------------------------------
 
@@ -92,14 +80,6 @@ CREATE TABLE IF NOT EXISTS `application` (
   KEY `hrID` (`hrID`)
 ) ;
 
---
--- Dumping data for table `application`
---
-
-INSERT INTO `application` (`applicationID`, `jobID`, `applicantID`, `hrID`, `name`, `address`, `email`, `contact`, `resume`, `status`) VALUES
-(11, 4, 1, 1, 'Mark Joseph Fruelda', 'Lipa', 'dreipurio@gmail.com', '09378352157', 'uploads/Admission Result.pdf', 'Pending'),
-(12, 5, 1, 1, 'John Andrei Purio', 'Lipa', 'dreipurio@gmail.com', '09459732833', 'uploads/Admission Result.pdf', 'Pending');
-
 -- --------------------------------------------------------
 
 --
@@ -117,13 +97,6 @@ CREATE TABLE IF NOT EXISTS `hr` (
   UNIQUE KEY `email` (`email`),
   KEY `empid` (`empid`)
 ) ;
-
---
--- Dumping data for table `hr`
---
-
-INSERT INTO `hr` (`HRID`, `empid`, `email`, `password`, `name`) VALUES
-(1, 1, 'jake@gmail.com', 'jake', 'Jake Darren Olan');
 
 -- --------------------------------------------------------
 
@@ -144,14 +117,6 @@ CREATE TABLE IF NOT EXISTS `jobpost` (
   KEY `adminID` (`adminID`)
 ) ;
 
---
--- Dumping data for table `jobpost`
---
-
-INSERT INTO `jobpost` (`jobID`, `adminID`, `jobType`, `department`, `description`, `requirement`, `salary`) VALUES
-(4, 2, 'Professor', 'CICS', 'Description', 'Requirement', '10000.00'),
-(5, 2, 'Professor', 'CICS', 'Description', 'Requirement', '21000.00');
-
 -- --------------------------------------------------------
 
 --
@@ -166,13 +131,13 @@ CREATE TABLE IF NOT EXISTS `tbempinfo` (
   `department` varchar(20) NOT NULL,
   PRIMARY KEY (`empid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 --
 -- Dumping data for table `tbempinfo`
 --
 
 INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
-(1, 'parker', 'peter', 'bsit'),
-(2, 'kent', 'clark', 'bscs');
+(1, 'aguila', 'nina', 'cics');
 
 -- --------------------------------------------------------
 
@@ -188,6 +153,15 @@ CREATE TABLE IF NOT EXISTS `tbstudinfo` (
   `course` varchar(20) NOT NULL,
   PRIMARY KEY (`studid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tbstudinfo`
+--
+
+INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
+(1, 'parker', 'peter', 'bsit'),
+(2, 'kent', 'clark', 'bscs');
+COMMIT;
 
 --
 -- Constraints for dumped tables
