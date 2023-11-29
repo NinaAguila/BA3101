@@ -46,6 +46,9 @@ INSERT INTO tbempinfo (empid, lastname, firstname, department) VALUES
 
 -- --------------------------------------------------------
 
+--
+-- Table structure for table tb_department
+--
 
 CREATE TABLE tb_department (
   department_id int(11) NOT NULL AUTO_INCREMENT,
@@ -53,10 +56,20 @@ CREATE TABLE tb_department (
   PRIMARY KEY (department_id)
 );
 
+--
+-- Dumping data for table tb_department
+--
+
 INSERT INTO tb_department (department_id, department_name) VALUES
 (1, 'CICS'),
 (2, 'CABE'),
 (3, 'CAS');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table tb_roles
+--
 
 CREATE TABLE tb_roles (
   role_id int(11) NOT NULL AUTO_INCREMENT,
@@ -65,9 +78,20 @@ CREATE TABLE tb_roles (
   UNIQUE KEY unique_role_name (role_name)
 );
 
+
+--
+-- Dumping data for table tb_roles
+--
+
 INSERT INTO tb_roles (role_id, role_name) VALUES
 (1, 'Admin'),
 (2, 'Teacher');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table tbempaccount
+--
 
 CREATE TABLE tbempaccount (
   empaccountId int(11) NOT NULL AUTO_INCREMENT,
@@ -85,6 +109,8 @@ CREATE TABLE tbempaccount (
   CONSTRAINT fk_emp_roles FOREIGN KEY (role_id) REFERENCES tb_roles (role_id) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT fk_empinfo_changes FOREIGN KEY (empid) REFERENCES tbempinfo (empid) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table tbstudinfo
@@ -107,6 +133,12 @@ INSERT INTO tbstudinfo (studid, lastname, firstname, course) VALUES
 (1, 'parker', 'peter', 'bsit'),
 (2, 'kent', 'clark', 'bscs');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table tbstudentaccount
+--
+
 CREATE TABLE tbstudentaccount (
   studaccountid int(11) NOT NULL AUTO_INCREMENT,
   studid int(11) NOT NULL,
@@ -119,6 +151,12 @@ CREATE TABLE tbstudentaccount (
   CONSTRAINT fk_studinfo_changes FOREIGN KEY (studid) REFERENCES tbstudinfo (studid) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT fk_department_student FOREIGN KEY (department_id) REFERENCES tb_department (department_id) ON DELETE SET NULL ON UPDATE CASCADE
 );
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table tb_rso
+--
 
 CREATE TABLE tb_rso (
   rso_id int(11) NOT NULL AUTO_INCREMENT,
@@ -133,6 +171,12 @@ CREATE TABLE tb_rso (
   CONSTRAINT fk_rso_department FOREIGN KEY (department_id) REFERENCES tb_department (department_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table tb_event
+--
+
 CREATE TABLE tb_event (
   event_id int(11) NOT NULL AUTO_INCREMENT,
   event_title varchar(255) NOT NULL,
@@ -146,6 +190,12 @@ CREATE TABLE tb_event (
   CONSTRAINT fk_event_department FOREIGN KEY (department_id) REFERENCES tb_department (department_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table tb_event_images
+--
+
 CREATE TABLE tb_event_images (
   image_id int(11) NOT NULL AUTO_INCREMENT,
   event_id int(11) DEFAULT NULL,
@@ -155,6 +205,11 @@ CREATE TABLE tb_event_images (
   CONSTRAINT fk_image_event FOREIGN KEY (event_id) REFERENCES tb_event (event_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table tb_attendees
+--
 
 CREATE TABLE tb_attendees (
   attendee_id int(11) NOT NULL AUTO_INCREMENT,
@@ -182,9 +237,6 @@ CREATE DEFINER=`root`@`localhost` EVENT update_event_status ON SCHEDULE EVERY 1 
 END$$
 
 DELIMITER ;
-
-
-
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
