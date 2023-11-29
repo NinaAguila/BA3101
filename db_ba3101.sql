@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 28, 2023 at 03:54 PM
+-- Generation Time: Nov 29, 2023 at 05:30 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_3101`
+-- Database: `db_ba3101`
 --
 
 -- --------------------------------------------------------
@@ -36,7 +36,14 @@ CREATE TABLE IF NOT EXISTS `admin` (
   PRIMARY KEY (`adminID`),
   UNIQUE KEY `email` (`email`),
   KEY `empid` (`empid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`adminID`, `empid`, `email`, `password`) VALUES
+(2, 1, 'dreipurio@gmail.com', 'dey');
 
 -- --------------------------------------------------------
 
@@ -52,7 +59,14 @@ CREATE TABLE IF NOT EXISTS `applicant` (
   `name` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`applicantID`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `applicant`
+--
+
+INSERT INTO `applicant` (`applicantID`, `email`, `password`, `name`) VALUES
+(1, 'mark@gmail.com', 'mark', 'Mark Joseph Fruelda');
 
 -- --------------------------------------------------------
 
@@ -76,7 +90,15 @@ CREATE TABLE IF NOT EXISTS `application` (
   KEY `jobID` (`jobID`),
   KEY `applicantID` (`applicantID`),
   KEY `hrID` (`hrID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `application`
+--
+
+INSERT INTO `application` (`applicationID`, `jobID`, `applicantID`, `hrID`, `name`, `address`, `email`, `contact`, `resume`, `status`) VALUES
+(11, 4, 1, 1, 'Mark Joseph Fruelda', 'Lipa', 'dreipurio@gmail.com', '09378352157', 'uploads/Admission Result.pdf', 'Pending'),
+(12, 5, 1, 1, 'John Andrei Purio', 'Lipa', 'dreipurio@gmail.com', '09459732833', 'uploads/Admission Result.pdf', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -94,7 +116,14 @@ CREATE TABLE IF NOT EXISTS `hr` (
   PRIMARY KEY (`HRID`),
   UNIQUE KEY `email` (`email`),
   KEY `empid` (`empid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `hr`
+--
+
+INSERT INTO `hr` (`HRID`, `empid`, `email`, `password`, `name`) VALUES
+(1, 1, 'jake@gmail.com', 'jake', 'Jake Darren Olan');
 
 -- --------------------------------------------------------
 
@@ -113,7 +142,15 @@ CREATE TABLE IF NOT EXISTS `jobpost` (
   `salary` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`jobID`),
   KEY `adminID` (`adminID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `jobpost`
+--
+
+INSERT INTO `jobpost` (`jobID`, `adminID`, `jobType`, `department`, `description`, `requirement`, `salary`) VALUES
+(4, 2, 'Professor', 'CICS', 'Description', 'Requirement', '10000.00'),
+(5, 2, 'Professor', 'CICS', 'Description', 'Requirement', '21000.00');
 
 -- --------------------------------------------------------
 
@@ -128,7 +165,15 @@ CREATE TABLE IF NOT EXISTS `tbempinfo` (
   `firstname` varchar(25) NOT NULL,
   `department` varchar(20) NOT NULL,
   PRIMARY KEY (`empid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tbempinfo`
+--
+
+INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
+(1, 'parker', 'peter', 'bsit'),
+(2, 'kent', 'clark', 'bscs');
 
 -- --------------------------------------------------------
 
