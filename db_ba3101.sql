@@ -284,9 +284,10 @@ CREATE TABLE `tb_rso` (
   `rso_name` varchar(255) NOT NULL,
   `rso_password` varchar(20) NOT NULL,
   `department_id` int(11) DEFAULT NULL,
-  `rso_email` varchar(255) NOT NULL,
+  `rso_email` varchar(191) NOT NULL,
   `rso_profile` longblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 --
 -- Indexes for dumped tables
