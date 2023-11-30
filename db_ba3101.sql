@@ -611,108 +611,6 @@ ALTER TABLE `tbstaff`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_employeeaccount`
---
-
-DROP TABLE IF EXISTS `tbl_employeeaccount`;
-CREATE TABLE IF NOT EXISTS `tbl_employeeaccount` (
-  `employeeCount` int NOT NULL AUTO_INCREMENT,
-  `employeeID` varchar(50) NOT NULL,
-  `employeePassword` varchar(255) NOT NULL,
-  `employeeEmail` varchar(255) NOT NULL,
-  `employeeRole` enum('Admin','Stock In','Stock Out') DEFAULT NULL,
-  `resetCode` int DEFAULT NULL,
-  PRIMARY KEY (`employeeCount`),
-  KEY `employeeID` (`employeeID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `tbl_employeeaccount`
---
-
-INSERT INTO `tbl_employeeaccount` (`employeeCount`, `employeeID`, `employeePassword`, `employeeEmail`, `employeeRole`, `resetCode`) VALUES
-(1, '21-34994', 'admin', '21-34994@g.batstate-u.edu.ph', 'Admin', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_products`
---
-
-DROP TABLE IF EXISTS `tbl_products`;
-CREATE TABLE IF NOT EXISTS `tbl_products` (
-  `productID` int NOT NULL AUTO_INCREMENT,
-  `productName` varchar(255) NOT NULL,
-  `productImage` blob NOT NULL,
-  PRIMARY KEY (`productID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_size`
---
-
-DROP TABLE IF EXISTS `tbl_size`;
-CREATE TABLE IF NOT EXISTS `tbl_size` (
-  `sizeID` int NOT NULL AUTO_INCREMENT,
-  `productID` int NOT NULL,
-  `productSize` varchar(20) NOT NULL,
-  `productPrice` decimal(10,2) NOT NULL,
-  PRIMARY KEY (`sizeID`),
-  KEY `productID` (`productID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_stockin`
---
-
-DROP TABLE IF EXISTS `tbl_stockin`;
-CREATE TABLE IF NOT EXISTS `tbl_stockin` (
-  `stockInID` int NOT NULL AUTO_INCREMENT,
-  `recordDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `employeeID` varchar(50) NOT NULL,
-  `productID` int NOT NULL,
-  `productSize` varchar(20) NOT NULL,
-  `quantityIn` int NOT NULL,
-  PRIMARY KEY (`stockInID`),
-  KEY `employeeID` (`employeeID`),
-  KEY `productID` (`productID`),
-  KEY `productSize` (`productSize`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `tbl_stockin`
---
-
-INSERT INTO `tbl_stockin` (`stockInID`, `recordDate`, `employeeID`, `productID`, `productSize`, `quantityIn`) VALUES
-(1, '0000-00-00 00:00:00', '21-34994', 1, 'Medium', 50);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_stockout`
---
-
-DROP TABLE IF EXISTS `tbl_stockout`;
-CREATE TABLE IF NOT EXISTS `tbl_stockout` (
-  `stockOutID` int NOT NULL AUTO_INCREMENT,
-  `recordDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `employeeID` varchar(50) NOT NULL,
-  `productID` int NOT NULL,
-  `productSize` varchar(20) NOT NULL,
-  `quantityOut` int NOT NULL,
-  PRIMARY KEY (`stockOutID`),
-  KEY `employeeID` (`employeeID`),
-  KEY `productID` (`productID`),
-  KEY `productSize` (`productSize`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Constraints for table `admin`
 --
 ALTER TABLE `admin`
@@ -887,6 +785,107 @@ INSERT INTO `tbstudent` (`sr_ID`, `sr_code`, `studid`) VALUES
 
 -- --------------------------------------------------------
 
+--
+-- Table structure for table `tbl_employeeaccount`
+--
+
+DROP TABLE IF EXISTS `tbl_employeeaccount`;
+CREATE TABLE IF NOT EXISTS `tbl_employeeaccount` (
+  `employeeCount` int NOT NULL AUTO_INCREMENT,
+  `employeeID` varchar(50) NOT NULL,
+  `employeePassword` varchar(255) NOT NULL,
+  `employeeEmail` varchar(255) NOT NULL,
+  `employeeRole` enum('Admin','Stock In','Stock Out') DEFAULT NULL,
+  `resetCode` int DEFAULT NULL,
+  PRIMARY KEY (`employeeCount`),
+  KEY `employeeID` (`employeeID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `tbl_employeeaccount`
+--
+
+INSERT INTO `tbl_employeeaccount` (`employeeCount`, `employeeID`, `employeePassword`, `employeeEmail`, `employeeRole`, `resetCode`) VALUES
+(1, '21-34994', 'admin', '21-34994@g.batstate-u.edu.ph', 'Admin', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_products`
+--
+
+DROP TABLE IF EXISTS `tbl_products`;
+CREATE TABLE IF NOT EXISTS `tbl_products` (
+  `productID` int NOT NULL AUTO_INCREMENT,
+  `productName` varchar(255) NOT NULL,
+  `productImage` blob NOT NULL,
+  PRIMARY KEY (`productID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_size`
+--
+
+DROP TABLE IF EXISTS `tbl_size`;
+CREATE TABLE IF NOT EXISTS `tbl_size` (
+  `sizeID` int NOT NULL AUTO_INCREMENT,
+  `productID` int NOT NULL,
+  `productSize` varchar(20) NOT NULL,
+  `productPrice` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`sizeID`),
+  KEY `productID` (`productID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_stockin`
+--
+
+DROP TABLE IF EXISTS `tbl_stockin`;
+CREATE TABLE IF NOT EXISTS `tbl_stockin` (
+  `stockInID` int NOT NULL AUTO_INCREMENT,
+  `recordDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `employeeID` varchar(50) NOT NULL,
+  `productID` int NOT NULL,
+  `productSize` varchar(20) NOT NULL,
+  `quantityIn` int NOT NULL,
+  PRIMARY KEY (`stockInID`),
+  KEY `employeeID` (`employeeID`),
+  KEY `productID` (`productID`),
+  KEY `productSize` (`productSize`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `tbl_stockin`
+--
+
+INSERT INTO `tbl_stockin` (`stockInID`, `recordDate`, `employeeID`, `productID`, `productSize`, `quantityIn`) VALUES
+(1, '0000-00-00 00:00:00', '21-34994', 1, 'Medium', 50);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_stockout`
+--
+
+DROP TABLE IF EXISTS `tbl_stockout`;
+CREATE TABLE IF NOT EXISTS `tbl_stockout` (
+  `stockOutID` int NOT NULL AUTO_INCREMENT,
+  `recordDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `employeeID` varchar(50) NOT NULL,
+  `productID` int NOT NULL,
+  `productSize` varchar(20) NOT NULL,
+  `quantityOut` int NOT NULL,
+  PRIMARY KEY (`stockOutID`),
+  KEY `employeeID` (`employeeID`),
+  KEY `productID` (`productID`),
+  KEY `productSize` (`productSize`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
 --
 -- Table structure for table `tbl_account`
 --
