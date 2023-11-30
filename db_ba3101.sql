@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 30, 2023 at 04:07 AM
+-- Generation Time: Nov 30, 2023 at 04:13 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -635,6 +635,7 @@ CREATE TABLE IF NOT EXISTS `tbstudinfo` (
   `lastname` varchar(25) NOT NULL,
   `firstname` varchar(25) NOT NULL,
   `course` varchar(20) NOT NULL,
+  `sr_code` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`studid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2139415 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -642,12 +643,20 @@ CREATE TABLE IF NOT EXISTS `tbstudinfo` (
 -- Dumping data for table `tbstudinfo`
 --
 
-INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
-(2139414, 'Rubion', 'Ivan Gabriel', 'BSIT-BA-3101'),
-(2131054, 'Tada', 'Seth Aldous', 'BSIT-BA-3101'),
-(2130073, 'Trayfalgar', 'Belle Colleen', 'BSIT-BA-3101'),
-(2139325, 'Lopez', 'John Ronald', 'BSIT-BA-3101'),
-(2134780, 'Laygo', 'Bonjohn Benedict', 'BSIT-BA-3101');
+INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`, `sr_code`) VALUES
+(2139414, 'Rubion', 'Ivan Gabriel', 'BSIT-BA-3101', NULL),
+(2131054, 'Tada', 'Seth Aldous', 'BSIT-BA-3101', NULL),
+(2130073, 'Trayfalgar', 'Belle Colleen', 'BSIT-BA-3101', NULL),
+(2139325, 'Lopez', 'John Ronald', 'BSIT-BA-3101', NULL),
+(2134780, 'Laygo', 'Bonjohn Benedict', 'BSIT-BA-3101', NULL),
+(1, 'parker', 'peter', 'bsit', '21-39032'),
+(2, 'kent', 'clark', 'bscs', '29-76854'),
+(3, 'Valencia', 'Arnold', 'bscs', '21-34256'),
+(4, 'Reyes', 'Marvin', 'bsit', '23-98765'),
+(5, 'Dela Cruz', 'Leomar', 'bsba', '15-98126'),
+(6, 'manalo', 'zeus', 'bsit', '21-39828'),
+(7, 'Macalla', 'Dorothy', 'bsit', '21-32471'),
+(8, 'De Chavez', 'Jhuncen', 'bsit', '21-35519');
 
 -- --------------------------------------------------------
 
