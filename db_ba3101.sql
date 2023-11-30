@@ -63,7 +63,12 @@ CREATE TABLE IF NOT EXISTS `tbstudinfo` (
 --
 -- Dumping data for table `tbstudinfo`
 --
-
+INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
+(1, 'parker', 'peter', 'bsit'),
+(2, 'kent', 'clark', 'bscs'),
+(3, 'Solis', 'Roberto', 'BSIT'),
+(4, 'Macaraig', 'Niel', 'BSIT'),
+(5, 'Hombre', 'Alvin', 'BSIT');
 
 
 -- --------------------------------------------------------
