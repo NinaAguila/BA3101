@@ -73,7 +73,7 @@ INSERT INTO `tbborrow` (`borrow_ID`, `studid`, `equipment_quantity`, `equipment_
 --
 
 CREATE TABLE `tbempinfo` (
-  `empid` int(11) NOT NULL AUTO_INCREMENT,
+  `empid` int(11) NOT NULL,
   `lastname` varchar(25) NOT NULL,
   `firstname` varchar(25) NOT NULL,
   `department` varchar(20) NOT NULL
