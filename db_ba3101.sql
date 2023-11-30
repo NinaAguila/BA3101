@@ -1,5 +1,6 @@
 -- phpMyAdmin SQL Dump
 <<<<<<< HEAD
+<<<<<<< HEAD
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
@@ -19,6 +20,13 @@
 -- Host: 127.0.0.1:3306
 -- Generation Time: Nov 23, 2023 at 02:35 AM
 >>>>>>> origin/group-6
+=======
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3306
+-- Generation Time: Nov 30, 2023 at 12:36 PM
+>>>>>>> Group-3
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -182,6 +190,40 @@ INSERT INTO `tbcoun` (`counno`, `counpass`, `empid`) VALUES
 ('3', 'counselorpass3', '3'),
 ('4', 'counselorpass4', '4'),
 ('5', 'counselorpass5', '5');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbadmin`
+--
+
+DROP TABLE IF EXISTS `tbadmin`;
+CREATE TABLE IF NOT EXISTS `tbadmin` (
+  `admin_ID` int NOT NULL AUTO_INCREMENT,
+  `admin_user` varchar(30) NOT NULL,
+  `admin_pass` varchar(30) NOT NULL,
+  `empid` int NOT NULL,
+  PRIMARY KEY (`admin_ID`),
+  KEY `empid` (`empid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbborrow`
+--
+
+DROP TABLE IF EXISTS `tbborrow`;
+CREATE TABLE IF NOT EXISTS `tbborrow` (
+  `borrow_ID` int NOT NULL AUTO_INCREMENT,
+  `studid` int NOT NULL,
+  `equipment_quantity` int NOT NULL,
+  `equipment_ID` int NOT NULL,
+  `date_borrowed` date NOT NULL,
+  PRIMARY KEY (`borrow_ID`),
+  KEY `studid` (`studid`),
+  KEY `equipment_ID` (`equipment_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -367,6 +409,56 @@ INSERT INTO `tbstud` (`studno`, `studpass`, `studid`) VALUES
 ('21-30073', 'belletrayfalgar', '2130073'),
 ('21-39325', 'johnronaldlopez', '2139325'),
 ('21-31054', 'sethtada', '2131054');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbequipment`
+--
+
+DROP TABLE IF EXISTS `tbequipment`;
+CREATE TABLE IF NOT EXISTS `tbequipment` (
+  `equipment_ID` int NOT NULL AUTO_INCREMENT,
+  `equipment_name` varchar(30) NOT NULL,
+  `equipment_quantity` int NOT NULL,
+  `equipment_description` varchar(200) NOT NULL,
+  `equip_photos` blob NOT NULL,
+  `is_active` tinyint(1) DEFAULT '1',
+  `date_arrived` date NOT NULL,
+  PRIMARY KEY (`equipment_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbstaff`
+--
+
+DROP TABLE IF EXISTS `tbstaff`;
+CREATE TABLE IF NOT EXISTS `tbstaff` (
+  `staff_ID` int NOT NULL AUTO_INCREMENT,
+  `staff_user` varchar(30) NOT NULL,
+  `staff_pass` varchar(30) NOT NULL,
+  `staff_position` varchar(30) NOT NULL,
+  `empid` int NOT NULL,
+  PRIMARY KEY (`staff_ID`),
+  KEY `empid` (`empid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbstudent`
+--
+
+DROP TABLE IF EXISTS `tbstudent`;
+CREATE TABLE IF NOT EXISTS `tbstudent` (
+  `sr_ID` int NOT NULL AUTO_INCREMENT,
+  `sr_code` varchar(30) NOT NULL,
+  `studid` int NOT NULL,
+  PRIMARY KEY (`sr_ID`),
+  KEY `studid` (`studid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
