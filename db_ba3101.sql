@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 30, 2023 at 03:41 AM
+-- Generation Time: Nov 30, 2023 at 04:21 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -35,15 +35,7 @@ CREATE TABLE IF NOT EXISTS `tbadmin` (
   `empid` int NOT NULL,
   PRIMARY KEY (`admin_ID`),
   KEY `empid` (`empid`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `tbadmin`
---
-
-INSERT INTO `tbadmin` (`admin_ID`, `admin_user`, `admin_pass`, `empid`) VALUES
-(4, 'Cruzy', 'oisdahfeuw', 2),
-(5, 'heyo', 'dgfregher', 4);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -61,17 +53,7 @@ CREATE TABLE IF NOT EXISTS `tbborrow` (
   PRIMARY KEY (`borrow_ID`),
   KEY `studid` (`studid`),
   KEY `equipment_ID` (`equipment_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=144 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `tbborrow`
---
-
-INSERT INTO `tbborrow` (`borrow_ID`, `studid`, `equipment_quantity`, `equipment_ID`, `date_borrowed`) VALUES
-(140, 7, 5, 19, '2023-11-29'),
-(141, 6, 5, 20, '2023-11-30'),
-(142, 7, 5, 22, '2023-11-29'),
-(143, 8, 2, 22, '2023-11-30');
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -116,18 +98,7 @@ CREATE TABLE IF NOT EXISTS `tbequipment` (
   `is_active` tinyint(1) DEFAULT '1',
   `date_arrived` date DEFAULT NULL,
   PRIMARY KEY (`equipment_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `tbequipment`
---
-
-INSERT INTO `tbequipment` (`equipment_ID`, `equipment_name`, `equipment_quantity`, `equipment_description`, `equip_photos`, `is_active`, `date_arrived`) VALUES
-(19, 'Futsal Ball', 7, 'small, typically low-bounce ball used in the sport of futsal', 0x2e2e2f696d616765732f696d6167652d6571702f363536366361333336633636395f62616c6c2e6a7067, 1, '2023-11-29'),
-(20, 'Ping Pong Table', 8, 'specialized surface used for playing the sport of table tennis', 0x2e2e2f696d616765732f696d6167652d6571702f70696e672d706f6e672d7461626c652d586c654e4c39432d3630302d72656d6f766562672d70726576696577202831292e706e67, 1, '2023-11-12'),
-(22, 'Volleyball', 7, 'a spherical ball made of leather or synthetic leather and inflated with air', 0x363536323233333332363261655f62616c6c5f322e6a666966, 1, '2023-11-11'),
-(23, 'Shuttlecock', 10, ' also known as a birdie, is a small, feathered projectile used in the sport of badminton.', 0x2e2e2f696d616765732f696d6167652d6571702f706e672d7472616e73706172656e742d77686974652d73687574746c65636f636b2d696c6c757374726174696f6e2d626c61636b2d616e642d77686974652d73687574746c65636f636b2d67616d652d77686974652d73706f72745f5f315f2d72656d6f766562672d707265766965772e706e67, 1, '2023-11-09'),
-(24, 'Piwjegurwh', 2, 'ewgr', 0x2e2e2f696d616765732f696d6167652d6571702f37315a6139304e4f71374c2d72656d6f766562672d70726576696577202831292e706e67, 1, '2023-11-30');
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -147,14 +118,7 @@ CREATE TABLE IF NOT EXISTS `tbreturned` (
   PRIMARY KEY (`return_ID`),
   KEY `borrow_ID` (`borrow_ID`),
   KEY `studid` (`studid`)
-) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `tbreturned`
---
-
-INSERT INTO `tbreturned` (`return_ID`, `borrow_ID`, `returned_date`, `studid`, `returned_quantity`, `equipment_damaged`, `equipment_missing`) VALUES
-(53, 143, '2023-11-30', 8, 1, 0, 13);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -171,14 +135,21 @@ CREATE TABLE IF NOT EXISTS `tbstaff` (
   `empid` int NOT NULL,
   PRIMARY KEY (`staff_ID`),
   KEY `empid` (`empid`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `tbstaff`
+-- Table structure for table `tbstudent`
 --
 
-INSERT INTO `tbstaff` (`staff_ID`, `staff_user`, `staff_pass`, `staff_position`, `empid`) VALUES
-(1, 'dfberfb', 'ewfgrwgwr', 'IN', 3);
+DROP TABLE IF EXISTS `tbstudent`;
+CREATE TABLE IF NOT EXISTS `tbstudent` (
+  `sr_ID` int NOT NULL AUTO_INCREMENT,
+  `sr_code` varchar(30) NOT NULL,
+  `studid` int NOT NULL,
+  PRIMARY KEY (`sr_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -189,7 +160,6 @@ INSERT INTO `tbstaff` (`staff_ID`, `staff_user`, `staff_pass`, `staff_position`,
 DROP TABLE IF EXISTS `tbstudinfo`;
 CREATE TABLE IF NOT EXISTS `tbstudinfo` (
   `studid` int NOT NULL AUTO_INCREMENT,
-  `sr_code` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `lastname` varchar(25) NOT NULL,
   `firstname` varchar(25) NOT NULL,
   `course` varchar(20) NOT NULL,
@@ -200,15 +170,15 @@ CREATE TABLE IF NOT EXISTS `tbstudinfo` (
 -- Dumping data for table `tbstudinfo`
 --
 
-INSERT INTO `tbstudinfo` (`studid`, `sr_code`, `lastname`, `firstname`, `course`) VALUES
-(1, '32-10987', 'parker', 'peter', 'bsit'),
-(2, '29-76854', 'kent', 'clark', 'bscs'),
-(3, '21-34256', 'Valencia', 'Arnold', 'bscs'),
-(4, '23-98765', 'Reyes', 'Marvin', 'bsit'),
-(5, '15-98126', 'Dela Cruz', 'Leomar', 'bsba'),
-(6, '21-39828', 'manalo', 'zeus', 'bsit'),
-(7, '21-32471', 'Macalla', 'Dorothy', 'bsit'),
-(8, '21-35519', 'De Chavez', 'Jhuncen', 'bsit');
+INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
+(1, 'parker', 'peter', 'bsit'),
+(2, 'kent', 'clark', 'bscs'),
+(3, 'Valencia', 'Arnold', 'bscs'),
+(4, 'Reyes', 'Marvin', 'bsit'),
+(5, 'Dela Cruz', 'Leomar', 'bsba'),
+(6, 'manalo', 'zeus', 'bsit'),
+(7, 'Macalla', 'Dorothy', 'bsit'),
+(8, 'De Chavez', 'Jhuncen', 'bsit');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
