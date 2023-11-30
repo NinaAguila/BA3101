@@ -85,12 +85,8 @@ CREATE TABLE IF NOT EXISTS `tbempinfo` (
 --
 
 INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
-(1, 'aguila', 'nina', 'cics'),
-(2, 'Cruz', 'Mark', 'cics'),
-(3, 'Miranda', 'Rocky', 'cics'),
-(4, 'Peloramas', 'Angela', 'cics'),
-(5, 'Dela Pena', 'Leo', 'cics'),
-(6, 'Macalla', 'Dorothy', 'cics');
+(1, 'aguila', 'nina', 'cics');
+
 
 -- --------------------------------------------------------
 
@@ -213,12 +209,6 @@ CREATE TABLE IF NOT EXISTS `tbstudinfo` (
 INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
 (1, 'parker', 'peter', 'bsit'),
 (2, 'kent', 'clark', 'bscs'),
-(3, 'Valencia', 'Arnold', 'bscs'),
-(4, 'Reyes', 'Marvin', 'bsit'),
-(5, 'Dela Cruz', 'Leomar', 'bsba'),
-(6, 'manalo', 'zeus', 'bsit'),
-(7, 'Macalla', 'Dorothy', 'bsit'),
-(8, 'De Chavez', 'Jhuncen', 'bsit');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
