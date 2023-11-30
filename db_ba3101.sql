@@ -159,7 +159,6 @@ CREATE TABLE IF NOT EXISTS `tbstudinfo` (
 -- Dumping data for table `tbstudinfo`
 --
 
-INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
 
 
 -- --------------------------------------------------------
