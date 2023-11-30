@@ -160,11 +160,9 @@ CREATE TABLE IF NOT EXISTS `tbstudinfo` (
 --
 
 INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
-(1, 'parker', 'peter', 'bsit'),
-(2, 'kent', 'clark', 'bscs'),
-(3, 'Solis', 'Roberto', 'BSIT'),
-(4, 'Macaraig', 'Niel', 'BSIT'),
-(5, 'Hombre', 'Alvin', 'BSIT');
+(1, 'Solis', 'Roberto', 'BSIT'),
+(2, 'Macaraig', 'Niel', 'BSIT'),
+(3, 'Hombre', 'Alvin', 'BSIT');
 
 -- --------------------------------------------------------
 
