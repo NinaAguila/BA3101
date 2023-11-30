@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 30, 2023 at 07:45 AM
+-- Generation Time: Nov 30, 2023 at 08:38 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_ba3101`
+-- Database: `db_ba3101a`
 --
 
 -- --------------------------------------------------------
@@ -73,20 +73,24 @@ INSERT INTO `tbborrow` (`borrow_ID`, `studid`, `equipment_quantity`, `equipment_
 
 DROP TABLE IF EXISTS `tbempinfo`;
 CREATE TABLE IF NOT EXISTS `tbempinfo` (
-  `empid` int(11) NOT NULL AUTO_INCREMENT,
+  `empid` int NOT NULL AUTO_INCREMENT,
   `lastname` varchar(25) NOT NULL,
   `firstname` varchar(25) NOT NULL,
   `department` varchar(20) NOT NULL,
   PRIMARY KEY (`empid`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbempinfo`
 --
 
 INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
-(1, 'aguila', 'nina', 'cics');
-
+(1, 'aguila', 'nina', 'cics'),
+(2, 'Cruz', 'Mark', 'cics'),
+(3, 'Miranda', 'Rocky', 'cics'),
+(4, 'Peloramas', 'Angela', 'cics'),
+(5, 'Dela Pena', 'Leo', 'cics'),
+(6, 'Macalla', 'Dorothy', 'cics');
 
 -- --------------------------------------------------------
 
@@ -195,7 +199,7 @@ INSERT INTO `tbstudent` (`sr_ID`, `sr_code`, `studid`) VALUES
 
 DROP TABLE IF EXISTS `tbstudinfo`;
 CREATE TABLE IF NOT EXISTS `tbstudinfo` (
-  `studid` int(11) NOT NULL AUTO_INCREMENT,
+  `studid` int NOT NULL AUTO_INCREMENT,
   `lastname` varchar(25) NOT NULL,
   `firstname` varchar(25) NOT NULL,
   `course` varchar(20) NOT NULL,
@@ -208,7 +212,7 @@ CREATE TABLE IF NOT EXISTS `tbstudinfo` (
 
 INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
 (1, 'parker', 'peter', 'bsit'),
-(2, 'kent', 'clark', 'bscs'),
+(2, 'kent', 'clark', 'bscs');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
