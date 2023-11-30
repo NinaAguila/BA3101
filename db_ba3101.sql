@@ -987,6 +987,147 @@ ALTER TABLE `tbl_requests`
   ADD CONSTRAINT `userID(tbl_req)` FOREIGN KEY (`userID`) REFERENCES `tbl_account` (`userID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_admin`
+--
+
+DROP TABLE IF EXISTS `tb_admin`;
+CREATE TABLE IF NOT EXISTS `tb_admin` (
+  `Admin_ID` int NOT NULL,
+  `Admin_User` varchar(50) NOT NULL,
+  `Admin_Password` varchar(50) NOT NULL,
+  `empid` int DEFAULT NULL,
+  PRIMARY KEY (`Admin_ID`),
+  KEY `fk_tb_admin_empid` (`empid`)
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+--
+-- Dumping data for table `tb_admin`
+--
+
+INSERT INTO `tb_admin` (`Admin_ID`, `Admin_User`, `Admin_Password`, `empid`) VALUES
+(1, 'adm_user', 'adm_pass', 1),
+(16, 'testadm', 'testadm', 16);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_guidance`
+--
+
+DROP TABLE IF EXISTS `tb_guidance`;
+CREATE TABLE IF NOT EXISTS `tb_guidance` (
+  `Guidance_ID` int NOT NULL,
+  `Guidance_User` varchar(50) NOT NULL,
+  `Guidance_Password` varchar(50) NOT NULL,
+  `empid` int DEFAULT NULL,
+  PRIMARY KEY (`Guidance_ID`),
+  KEY `fk_tb_guidance_empid` (`empid`)
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+--
+-- Dumping data for table `tb_guidance`
+--
+
+INSERT INTO `tb_guidance` (`Guidance_ID`, `Guidance_User`, `Guidance_Password`, `empid`) VALUES
+(1, 'gui_user', 'gui_pass', 2),
+(17, 'testgui', 'testgui', 17);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_studentacc`
+--
+
+DROP TABLE IF EXISTS `tb_studentacc`;
+CREATE TABLE IF NOT EXISTS `tb_studentacc` (
+  `Student_Acc_ID` int NOT NULL AUTO_INCREMENT,
+  `Student_User` varchar(50) NOT NULL,
+  `Student_Password` varchar(50) NOT NULL,
+  `studid` int DEFAULT NULL,
+  PRIMARY KEY (`Student_Acc_ID`),
+  KEY `fk_tb_studentacc_studid` (`studid`)
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_studentacc`
+--
+
+INSERT INTO `tb_studentacc` (`Student_Acc_ID`, `Student_User`, `Student_Password`, `studid`) VALUES
+(1, 'test_user', 'test_pass', 1),
+(2, 'raz', 'raz_pass', 2),
+(3, 'solis', 'solis_pass', 3),
+(4, 'niel', 'niel_pass', 4),
+(5, 'alvin', 'alvin_pass', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_studentinfo`
+--
+
+DROP TABLE IF EXISTS `tb_studentinfo`;
+CREATE TABLE IF NOT EXISTS `tb_studentinfo` (
+  `SR_Code` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Student_Year` varchar(25) NOT NULL,
+  `Student_Acc_ID` int NOT NULL,
+  `Student_Picture` longblob,
+  `studid` int DEFAULT NULL,
+  PRIMARY KEY (`SR_Code`),
+  KEY `FK_Student_Acc` (`Student_Acc_ID`),
+  KEY `FK_studid` (`studid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+--
+-- Dumping data for table `tb_studentinfo`
+--
+
+INSERT INTO `tb_studentinfo` (`SR_Code`, `Student_Year`, `Student_Acc_ID`, `Student_Picture`, `studid`) VALUES
+('21-20002', '3rd year', 3, NULL, 3),
+('21-20003', '3rd year', 4, NULL, 4),
+('21-20004', '3rd year', 5, NULL, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_violation`
+--
+
+DROP TABLE IF EXISTS `tb_violation`;
+CREATE TABLE IF NOT EXISTS `tb_violation` (
+  `Violation_ID` int NOT NULL AUTO_INCREMENT,
+  `Violation_Date` datetime NOT NULL,
+  `Violation_Description` varchar(200) NOT NULL,
+  `Violation_Status` varchar(25) NOT NULL,
+  `Admin_ID` varchar(50) NOT NULL,
+  `Guidance_ID` varchar(50) NOT NULL,
+  `SR_Code` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Violation_Offense` varchar(50) NOT NULL,
+  `Violation_Penalties` varchar(250) NOT NULL,
+  PRIMARY KEY (`Violation_ID`),
+  KEY `FK_StudentInfo_Violation` (`SR_Code`),
+  KEY `FK_Admin_Violation` (`Admin_ID`),
+  KEY `FK_Guidance_Violation` (`Guidance_ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+--
+-- Dumping data for table `tb_violation`
+--
+
+INSERT INTO `tb_violation` (`Violation_ID`, `Violation_Date`, `Violation_Description`, `Violation_Status`, `Admin_ID`, `Guidance_ID`, `SR_Code`, `Violation_Offense`, `Violation_Penalties`) VALUES
+(1, '2023-07-06 09:46:08', 'Wearing Earing ', 'Done', '1', '1', '21-20000', 'Minor', '5 days suspension'),
+(4, '2023-08-12 09:56:23', 'Not in proper uniform', 'pending ', '1', '1', '21-20001', 'Minor', '3 days suspension'),
+(5, '2023-08-20 09:58:34', 'Not in a proper haircut', 'Done', '1', '1', '21-20002', 'Major', '2 days community service'),
+(6, '2023-09-02 10:00:09', 'Not in a proper uniform', 'pending ', '1', '1', '21-20003', 'Minor', '3 days community service'),
+(7, '2023-10-02 10:01:04', 'No ID', 'pending ', '1', '1', '21-20004', 'Major', 'NBA draft for kick out');
+COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
