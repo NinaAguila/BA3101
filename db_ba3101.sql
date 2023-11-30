@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `tbempinfo` (
   `firstname` varchar(25) NOT NULL,
   `department` varchar(20) NOT NULL,
   PRIMARY KEY (`empid`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbempinfo`
@@ -59,6 +59,7 @@ CREATE TABLE IF NOT EXISTS `tbempinfo` (
 INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
 (1, 'aguila', 'nina', 'cics'),
 (2, 'Guidance_lastname', 'Guidance_Firstname', 'CICS'),
+(3, 'Cerezo', 'Ezekiel Eisen', 'CICS'),
 (17, 'test_guidance', 'test_guidance', 'CICS');
 
 -- --------------------------------------------------------
@@ -89,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `tbstudinfo` (
   `firstname` varchar(25) NOT NULL,
   `course` varchar(20) NOT NULL,
   PRIMARY KEY (`studid`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbstudinfo`
@@ -121,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `tb_admin` (
   `empid` int DEFAULT NULL,
   PRIMARY KEY (`Admin_ID`),
   KEY `fk_tb_admin_empid` (`empid`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tb_admin`
@@ -130,6 +131,8 @@ CREATE TABLE IF NOT EXISTS `tb_admin` (
 INSERT INTO `tb_admin` (`Admin_ID`, `Admin_User`, `Admin_Password`, `empid`) VALUES
 (1, 'adm_user', 'adm_pass', 1),
 (16, 'testadm', 'testadm', 16);
+
+--
 -- Table structure for table `tb_attendees`
 --
 
@@ -154,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `tb_guidance` (
   `empid` int DEFAULT NULL,
   PRIMARY KEY (`Guidance_ID`),
   KEY `fk_tb_guidance_empid` (`empid`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tb_guidance`
@@ -163,6 +166,8 @@ CREATE TABLE IF NOT EXISTS `tb_guidance` (
 INSERT INTO `tb_guidance` (`Guidance_ID`, `Guidance_User`, `Guidance_Password`, `empid`) VALUES
 (1, 'gui_user', 'gui_pass', 2),
 (17, 'testgui', 'testgui', 17);
+
+--
 -- Table structure for table `tb_department`
 --
 
@@ -194,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `tb_studentacc` (
   `studid` int DEFAULT NULL,
   PRIMARY KEY (`Student_Acc_ID`),
   KEY `fk_tb_studentacc_studid` (`studid`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tb_studentacc`
@@ -206,6 +211,8 @@ INSERT INTO `tb_studentacc` (`Student_Acc_ID`, `Student_User`, `Student_Password
 (3, 'solis', 'solis_pass', 3),
 (4, 'niel', 'niel_pass', 4),
 (5, 'alvin', 'alvin_pass', 5);
+
+--
 -- Table structure for table `tb_event`
 --
 
@@ -227,7 +234,7 @@ CREATE TABLE `tb_event` (
 
 DROP TABLE IF EXISTS `tb_studentinfo`;
 CREATE TABLE IF NOT EXISTS `tb_studentinfo` (
-  `SR_Code` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `SR_Code` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Student_Year` varchar(25) NOT NULL,
   `Student_Acc_ID` int NOT NULL,
   `Student_Picture` longblob,
@@ -235,7 +242,7 @@ CREATE TABLE IF NOT EXISTS `tb_studentinfo` (
   PRIMARY KEY (`SR_Code`),
   KEY `FK_Student_Acc` (`Student_Acc_ID`),
   KEY `FK_studid` (`studid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tb_studentinfo`
@@ -264,14 +271,14 @@ CREATE TABLE IF NOT EXISTS `tb_violation` (
   `Violation_Status` varchar(25) NOT NULL,
   `Admin_ID` varchar(50) NOT NULL,
   `Guidance_ID` varchar(50) NOT NULL,
-  `SR_Code` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `SR_Code` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Violation_Offense` varchar(50) NOT NULL,
   `Violation_Penalties` varchar(250) NOT NULL,
   PRIMARY KEY (`Violation_ID`),
   KEY `FK_StudentInfo_Violation` (`SR_Code`),
   KEY `FK_Admin_Violation` (`Admin_ID`),
   KEY `FK_Guidance_Violation` (`Guidance_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tb_violation`
@@ -304,7 +311,60 @@ CREATE TABLE `tbclient` (
   `type` char(50) DEFAULT NULL,
   `fileName` varchar(50) NOT NULL,
   `filePath` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbadmin`
+--
+
+CREATE TABLE `tbadmin` (
+  `emp_ID` int(11) NOT NULL,
+  `userName` varchar(50) NOT NULL,
+  `Password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbguestinfo`
+--
+
+CREATE TABLE `tbguestinfo` (
+  `guest_ID` int(11) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `firstname` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblogs`
+--
+
+CREATE TABLE `tblogs` (
+  `plate_Number` varchar(50) NOT NULL,
+  `recordDate` date DEFAULT NULL,
+  `time_In` time DEFAULT NULL,
+  `time_Out` time DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbstaff`
+--
+
+CREATE TABLE `tbstaff` (
+  `emp_ID` int(11) NOT NULL,
+  `userName` varchar(50) NOT NULL,
+  `Password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_event_images`
 --
 
@@ -518,7 +578,7 @@ CREATE TABLE IF NOT EXISTS `tbl_account` (
   `userPass` varchar(255) NOT NULL,
   `userType` varchar(255) NOT NULL,
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -536,7 +596,7 @@ CREATE TABLE IF NOT EXISTS `tbl_office` (
   `employeeID` int NOT NULL,
   PRIMARY KEY (`officeAccID`),
   KEY `empID(FK)` (`employeeID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -556,7 +616,7 @@ CREATE TABLE IF NOT EXISTS `tbl_reqhistory` (
   KEY `userID_FK(tbl_reqH)` (`orgID`),
   KEY `reqID_FK(tbl_reqH)` (`reqID`),
   KEY `officeID(tbl_reqH)` (`officeID`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -567,30 +627,17 @@ CREATE TABLE IF NOT EXISTS `tbl_reqhistory` (
 DROP TABLE IF EXISTS `tbl_requests`;
 CREATE TABLE IF NOT EXISTS `tbl_requests` (
   `reqID` int NOT NULL AUTO_INCREMENT,
-  `reqEventName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `reqEventName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `reqLetter` longblob NOT NULL,
   `reqEventDate` date NOT NULL,
   `reqDeadline` date NOT NULL,
   `userID` int NOT NULL,
-  `currentOffice` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Program Chair',
+  `currentOffice` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'Program Chair',
   PRIMARY KEY (`reqID`),
   KEY `userID(tbl_req)` (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `tbstudinfo`
---
-
-DROP TABLE IF EXISTS `tbstudinfo`;
-CREATE TABLE IF NOT EXISTS `tbstudinfo` (
-  `studid` int NOT NULL,
-  `lastname` varchar(25) NOT NULL,
-  `firstname` varchar(25) NOT NULL,
-  `course` varchar(20) NOT NULL,
-  PRIMARY KEY (`studid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Constraints for dumped tables
@@ -599,15 +646,8 @@ CREATE TABLE IF NOT EXISTS `tbstudinfo` (
 --
 -- Constraints for table `tbl_office`
 --
-ALTER TABLE `tbl_office` (
+ALTER TABLE `tbl_office`
   ADD CONSTRAINT `empID(FK)` FOREIGN KEY (`employeeID`) REFERENCES `tbempinfo` (`empid`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-  `equipment_quantity` int NOT NULL,
-  `equipment_ID` int NOT NULL,
-  `date_borrowed` date NOT NULL,
-  PRIMARY KEY (`borrow_ID`),
-  KEY `studid` (`studid`),
-  KEY `equipment_ID` (`equipment_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Constraints for table `tbl_reqhistory`
@@ -629,27 +669,6 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 -- --------------------------------------------------------
 
---
--- Table structure for table `tbempinfo`
---
-
-DROP TABLE IF EXISTS `tbempinfo`;
-CREATE TABLE IF NOT EXISTS `tbempinfo` (
-  `empid` int NOT NULL AUTO_INCREMENT,
-  `lastname` varchar(25) NOT NULL,
-  `firstname` varchar(25) NOT NULL,
-  `department` varchar(20) NOT NULL,
-  PRIMARY KEY (`empid`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `tbempinfo`
---
-
-INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
-(2, 'Cerezo', 'Ezekiel Eisen', 'CICS');
-(1, 'aguila', 'nina', 'cics');
-
 -- --------------------------------------------------------
 
 --
@@ -666,7 +685,7 @@ CREATE TABLE IF NOT EXISTS `tbl_employeeaccount` (
   `resetCode` int DEFAULT NULL,
   PRIMARY KEY (`employeeCount`),
   KEY `employeeID` (`employeeID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_employeeaccount`
@@ -687,6 +706,108 @@ CREATE TABLE IF NOT EXISTS `tbl_products` (
   `productName` varchar(255) NOT NULL,
   `productImage` blob NOT NULL,
   PRIMARY KEY (`productID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `adminID` int NOT NULL AUTO_INCREMENT,
+  `empid` int DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`adminID`),
+  UNIQUE KEY `email` (`email`),
+  KEY `empid` (`empid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `applicant`
+--
+
+DROP TABLE IF EXISTS `applicant`;
+CREATE TABLE IF NOT EXISTS `applicant` (
+  `applicantID` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`applicantID`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `application`
+--
+
+DROP TABLE IF EXISTS `application`;
+CREATE TABLE IF NOT EXISTS `application` (
+  `applicationID` int NOT NULL AUTO_INCREMENT,
+  `jobID` int NOT NULL,
+  `applicantID` int NOT NULL,
+  `hrID` int NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `contact` varchar(20) DEFAULT NULL,
+  `resume` varchar(255) DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`applicationID`),
+  KEY `jobID` (`jobID`),
+  KEY `applicantID` (`applicantID`),
+  KEY `hrID` (`hrID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hr`
+--
+
+DROP TABLE IF EXISTS `hr`;
+CREATE TABLE IF NOT EXISTS `hr` (
+  `HRID` int NOT NULL AUTO_INCREMENT,
+  `empid` int DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`HRID`),
+  UNIQUE KEY `email` (`email`),
+  KEY `empid` (`empid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobpost`
+--
+
+DROP TABLE IF EXISTS `jobpost`;
+CREATE TABLE IF NOT EXISTS `jobpost` (
+  `jobID` int NOT NULL AUTO_INCREMENT,
+  `adminID` int NOT NULL,
+  `jobType` varchar(100) DEFAULT NULL,
+  `department` varchar(100) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `requirement` varchar(255) DEFAULT NULL,
+  `salary` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`jobID`),
+  KEY `adminID` (`adminID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbequipment`
+--
+
 DROP TABLE IF EXISTS `tbequipment`;
 CREATE TABLE IF NOT EXISTS `tbequipment` (
   `equipment_ID` int NOT NULL AUTO_INCREMENT,
@@ -697,7 +818,7 @@ CREATE TABLE IF NOT EXISTS `tbequipment` (
   `is_active` tinyint(1) DEFAULT '1',
   `date_arrived` date NOT NULL,
   PRIMARY KEY (`equipment_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -713,7 +834,7 @@ CREATE TABLE IF NOT EXISTS `tbl_size` (
   `productPrice` decimal(10,2) NOT NULL,
   PRIMARY KEY (`sizeID`),
   KEY `productID` (`productID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -733,7 +854,7 @@ CREATE TABLE IF NOT EXISTS `tbl_stockin` (
   KEY `employeeID` (`employeeID`),
   KEY `productID` (`productID`),
   KEY `productSize` (`productSize`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_stockin`
@@ -759,7 +880,7 @@ CREATE TABLE IF NOT EXISTS `tbborrow` (
   PRIMARY KEY (`borrow_ID`),
   KEY `studid` (`studid`),
   KEY `equipment_ID` (`equipment_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -777,7 +898,7 @@ CREATE TABLE IF NOT EXISTS `tbequipment` (
   `is_active` tinyint(1) DEFAULT '1',
   `date_arrived` date NOT NULL,
   PRIMARY KEY (`equipment_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -792,7 +913,7 @@ CREATE TABLE IF NOT EXISTS `tbstudent` (
   `studid` int NOT NULL,
   PRIMARY KEY (`sr_ID`),
   KEY `studid` (`studid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -807,7 +928,7 @@ CREATE TABLE IF NOT EXISTS `tbcoun` (
   `empid` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`counno`),
   KEY `fk_tbcoun_empid` (`empid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbcoun`
@@ -838,7 +959,7 @@ CREATE TABLE IF NOT EXISTS `tbreports` (
   `dateresolved` datetime DEFAULT NULL,
   PRIMARY KEY (`reportno`),
   KEY `studno` (`studno`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbreports`
@@ -865,7 +986,7 @@ CREATE TABLE IF NOT EXISTS `tbstud` (
   `studid` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`studno`),
   KEY `fk_tbstud_studid` (`studid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbstud`
@@ -897,32 +1018,14 @@ CREATE TABLE IF NOT EXISTS `tbl_stockout` (
   KEY `employeeID` (`employeeID`),
   KEY `productID` (`productID`),
   KEY `productSize` (`productSize`)
-)
-DROP TABLE IF EXISTS `tbstudent`;
-CREATE TABLE IF NOT EXISTS `tbstudent` (
-  `sr_ID` int NOT NULL AUTO_INCREMENT,
-  `sr_code` varchar(30) NOT NULL,
-  `studid` int NOT NULL,
-  PRIMARY KEY (`sr_ID`),
-  KEY `studid` (`studid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `tbstudinfo`
---
-
-DROP TABLE IF EXISTS `tbstudinfo`;
-CREATE TABLE IF NOT EXISTS `tbstudinfo` (
-  `studid` int NOT NULL AUTO_INCREMENT,
-  `lastname` varchar(25) NOT NULL,
-  `firstname` varchar(25) NOT NULL,
-  `course` varchar(20) NOT NULL,
-  PRIMARY KEY (`studid`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 ALTER TABLE `tb_event`
-  ADD CONSTRAINT `fk_event_department` FOREIGN KEY (`department_id`) REFERENCES `tb_department` (`department_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_event_department` 
+  FOREIGN KEY (`department_id`) REFERENCES `tb_department` (`department_id`)
+  ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_event_images`
