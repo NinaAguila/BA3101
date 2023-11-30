@@ -100,7 +100,12 @@ INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
 (2, 'kent', 'clark', 'bscs'),
 (3, 'Solis', 'Roberto', 'BSIT'),
 (4, 'Macaraig', 'Niel', 'BSIT'),
-(5, 'Hombre', 'Alvin', 'BSIT');
+(5, 'Hombre', 'Alvin', 'BSIT'),
+(2139325, 'Lopez', 'John Ronald', 'BSIT-BA-3101'),
+(2130073, 'Trayfalgar', 'Belle Colleen', 'BSIT-BA-3101'),
+(2131054, 'Tada', 'Seth Aldous', 'BSIT-BA-3101'),
+(2139414, 'Rubion', 'Ivan Gabriel', 'BSIT-BA-3101'),
+(2134780, 'Laygo', 'Bonjohn Benedict', 'BSIT-BA-3101');
 
 -- --------------------------------------------------------
 
