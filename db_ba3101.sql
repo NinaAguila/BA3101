@@ -15,7 +15,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `db_ba3101`
@@ -130,7 +130,7 @@ CREATE TABLE `tbempaccount` (
   `emp_profile` longblob DEFAULT NULL,
   `emp_password` varchar(255) NOT NULL,
   `role_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -140,13 +140,12 @@ CREATE TABLE `tbempaccount` (
 
 DROP TABLE IF EXISTS `tbempinfo`;
 CREATE TABLE IF NOT EXISTS `tbempinfo` (
-  `empid` int(11) NOT NULL AUTO_INCREMENT,
+  `empid` int NOT NULL AUTO_INCREMENT,
   `lastname` varchar(25) NOT NULL,
   `firstname` varchar(25) NOT NULL,
   `department` varchar(20) NOT NULL,
   PRIMARY KEY (`empid`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbempinfo`
@@ -168,7 +167,7 @@ CREATE TABLE `tbstudentaccount` (
   `student_email` varchar(255) NOT NULL,
   `student_profile` longblob DEFAULT NULL,
   `student_password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -183,7 +182,7 @@ CREATE TABLE IF NOT EXISTS `tbstudinfo` (
   `firstname` varchar(25) NOT NULL,
   `course` varchar(20) NOT NULL,
   PRIMARY KEY (`studid`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbstudinfo`
@@ -204,7 +203,7 @@ CREATE TABLE `tb_attendees` (
   `event_id` int(11) NOT NULL,
   `student_id` int(11) DEFAULT NULL,
   `empid` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -215,7 +214,7 @@ CREATE TABLE `tb_attendees` (
 CREATE TABLE `tb_department` (
   `department_id` int(11) NOT NULL,
   `department_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tb_department`
@@ -240,7 +239,7 @@ CREATE TABLE `tb_event` (
   `header_image` longblob DEFAULT NULL,
   `department_id` int(11) DEFAULT NULL,
   `status` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -252,7 +251,7 @@ CREATE TABLE `tb_event_images` (
   `image_id` int(11) NOT NULL,
   `event_id` int(11) DEFAULT NULL,
   `image_filename` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -263,7 +262,7 @@ CREATE TABLE `tb_event_images` (
 CREATE TABLE `tb_roles` (
   `role_id` int(11) NOT NULL,
   `role_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tb_roles`
@@ -284,10 +283,9 @@ CREATE TABLE `tb_rso` (
   `rso_name` varchar(255) NOT NULL,
   `rso_password` varchar(20) NOT NULL,
   `department_id` int(11) DEFAULT NULL,
-  `rso_email` varchar(191) NOT NULL,
+  `rso_email` varchar(255) NOT NULL,
   `rso_profile` longblob DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -352,7 +350,7 @@ ALTER TABLE `tb_roles`
 ALTER TABLE `tb_rso`
   ADD PRIMARY KEY (`rso_id`),
   ADD UNIQUE KEY `unique_rso_email` (`rso_email`),
-  ADD KEY `department_id` (`department_id`)
+  ADD KEY `department_id` (`department_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -555,12 +553,6 @@ ALTER TABLE `tbclient`
   ADD KEY `guest_ID` (`guest_ID`);
 
 --
--- Indexes for table `tbempinfo`
---
-ALTER TABLE `tbempinfo`
-  ADD PRIMARY KEY (`empid`);
-
---
 -- Indexes for table `tbguestinfo`
 --
 ALTER TABLE `tbguestinfo`
@@ -578,21 +570,6 @@ ALTER TABLE `tblogs`
 ALTER TABLE `tbstaff`
   ADD KEY `emp_ID` (`emp_ID`);
 
---
--- Indexes for table `tbstudinfo`
---
-ALTER TABLE `tbstudinfo`
-  ADD PRIMARY KEY (`studid`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `tbempinfo`
---
-ALTER TABLE `tbempinfo`
-  MODIFY `empid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbguestinfo`
@@ -600,11 +577,6 @@ ALTER TABLE `tbempinfo`
 ALTER TABLE `tbguestinfo`
   MODIFY `guest_ID` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `tbstudinfo`
---
-ALTER TABLE `tbstudinfo`
-  MODIFY `studid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -652,7 +624,7 @@ CREATE TABLE IF NOT EXISTS `tbl_employeeaccount` (
   `resetCode` int DEFAULT NULL,
   PRIMARY KEY (`employeeCount`),
   KEY `employeeID` (`employeeID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_employeeaccount`
@@ -673,7 +645,7 @@ CREATE TABLE IF NOT EXISTS `tbl_products` (
   `productName` varchar(255) NOT NULL,
   `productImage` blob NOT NULL,
   PRIMARY KEY (`productID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -689,7 +661,7 @@ CREATE TABLE IF NOT EXISTS `tbl_size` (
   `productPrice` decimal(10,2) NOT NULL,
   PRIMARY KEY (`sizeID`),
   KEY `productID` (`productID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -709,7 +681,7 @@ CREATE TABLE IF NOT EXISTS `tbl_stockin` (
   KEY `employeeID` (`employeeID`),
   KEY `productID` (`productID`),
   KEY `productSize` (`productSize`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_stockin`
@@ -736,7 +708,7 @@ CREATE TABLE IF NOT EXISTS `tbl_stockout` (
   KEY `employeeID` (`employeeID`),
   KEY `productID` (`productID`),
   KEY `productSize` (`productSize`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -784,7 +756,7 @@ CREATE TABLE IF NOT EXISTS `tbadmin` (
   `empid` int NOT NULL,
   PRIMARY KEY (`admin_ID`),
   KEY `empid` (`empid`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -802,7 +774,7 @@ CREATE TABLE IF NOT EXISTS `tbborrow` (
   PRIMARY KEY (`borrow_ID`),
   KEY `studid` (`studid`),
   KEY `equipment_ID` (`equipment_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbborrow`
@@ -830,7 +802,7 @@ CREATE TABLE IF NOT EXISTS `tbequipment` (
   `is_active` tinyint(1) DEFAULT '1',
   `date_arrived` date DEFAULT NULL,
   PRIMARY KEY (`equipment_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbequipment`
@@ -859,7 +831,7 @@ CREATE TABLE IF NOT EXISTS `tbreturned` (
   PRIMARY KEY (`return_ID`),
   KEY `borrow_ID` (`borrow_ID`),
   KEY `studid` (`studid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -876,7 +848,7 @@ CREATE TABLE IF NOT EXISTS `tbstaff` (
   `empid` int NOT NULL,
   PRIMARY KEY (`staff_ID`),
   KEY `empid` (`empid`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbstaff`
@@ -904,7 +876,7 @@ CREATE TABLE IF NOT EXISTS `tbstudent` (
   `studid` int NOT NULL,
   PRIMARY KEY (`sr_ID`),
   KEY `studid` (`studid`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbstudent`
@@ -929,7 +901,7 @@ CREATE TABLE IF NOT EXISTS `tbl_account` (
   `userPass` varchar(255) NOT NULL,
   `userType` varchar(255) NOT NULL,
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -947,7 +919,7 @@ CREATE TABLE IF NOT EXISTS `tbl_office` (
   `employeeID` int NOT NULL,
   PRIMARY KEY (`officeAccID`),
   KEY `empID(FK)` (`employeeID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -967,7 +939,7 @@ CREATE TABLE IF NOT EXISTS `tbl_reqhistory` (
   KEY `userID_FK(tbl_reqH)` (`orgID`),
   KEY `reqID_FK(tbl_reqH)` (`reqID`),
   KEY `officeID(tbl_reqH)` (`officeID`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -978,15 +950,15 @@ CREATE TABLE IF NOT EXISTS `tbl_reqhistory` (
 DROP TABLE IF EXISTS `tbl_requests`;
 CREATE TABLE IF NOT EXISTS `tbl_requests` (
   `reqID` int NOT NULL AUTO_INCREMENT,
-  `reqEventName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `reqEventName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `reqLetter` longblob NOT NULL,
   `reqEventDate` date NOT NULL,
   `reqDeadline` date NOT NULL,
   `userID` int NOT NULL,
-  `currentOffice` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Program Chair',
+  `currentOffice` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'Program Chair',
   PRIMARY KEY (`reqID`),
   KEY `userID(tbl_req)` (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
