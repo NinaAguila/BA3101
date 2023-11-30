@@ -581,6 +581,7 @@ CREATE TABLE IF NOT EXISTS `tbl_requests` (
 DROP TABLE IF EXISTS `tbstudinfo`;
 CREATE TABLE IF NOT EXISTS `tbstudinfo` (
   `studid` int NOT NULL,
+<<<<<<< HEAD
   `lastname` varchar(25) NOT NULL,
   `firstname` varchar(25) NOT NULL,
   `course` varchar(20) NOT NULL,
@@ -596,6 +597,15 @@ CREATE TABLE IF NOT EXISTS `tbstudinfo` (
 --
 ALTER TABLE `tbl_office`
   ADD CONSTRAINT `empID(FK)` FOREIGN KEY (`employeeID`) REFERENCES `tbempinfo` (`empid`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+=======
+  `equipment_quantity` int NOT NULL,
+  `equipment_ID` int NOT NULL,
+  `date_borrowed` date NOT NULL,
+  PRIMARY KEY (`borrow_ID`),
+  KEY `studid` (`studid`),
+  KEY `equipment_ID` (`equipment_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+>>>>>>> origin/Group-3
 
 --
 -- Constraints for table `tbl_reqhistory`
@@ -635,7 +645,8 @@ CREATE TABLE IF NOT EXISTS `tbempinfo` (
 --
 
 INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
-(1, 'Cerezo', 'Ezekiel Eisen', 'CICS');
+(2, 'Cerezo', 'Ezekiel Eisen', 'CICS');
+(1, 'aguila', 'nina', 'cics');
 
 -- --------------------------------------------------------
 
@@ -674,6 +685,16 @@ CREATE TABLE IF NOT EXISTS `tbl_products` (
   `productName` varchar(255) NOT NULL,
   `productImage` blob NOT NULL,
   PRIMARY KEY (`productID`)
+DROP TABLE IF EXISTS `tbequipment`;
+CREATE TABLE IF NOT EXISTS `tbequipment` (
+  `equipment_ID` int NOT NULL AUTO_INCREMENT,
+  `equipment_name` varchar(30) NOT NULL,
+  `equipment_quantity` int NOT NULL,
+  `equipment_description` varchar(200) NOT NULL,
+  `equip_photos` blob NOT NULL,
+  `is_active` tinyint(1) DEFAULT '1',
+  `date_arrived` date NOT NULL,
+  PRIMARY KEY (`equipment_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -737,6 +758,14 @@ CREATE TABLE IF NOT EXISTS `tbl_stockout` (
   KEY `employeeID` (`employeeID`),
   KEY `productID` (`productID`),
   KEY `productSize` (`productSize`)
+)
+DROP TABLE IF EXISTS `tbstudent`;
+CREATE TABLE IF NOT EXISTS `tbstudent` (
+  `sr_ID` int NOT NULL AUTO_INCREMENT,
+  `sr_code` varchar(30) NOT NULL,
+  `studid` int NOT NULL,
+  PRIMARY KEY (`sr_ID`),
+  KEY `studid` (`studid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
