@@ -581,7 +581,6 @@ CREATE TABLE IF NOT EXISTS `tbl_requests` (
 DROP TABLE IF EXISTS `tbstudinfo`;
 CREATE TABLE IF NOT EXISTS `tbstudinfo` (
   `studid` int NOT NULL,
-<<<<<<< HEAD
   `lastname` varchar(25) NOT NULL,
   `firstname` varchar(25) NOT NULL,
   `course` varchar(20) NOT NULL,
@@ -595,9 +594,8 @@ CREATE TABLE IF NOT EXISTS `tbstudinfo` (
 --
 -- Constraints for table `tbl_office`
 --
-ALTER TABLE `tbl_office`
+ALTER TABLE `tbl_office` (
   ADD CONSTRAINT `empID(FK)` FOREIGN KEY (`employeeID`) REFERENCES `tbempinfo` (`empid`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-=======
   `equipment_quantity` int NOT NULL,
   `equipment_ID` int NOT NULL,
   `date_borrowed` date NOT NULL,
@@ -605,7 +603,6 @@ ALTER TABLE `tbl_office`
   KEY `studid` (`studid`),
   KEY `equipment_ID` (`equipment_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
->>>>>>> origin/Group-3
 
 --
 -- Constraints for table `tbl_reqhistory`
@@ -741,6 +738,143 @@ INSERT INTO `tbl_stockin` (`stockInID`, `recordDate`, `employeeID`, `productID`,
 (1, '0000-00-00 00:00:00', '21-34994', 1, 'Medium', 50);
 
 -- --------------------------------------------------------
+
+
+--
+-- Table structure for table `tbborrow`
+--
+
+DROP TABLE IF EXISTS `tbborrow`;
+CREATE TABLE IF NOT EXISTS `tbborrow` (
+  `borrow_ID` int NOT NULL AUTO_INCREMENT,
+  `studid` int NOT NULL,
+  `equipment_quantity` int NOT NULL,
+  `equipment_ID` int NOT NULL,
+  `date_borrowed` date NOT NULL,
+  PRIMARY KEY (`borrow_ID`),
+  KEY `studid` (`studid`),
+  KEY `equipment_ID` (`equipment_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbequipment`
+--
+
+DROP TABLE IF EXISTS `tbequipment`;
+CREATE TABLE IF NOT EXISTS `tbequipment` (
+  `equipment_ID` int NOT NULL AUTO_INCREMENT,
+  `equipment_name` varchar(30) NOT NULL,
+  `equipment_quantity` int NOT NULL,
+  `equipment_description` varchar(200) NOT NULL,
+  `equip_photos` blob NOT NULL,
+  `is_active` tinyint(1) DEFAULT '1',
+  `date_arrived` date NOT NULL,
+  PRIMARY KEY (`equipment_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbstudent`
+--
+
+DROP TABLE IF EXISTS `tbstudent`;
+CREATE TABLE IF NOT EXISTS `tbstudent` (
+  `sr_ID` int NOT NULL AUTO_INCREMENT,
+  `sr_code` varchar(30) NOT NULL,
+  `studid` int NOT NULL,
+  PRIMARY KEY (`sr_ID`),
+  KEY `studid` (`studid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbcoun`
+--
+
+DROP TABLE IF EXISTS `tbcoun`;
+CREATE TABLE IF NOT EXISTS `tbcoun` (
+  `counno` varchar(50) NOT NULL,
+  `counpass` varchar(255) DEFAULT NULL,
+  `empid` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`counno`),
+  KEY `fk_tbcoun_empid` (`empid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tbcoun`
+--
+
+INSERT INTO `tbcoun` (`counno`, `counpass`, `empid`) VALUES
+('1', 'counselorpass1', '1'),
+('2', 'counselorpass2', '2'),
+('3', 'counselorpass3', '3'),
+('4', 'counselorpass4', '4'),
+('5', 'counselorpass5', '5');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbreports`
+--
+
+DROP TABLE IF EXISTS `tbreports`;
+CREATE TABLE IF NOT EXISTS `tbreports` (
+  `reportno` int NOT NULL AUTO_INCREMENT,
+  `reporttype` varchar(255) DEFAULT NULL,
+  `report` text,
+  `studno` varchar(50) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  `remarks` varchar(200) DEFAULT NULL,
+  `datefiled` datetime DEFAULT NULL,
+  `dateresolved` datetime DEFAULT NULL,
+  PRIMARY KEY (`reportno`),
+  KEY `studno` (`studno`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tbreports`
+--
+
+INSERT INTO `tbreports` (`reportno`, `reporttype`, `report`, `studno`, `status`, `remarks`, `datefiled`, `dateresolved`) VALUES
+(1, 'Bullying', 'I was bullied by a blockmate.', '21-39325', 'Pending', NULL, '2023-11-22 20:45:44', NULL),
+(2, 'Academic Appeal', 'I received a failing grade in my class, is there something I can do about it?', '21-39325', 'Pending', NULL, '2023-11-22 20:46:10', NULL),
+(3, 'Harassment & Discrimination', 'I was harassed.', '21-39325', 'Pending', NULL, '2023-11-22 20:46:44', NULL),
+(4, 'Course Availability & Scheduling', 'No professor in 1 subject.', '21-39325', 'Resolved', 'Done.', '2023-11-22 20:46:55', '2023-11-22 20:49:14'),
+(5, 'Harassment & Discrimination', 'I was harassed.', '21-39325', 'Pending', NULL, '2023-11-22 20:47:08', NULL),
+(6, 'Course Availability & Scheduling', 'No professor in 1 subject.', '21-30073', 'In Progress', 'Will look into this, thanks.', '2023-11-22 20:48:14', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbstud`
+--
+
+DROP TABLE IF EXISTS `tbstud`;
+CREATE TABLE IF NOT EXISTS `tbstud` (
+  `studno` varchar(50) NOT NULL,
+  `studpass` varchar(255) NOT NULL,
+  `studid` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`studno`),
+  KEY `fk_tbstud_studid` (`studid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tbstud`
+--
+
+INSERT INTO `tbstud` (`studno`, `studpass`, `studid`) VALUES
+('21-34780', 'bonjlaygo', '2134780'),
+('21-39414', 'ivanrubion', '2139414'),
+('21-30073', 'belletrayfalgar', '2130073'),
+('21-39325', 'johnronaldlopez', '2139325'),
+('21-31054', 'sethtada', '2131054');
+
+-- --------------------------------------------------------
+
 
 --
 -- Table structure for table `tbl_stockout`
