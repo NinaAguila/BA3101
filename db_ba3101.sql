@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 30, 2023 at 02:50 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 7.4.33
+-- Host: 127.0.0.1:3306
+-- Generation Time: Nov 30, 2023 at 03:41 AM
+-- Server version: 8.0.31
+-- PHP Version: 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,12 +27,15 @@ SET time_zone = "+00:00";
 -- Table structure for table `tbadmin`
 --
 
-CREATE TABLE `tbadmin` (
-  `admin_ID` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbadmin`;
+CREATE TABLE IF NOT EXISTS `tbadmin` (
+  `admin_ID` int NOT NULL AUTO_INCREMENT,
   `admin_user` varchar(30) NOT NULL,
   `admin_pass` varchar(30) NOT NULL,
-  `empid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `empid` int NOT NULL,
+  PRIMARY KEY (`admin_ID`),
+  KEY `empid` (`empid`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbadmin`
@@ -48,13 +51,17 @@ INSERT INTO `tbadmin` (`admin_ID`, `admin_user`, `admin_pass`, `empid`) VALUES
 -- Table structure for table `tbborrow`
 --
 
-CREATE TABLE `tbborrow` (
-  `borrow_ID` int(11) NOT NULL,
-  `studid` int(11) NOT NULL,
-  `equipment_quantity` int(11) NOT NULL,
-  `equipment_ID` int(11) NOT NULL,
-  `date_borrowed` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+DROP TABLE IF EXISTS `tbborrow`;
+CREATE TABLE IF NOT EXISTS `tbborrow` (
+  `borrow_ID` int NOT NULL AUTO_INCREMENT,
+  `studid` int NOT NULL,
+  `equipment_quantity` int NOT NULL,
+  `equipment_ID` int NOT NULL,
+  `date_borrowed` date NOT NULL,
+  PRIMARY KEY (`borrow_ID`),
+  KEY `studid` (`studid`),
+  KEY `equipment_ID` (`equipment_ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=144 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbborrow`
@@ -72,19 +79,21 @@ INSERT INTO `tbborrow` (`borrow_ID`, `studid`, `equipment_quantity`, `equipment_
 -- Table structure for table `tbempinfo`
 --
 
-CREATE TABLE `tbempinfo` (
-  `empid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbempinfo`;
+CREATE TABLE IF NOT EXISTS `tbempinfo` (
+  `empid` int NOT NULL AUTO_INCREMENT,
   `lastname` varchar(25) NOT NULL,
   `firstname` varchar(25) NOT NULL,
-  `department` varchar(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `department` varchar(20) NOT NULL,
+  PRIMARY KEY (`empid`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbempinfo`
 --
 
 INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
-(1, 'Aguila', 'Nina', 'cics'),
+(1, 'aguila', 'nina', 'cics'),
 (2, 'Cruz', 'Mark', 'cics'),
 (3, 'Miranda', 'Rocky', 'cics'),
 (4, 'Peloramas', 'Angela', 'cics'),
@@ -97,15 +106,17 @@ INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
 -- Table structure for table `tbequipment`
 --
 
-CREATE TABLE `tbequipment` (
-  `equipment_ID` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbequipment`;
+CREATE TABLE IF NOT EXISTS `tbequipment` (
+  `equipment_ID` int NOT NULL AUTO_INCREMENT,
   `equipment_name` varchar(30) NOT NULL,
-  `equipment_quantity` int(11) NOT NULL,
+  `equipment_quantity` int NOT NULL,
   `equipment_description` varchar(200) NOT NULL,
   `equip_photos` blob NOT NULL,
-  `is_active` tinyint(1) DEFAULT 1,
-  `date_arrived` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `is_active` tinyint(1) DEFAULT '1',
+  `date_arrived` date DEFAULT NULL,
+  PRIMARY KEY (`equipment_ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbequipment`
@@ -124,15 +135,19 @@ INSERT INTO `tbequipment` (`equipment_ID`, `equipment_name`, `equipment_quantity
 -- Table structure for table `tbreturned`
 --
 
-CREATE TABLE `tbreturned` (
-  `return_ID` int(11) NOT NULL,
-  `borrow_ID` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbreturned`;
+CREATE TABLE IF NOT EXISTS `tbreturned` (
+  `return_ID` int NOT NULL AUTO_INCREMENT,
+  `borrow_ID` int NOT NULL,
   `returned_date` date NOT NULL,
-  `studid` int(11) NOT NULL,
-  `returned_quantity` int(11) NOT NULL,
-  `equipment_damaged` int(11) NOT NULL,
-  `equipment_missing` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `studid` int NOT NULL,
+  `returned_quantity` int NOT NULL,
+  `equipment_damaged` int NOT NULL,
+  `equipment_missing` int NOT NULL,
+  PRIMARY KEY (`return_ID`),
+  KEY `borrow_ID` (`borrow_ID`),
+  KEY `studid` (`studid`)
+) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbreturned`
@@ -147,13 +162,16 @@ INSERT INTO `tbreturned` (`return_ID`, `borrow_ID`, `returned_date`, `studid`, `
 -- Table structure for table `tbstaff`
 --
 
-CREATE TABLE `tbstaff` (
-  `staff_ID` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbstaff`;
+CREATE TABLE IF NOT EXISTS `tbstaff` (
+  `staff_ID` int NOT NULL AUTO_INCREMENT,
   `staff_user` varchar(30) NOT NULL,
   `staff_pass` varchar(30) NOT NULL,
   `staff_position` varchar(30) NOT NULL,
-  `empid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `empid` int NOT NULL,
+  PRIMARY KEY (`staff_ID`),
+  KEY `empid` (`empid`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbstaff`
@@ -168,13 +186,15 @@ INSERT INTO `tbstaff` (`staff_ID`, `staff_user`, `staff_pass`, `staff_position`,
 -- Table structure for table `tbstudinfo`
 --
 
-CREATE TABLE `tbstudinfo` (
-  `studid` int(11) NOT NULL,
-  `sr_code` varchar(30) NOT NULL,
+DROP TABLE IF EXISTS `tbstudinfo`;
+CREATE TABLE IF NOT EXISTS `tbstudinfo` (
+  `studid` int NOT NULL AUTO_INCREMENT,
+  `sr_code` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `lastname` varchar(25) NOT NULL,
   `firstname` varchar(25) NOT NULL,
-  `course` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `course` varchar(20) NOT NULL,
+  PRIMARY KEY (`studid`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbstudinfo`
@@ -189,121 +209,6 @@ INSERT INTO `tbstudinfo` (`studid`, `sr_code`, `lastname`, `firstname`, `course`
 (6, '21-39828', 'manalo', 'zeus', 'bsit'),
 (7, '21-32471', 'Macalla', 'Dorothy', 'bsit'),
 (8, '21-35519', 'De Chavez', 'Jhuncen', 'bsit');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `tbadmin`
---
-ALTER TABLE `tbadmin`
-  ADD PRIMARY KEY (`admin_ID`),
-  ADD KEY `empid_fk` (`empid`);
-
---
--- Indexes for table `tbborrow`
---
-ALTER TABLE `tbborrow`
-  ADD PRIMARY KEY (`borrow_ID`),
-  ADD KEY `equipment_name` (`equipment_ID`),
-  ADD KEY `equipment_ID` (`equipment_ID`);
-
---
--- Indexes for table `tbempinfo`
---
-ALTER TABLE `tbempinfo`
-  ADD PRIMARY KEY (`empid`);
-
---
--- Indexes for table `tbequipment`
---
-ALTER TABLE `tbequipment`
-  ADD PRIMARY KEY (`equipment_ID`);
-
---
--- Indexes for table `tbreturned`
---
-ALTER TABLE `tbreturned`
-  ADD PRIMARY KEY (`return_ID`),
-  ADD KEY `borrow_ID` (`borrow_ID`),
-  ADD KEY `studid` (`studid`);
-
---
--- Indexes for table `tbstaff`
---
-ALTER TABLE `tbstaff`
-  ADD PRIMARY KEY (`staff_ID`),
-  ADD KEY `empid` (`empid`);
-
---
--- Indexes for table `tbstudinfo`
---
-ALTER TABLE `tbstudinfo`
-  ADD PRIMARY KEY (`studid`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `tbadmin`
---
-ALTER TABLE `tbadmin`
-  MODIFY `admin_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `tbborrow`
---
-ALTER TABLE `tbborrow`
-  MODIFY `borrow_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
-
---
--- AUTO_INCREMENT for table `tbempinfo`
---
-ALTER TABLE `tbempinfo`
-  MODIFY `empid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `tbequipment`
---
-ALTER TABLE `tbequipment`
-  MODIFY `equipment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
-
---
--- AUTO_INCREMENT for table `tbreturned`
---
-ALTER TABLE `tbreturned`
-  MODIFY `return_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
-
---
--- AUTO_INCREMENT for table `tbstaff`
---
-ALTER TABLE `tbstaff`
-  MODIFY `staff_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `tbstudinfo`
---
-ALTER TABLE `tbstudinfo`
-  MODIFY `studid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `tbborrow`
---
-ALTER TABLE `tbborrow`
-  ADD CONSTRAINT `tbborrow_ibfk_1` FOREIGN KEY (`equipment_ID`) REFERENCES `tbequipment` (`equipment_ID`);
-
---
--- Constraints for table `tbreturned`
---
-ALTER TABLE `tbreturned`
-  ADD CONSTRAINT `tbreturned_ibfk_1` FOREIGN KEY (`studid`) REFERENCES `tbstudinfo` (`studid`),
-  ADD CONSTRAINT `tbreturned_ibfk_2` FOREIGN KEY (`borrow_ID`) REFERENCES `tbborrow` (`borrow_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
