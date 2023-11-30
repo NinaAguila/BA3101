@@ -37,7 +37,6 @@ CREATE TABLE IF NOT EXISTS `tbempinfo` (
   PRIMARY KEY (`empid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-
 --
 -- Dumping data for table `tbempinfo`
 --
@@ -125,7 +124,6 @@ CREATE TABLE IF NOT EXISTS `tbstudinfo` (
   `course` varchar(20) NOT NULL,
   PRIMARY KEY (`studid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 
 --
 -- Dumping data for table `tbstudinfo`
