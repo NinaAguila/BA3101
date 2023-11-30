@@ -350,8 +350,8 @@ ALTER TABLE `tb_roles`
 --
 ALTER TABLE `tb_rso`
   ADD PRIMARY KEY (`rso_id`),
-  ADD UNIQUE KEY `unique_rso_email` (`rso_email`(191)), -- 191 * 4 bytes for utf8mb4 = 764 bytes
-  ADD KEY `department_id` (`department_id`);
+  ADD UNIQUE KEY `unique_rso_email` (`rso_email`),
+  ADD KEY `department_id` (`department_id`)
 
 --
 -- AUTO_INCREMENT for dumped tables
