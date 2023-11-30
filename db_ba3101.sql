@@ -1135,7 +1135,6 @@ COMMIT;
 --
 
 DROP TABLE IF EXISTS `tbadmin`;
-DROP TABLE IF EXISTS `tbadmin`;
 CREATE TABLE IF NOT EXISTS `tbadmin` (
   `adminno` varchar(50) NOT NULL,
   `adminpass` varchar(255) DEFAULT NULL,
