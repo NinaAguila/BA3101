@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 30, 2023 at 02:57 AM
+-- Generation Time: Nov 30, 2023 at 04:07 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -123,23 +123,70 @@ CREATE TABLE IF NOT EXISTS `jobpost` (
 
 DROP TABLE IF EXISTS `tbadmin`;
 CREATE TABLE IF NOT EXISTS `tbadmin` (
-  `adminno` varchar(50) NOT NULL,
-  `adminpass` varchar(255) DEFAULT NULL,
-  `empid` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`adminno`),
-  KEY `fk_tbadmin_empid` (`empid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `adminID` int NOT NULL AUTO_INCREMENT,
+  `adminno` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `adminpass` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `empid` int NOT NULL,
+  PRIMARY KEY (`adminID`),
+  KEY `empid` (`empid`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbadmin`
 --
 
-INSERT INTO `tbadmin` (`adminno`, `adminpass`, `empid`) VALUES
-('1', 'adminpass1', '1'),
-('2', 'adminpass2', '2'),
-('3', 'adminpass3', '3'),
-('4', 'adminpass4', '4'),
-('5', 'adminpass5', '5');
+INSERT INTO `tbadmin` (`adminID`, `adminno`, `adminpass`, `empid`) VALUES
+(4, 'Cruzy', 'oisdahfeuw', 2),
+(5, 'heyo', 'dgfregher', 4),
+(6, '1', 'adminpass1', 0),
+(7, '2', 'adminpass2', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbborrow`
+--
+
+DROP TABLE IF EXISTS `tbborrow`;
+CREATE TABLE IF NOT EXISTS `tbborrow` (
+  `borrow_ID` int NOT NULL AUTO_INCREMENT,
+  `studid` int NOT NULL,
+  `equipment_quantity` int NOT NULL,
+  `equipment_ID` int NOT NULL,
+  `date_borrowed` date NOT NULL,
+  PRIMARY KEY (`borrow_ID`),
+  KEY `studid` (`studid`),
+  KEY `equipment_ID` (`equipment_ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=144 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tbborrow`
+--
+
+INSERT INTO `tbborrow` (`borrow_ID`, `studid`, `equipment_quantity`, `equipment_ID`, `date_borrowed`) VALUES
+(140, 7, 5, 19, '2023-11-29'),
+(141, 6, 5, 20, '2023-11-30'),
+(142, 7, 5, 22, '2023-11-29'),
+(143, 8, 2, 22, '2023-11-30');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbclient`
+--
+
+DROP TABLE IF EXISTS `tbclient`;
+CREATE TABLE IF NOT EXISTS `tbclient` (
+  `plate_Number` varchar(50) NOT NULL,
+  `vehicle_Type` char(50) DEFAULT NULL,
+  `student_ID` int DEFAULT NULL,
+  `emp_ID` int DEFAULT NULL,
+  `guest_ID` int DEFAULT NULL,
+  `Contact` varchar(11) NOT NULL,
+  `type` char(50) DEFAULT NULL,
+  `fileName` varchar(50) NOT NULL,
+  `filePath` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -201,14 +248,75 @@ CREATE TABLE IF NOT EXISTS `tbempinfo` (
   `firstname` varchar(25) NOT NULL,
   `department` varchar(20) NOT NULL,
   PRIMARY KEY (`empid`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbempinfo`
 --
 
 INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
-(1, 'aguila', 'nina', 'cics');
+(1, 'aguila', 'nina', 'cics'),
+(2, 'Cruz', 'Mark', 'cics'),
+(3, 'Miranda', 'Rocky', 'cics'),
+(4, 'Peloramas', 'Angela', 'cics'),
+(5, 'Dela Pena', 'Leo', 'cics'),
+(6, 'Macalla', 'Dorothy', 'cics');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbequipment`
+--
+
+DROP TABLE IF EXISTS `tbequipment`;
+CREATE TABLE IF NOT EXISTS `tbequipment` (
+  `equipment_ID` int NOT NULL AUTO_INCREMENT,
+  `equipment_name` varchar(30) NOT NULL,
+  `equipment_quantity` int NOT NULL,
+  `equipment_description` varchar(200) NOT NULL,
+  `equip_photos` blob NOT NULL,
+  `is_active` tinyint(1) DEFAULT '1',
+  `date_arrived` date DEFAULT NULL,
+  PRIMARY KEY (`equipment_ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tbequipment`
+--
+
+INSERT INTO `tbequipment` (`equipment_ID`, `equipment_name`, `equipment_quantity`, `equipment_description`, `equip_photos`, `is_active`, `date_arrived`) VALUES
+(19, 'Futsal Ball', 7, 'small, typically low-bounce ball used in the sport of futsal', 0x2e2e2f696d616765732f696d6167652d6571702f363536366361333336633636395f62616c6c2e6a7067, 1, '2023-11-29'),
+(20, 'Ping Pong Table', 8, 'specialized surface used for playing the sport of table tennis', 0x2e2e2f696d616765732f696d6167652d6571702f70696e672d706f6e672d7461626c652d586c654e4c39432d3630302d72656d6f766562672d70726576696577202831292e706e67, 1, '2023-11-12'),
+(22, 'Volleyball', 7, 'a spherical ball made of leather or synthetic leather and inflated with air', 0x363536323233333332363261655f62616c6c5f322e6a666966, 1, '2023-11-11'),
+(23, 'Shuttlecock', 10, ' also known as a birdie, is a small, feathered projectile used in the sport of badminton.', 0x2e2e2f696d616765732f696d6167652d6571702f706e672d7472616e73706172656e742d77686974652d73687574746c65636f636b2d696c6c757374726174696f6e2d626c61636b2d616e642d77686974652d73687574746c65636f636b2d67616d652d77686974652d73706f72745f5f315f2d72656d6f766562672d707265766965772e706e67, 1, '2023-11-09'),
+(24, 'Piwjegurwh', 2, 'ewgr', 0x2e2e2f696d616765732f696d6167652d6571702f37315a6139304e4f71374c2d72656d6f766562672d70726576696577202831292e706e67, 1, '2023-11-30');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbguestinfo`
+--
+
+DROP TABLE IF EXISTS `tbguestinfo`;
+CREATE TABLE IF NOT EXISTS `tbguestinfo` (
+  `guest_ID` int NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `firstname` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblogs`
+--
+
+DROP TABLE IF EXISTS `tblogs`;
+CREATE TABLE IF NOT EXISTS `tblogs` (
+  `plate_Number` varchar(50) NOT NULL,
+  `recordDate` date DEFAULT NULL,
+  `time_In` time DEFAULT NULL,
+  `time_Out` time DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -422,6 +530,57 @@ INSERT INTO `tbreports` (`reportno`, `reporttype`, `report`, `studno`, `status`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbreturned`
+--
+
+DROP TABLE IF EXISTS `tbreturned`;
+CREATE TABLE IF NOT EXISTS `tbreturned` (
+  `return_ID` int NOT NULL AUTO_INCREMENT,
+  `borrow_ID` int NOT NULL,
+  `returned_date` date NOT NULL,
+  `studid` int NOT NULL,
+  `returned_quantity` int NOT NULL,
+  `equipment_damaged` int NOT NULL,
+  `equipment_missing` int NOT NULL,
+  PRIMARY KEY (`return_ID`),
+  KEY `borrow_ID` (`borrow_ID`),
+  KEY `studid` (`studid`)
+) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tbreturned`
+--
+
+INSERT INTO `tbreturned` (`return_ID`, `borrow_ID`, `returned_date`, `studid`, `returned_quantity`, `equipment_damaged`, `equipment_missing`) VALUES
+(53, 143, '2023-11-30', 8, 1, 0, 13);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbstaff`
+--
+
+DROP TABLE IF EXISTS `tbstaff`;
+CREATE TABLE IF NOT EXISTS `tbstaff` (
+  `staff_ID` int NOT NULL AUTO_INCREMENT,
+  `staff_user` varchar(30) NOT NULL,
+  `staff_pass` varchar(30) NOT NULL,
+  `staff_position` varchar(30) NOT NULL,
+  `empid` int NOT NULL,
+  PRIMARY KEY (`staff_ID`),
+  KEY `empid` (`empid`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tbstaff`
+--
+
+INSERT INTO `tbstaff` (`staff_ID`, `staff_user`, `staff_pass`, `staff_position`, `empid`) VALUES
+(1, 'dfberfb', 'ewfgrwgwr', 'IN', 3);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbstud`
 --
 
@@ -477,15 +636,42 @@ CREATE TABLE IF NOT EXISTS `tbstudinfo` (
   `firstname` varchar(25) NOT NULL,
   `course` varchar(20) NOT NULL,
   PRIMARY KEY (`studid`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2139415 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tbstudinfo`
 --
 
 INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
-(1, 'parker', 'peter', 'bsit'),
-(2, 'kent', 'clark', 'bscs');
+(2139414, 'Rubion', 'Ivan Gabriel', 'BSIT-BA-3101'),
+(2131054, 'Tada', 'Seth Aldous', 'BSIT-BA-3101'),
+(2130073, 'Trayfalgar', 'Belle Colleen', 'BSIT-BA-3101'),
+(2139325, 'Lopez', 'John Ronald', 'BSIT-BA-3101'),
+(2134780, 'Laygo', 'Bonjohn Benedict', 'BSIT-BA-3101');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_admin`
+--
+
+DROP TABLE IF EXISTS `tb_admin`;
+CREATE TABLE IF NOT EXISTS `tb_admin` (
+  `Admin_ID` int NOT NULL,
+  `Admin_User` varchar(50) NOT NULL,
+  `Admin_Password` varchar(50) NOT NULL,
+  `empid` int DEFAULT NULL,
+  PRIMARY KEY (`Admin_ID`),
+  KEY `fk_tb_admin_empid` (`empid`)
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tb_admin`
+--
+
+INSERT INTO `tb_admin` (`Admin_ID`, `Admin_User`, `Admin_Password`, `empid`) VALUES
+(1, 'adm_user', 'adm_pass', 1),
+(16, 'testadm', 'testadm', 16);
 
 -- --------------------------------------------------------
 
@@ -564,6 +750,30 @@ CREATE TABLE IF NOT EXISTS `tb_event_images` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_guidance`
+--
+
+DROP TABLE IF EXISTS `tb_guidance`;
+CREATE TABLE IF NOT EXISTS `tb_guidance` (
+  `Guidance_ID` int NOT NULL,
+  `Guidance_User` varchar(50) NOT NULL,
+  `Guidance_Password` varchar(50) NOT NULL,
+  `empid` int DEFAULT NULL,
+  PRIMARY KEY (`Guidance_ID`),
+  KEY `fk_tb_guidance_empid` (`empid`)
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tb_guidance`
+--
+
+INSERT INTO `tb_guidance` (`Guidance_ID`, `Guidance_User`, `Guidance_Password`, `empid`) VALUES
+(1, 'gui_user', 'gui_pass', 2),
+(17, 'testgui', 'testgui', 17);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_roles`
 --
 
@@ -601,6 +811,94 @@ CREATE TABLE IF NOT EXISTS `tb_rso` (
   UNIQUE KEY `unique_rso_email` (`rso_email`),
   KEY `department_id` (`department_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_studentacc`
+--
+
+DROP TABLE IF EXISTS `tb_studentacc`;
+CREATE TABLE IF NOT EXISTS `tb_studentacc` (
+  `Student_Acc_ID` int NOT NULL AUTO_INCREMENT,
+  `Student_User` varchar(50) NOT NULL,
+  `Student_Password` varchar(50) NOT NULL,
+  `studid` int DEFAULT NULL,
+  PRIMARY KEY (`Student_Acc_ID`),
+  KEY `fk_tb_studentacc_studid` (`studid`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tb_studentacc`
+--
+
+INSERT INTO `tb_studentacc` (`Student_Acc_ID`, `Student_User`, `Student_Password`, `studid`) VALUES
+(1, 'test_user', 'test_pass', 1),
+(2, 'raz', 'raz_pass', 2),
+(3, 'solis', 'solis_pass', 3),
+(4, 'niel', 'niel_pass', 4),
+(5, 'alvin', 'alvin_pass', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_studentinfo`
+--
+
+DROP TABLE IF EXISTS `tb_studentinfo`;
+CREATE TABLE IF NOT EXISTS `tb_studentinfo` (
+  `SR_Code` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Student_Year` varchar(25) NOT NULL,
+  `Student_Acc_ID` int NOT NULL,
+  `Student_Picture` longblob,
+  `studid` int DEFAULT NULL,
+  PRIMARY KEY (`SR_Code`),
+  KEY `FK_Student_Acc` (`Student_Acc_ID`),
+  KEY `FK_studid` (`studid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tb_studentinfo`
+--
+
+INSERT INTO `tb_studentinfo` (`SR_Code`, `Student_Year`, `Student_Acc_ID`, `Student_Picture`, `studid`) VALUES
+('21-20002', '3rd year', 3, NULL, 3),
+('21-20003', '3rd year', 4, NULL, 4),
+('21-20004', '3rd year', 5, NULL, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_violation`
+--
+
+DROP TABLE IF EXISTS `tb_violation`;
+CREATE TABLE IF NOT EXISTS `tb_violation` (
+  `Violation_ID` int NOT NULL AUTO_INCREMENT,
+  `Violation_Date` datetime NOT NULL,
+  `Violation_Description` varchar(200) NOT NULL,
+  `Violation_Status` varchar(25) NOT NULL,
+  `Admin_ID` varchar(50) NOT NULL,
+  `Guidance_ID` varchar(50) NOT NULL,
+  `SR_Code` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Violation_Offense` varchar(50) NOT NULL,
+  `Violation_Penalties` varchar(250) NOT NULL,
+  PRIMARY KEY (`Violation_ID`),
+  KEY `FK_StudentInfo_Violation` (`SR_Code`),
+  KEY `FK_Admin_Violation` (`Admin_ID`),
+  KEY `FK_Guidance_Violation` (`Guidance_ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tb_violation`
+--
+
+INSERT INTO `tb_violation` (`Violation_ID`, `Violation_Date`, `Violation_Description`, `Violation_Status`, `Admin_ID`, `Guidance_ID`, `SR_Code`, `Violation_Offense`, `Violation_Penalties`) VALUES
+(1, '2023-07-06 09:46:08', 'Wearing Earing ', 'Done', '1', '1', '21-20000', 'Minor', '5 days suspension'),
+(4, '2023-08-12 09:56:23', 'Not in proper uniform', 'pending ', '1', '1', '21-20001', 'Minor', '3 days suspension'),
+(5, '2023-08-20 09:58:34', 'Not in a proper haircut', 'Done', '1', '1', '21-20002', 'Major', '2 days community service'),
+(6, '2023-09-02 10:00:09', 'Not in a proper uniform', 'pending ', '1', '1', '21-20003', 'Minor', '3 days community service'),
+(7, '2023-10-02 10:01:04', 'No ID', 'pending ', '1', '1', '21-20004', 'Major', 'NBA draft for kick out');
 
 DELIMITER $$
 --
