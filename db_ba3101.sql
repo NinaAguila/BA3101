@@ -20,6 +20,101 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_ba3101`
 --
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `adminID` int NOT NULL AUTO_INCREMENT,
+  `empid` int DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`adminID`),
+  UNIQUE KEY `email` (`email`),
+  KEY `empid` (`empid`)
+) ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `applicant`
+--
+
+DROP TABLE IF EXISTS `applicant`;
+CREATE TABLE IF NOT EXISTS `applicant` (
+  `applicantID` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`applicantID`),
+  UNIQUE KEY `email` (`email`)
+) ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `application`
+--
+
+DROP TABLE IF EXISTS `application`;
+CREATE TABLE IF NOT EXISTS `application` (
+  `applicationID` int NOT NULL AUTO_INCREMENT,
+  `jobID` int NOT NULL,
+  `applicantID` int NOT NULL,
+  `hrID` int NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `contact` varchar(20) DEFAULT NULL,
+  `resume` varchar(255) DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`applicationID`),
+  KEY `jobID` (`jobID`),
+  KEY `applicantID` (`applicantID`),
+  KEY `hrID` (`hrID`)
+) ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hr`
+--
+
+DROP TABLE IF EXISTS `hr`;
+CREATE TABLE IF NOT EXISTS `hr` (
+  `HRID` int NOT NULL AUTO_INCREMENT,
+  `empid` int DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`HRID`),
+  UNIQUE KEY `email` (`email`),
+  KEY `empid` (`empid`)
+) ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobpost`
+--
+
+DROP TABLE IF EXISTS `jobpost`;
+CREATE TABLE IF NOT EXISTS `jobpost` (
+  `jobID` int NOT NULL AUTO_INCREMENT,
+  `adminID` int NOT NULL,
+  `jobType` varchar(100) DEFAULT NULL,
+  `department` varchar(100) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `requirement` varchar(255) DEFAULT NULL,
+  `salary` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`jobID`),
+  KEY `adminID` (`adminID`)
+) ;
 
 -- --------------------------------------------------------
 
@@ -210,6 +305,37 @@ INSERT INTO `tb_violation` (`Violation_ID`, `Violation_Date`, `Violation_Descrip
 (5, '2023-08-20 09:58:34', 'Not in a proper haircut', 'Done', '1', '1', '21-20002', 'Major', '2 days community service'),
 (6, '2023-09-02 10:00:09', 'Not in a proper uniform', 'pending ', '1', '1', '21-20003', 'Minor', '3 days community service'),
 (7, '2023-10-02 10:01:04', 'No ID', 'pending ', '1', '1', '21-20004', 'Major', 'NBA draft for kick out');
+COMMIT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `admin`
+--
+ALTER TABLE `admin`
+  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`empid`) REFERENCES `tbempinfo` (`empid`);
+
+--
+-- Constraints for table `application`
+--
+ALTER TABLE `application`
+  ADD CONSTRAINT `application_ibfk_1` FOREIGN KEY (`jobID`) REFERENCES `jobpost` (`jobID`),
+  ADD CONSTRAINT `application_ibfk_2` FOREIGN KEY (`applicantID`) REFERENCES `applicant` (`applicantID`),
+  ADD CONSTRAINT `application_ibfk_3` FOREIGN KEY (`hrID`) REFERENCES `hr` (`HRID`);
+
+--
+-- Constraints for table `hr`
+--
+ALTER TABLE `hr`
+  ADD CONSTRAINT `hr_ibfk_1` FOREIGN KEY (`empid`) REFERENCES `tbempinfo` (`empid`);
+
+--
+-- Constraints for table `jobpost`
+--
+ALTER TABLE `jobpost`
+  ADD CONSTRAINT `jobpost_ibfk_1` FOREIGN KEY (`adminID`) REFERENCES `admin` (`adminID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
