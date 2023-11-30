@@ -101,13 +101,6 @@ CREATE TABLE `tbstaff` (
   `Password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
---
--- Dumping data for table `tbstaff`
---
-
-INSERT INTO `tbstaff` (`emp_ID`, `userName`, `Password`) VALUES
-(2, 'staff1', '123'),
-(3, 'staff2', '123');
 
 -- --------------------------------------------------------
 
