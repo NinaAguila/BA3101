@@ -28,13 +28,49 @@ SET time_zone = "+00:00";
 -- Table structure for table `tbempinfo`
 --
 
-CREATE TABLE `tbempinfo` (
-  `empid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbempinfo`;
+CREATE TABLE IF NOT EXISTS `tbempinfo` (
+  `empid` int(11) NOT NULL AUTO_INCREMENT,
   `lastname` varchar(25) NOT NULL,
   `firstname` varchar(25) NOT NULL,
-  `department` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `department` varchar(20) NOT NULL,
+  PRIMARY KEY (`empid`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `tbempinfo`
+--
+
+INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
+(1, 'aguila', 'nina', 'cics');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbstudinfo`
+--
+
+DROP TABLE IF EXISTS `tbstudinfo`;
+CREATE TABLE IF NOT EXISTS `tbstudinfo` (
+  `studid` int(11) NOT NULL AUTO_INCREMENT,
+  `lastname` varchar(25) NOT NULL,
+  `firstname` varchar(25) NOT NULL,
+  `course` varchar(20) NOT NULL,
+  PRIMARY KEY (`studid`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tbstudinfo`
+--
+
+INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
+(1, 'parker', 'peter', 'bsit'),
+(2, 'kent', 'clark', 'bscs');
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 -- --------------------------------------------------------
 
 --
@@ -104,22 +140,9 @@ CREATE TABLE `tbstaff` (
 
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `tbstudinfo`
---
-
-CREATE TABLE `tbstudinfo` (
-  `studid` int(11) NOT NULL,
-  `lastname` varchar(25) NOT NULL,
-  `firstname` varchar(25) NOT NULL,
-  `course` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
 --
 -- Indexes for dumped tables
 --
-
 --
 -- Indexes for table `tbadmin`
 --
