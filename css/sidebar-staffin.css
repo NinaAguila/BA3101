@@ -1,0 +1,49 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+/* Style each equipment item */
+.equipment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.equipment-name {
+  flex: 2;
+  font-weight: bold;
+}
+
+.equipment-quantity {
+  flex: 1;
+  font-weight: bold;
+}
+
+.quantity-input {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+button {
+  background-color: #641212;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #850606;
+}
