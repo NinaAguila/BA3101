@@ -261,9 +261,7 @@ INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
 (1, 'aguila', 'nina', 'cics'),
 (2, 'Guidance_lastname', 'Guidance_Firstname', 'CICS'),
 (17, 'test_guidance', 'test_guidance', 'CICS');
-
 (1, 'aguila', 'nina', 'cics');
-
 (1, 'Cerezo', 'Ezekiel Eisen', 'CICS');
 
 
@@ -284,7 +282,7 @@ CREATE TABLE IF NOT EXISTS `tbequipment` (
   `is_active` tinyint(1) DEFAULT '1',
   `date_arrived` date NOT NULL,
   PRIMARY KEY (`equipment_ID`)
-
+)
 DROP TABLE IF EXISTS `tbl_employeeaccount`;
 CREATE TABLE IF NOT EXISTS `tbl_employeeaccount` (
   `employeeCount` int NOT NULL AUTO_INCREMENT,
@@ -316,7 +314,6 @@ CREATE TABLE IF NOT EXISTS `tbl_products` (
   `productName` varchar(255) NOT NULL,
   `productImage` blob NOT NULL,
   PRIMARY KEY (`productID`)
-
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -335,7 +332,7 @@ CREATE TABLE IF NOT EXISTS `tbstaff` (
   `empid` int NOT NULL,
   PRIMARY KEY (`staff_ID`),
   KEY `empid` (`empid`)
-
+)
 -- Table structure for table `tbl_size`
 --
 
@@ -503,8 +500,6 @@ INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
 (3, 'Solis', 'Roberto', 'BSIT'),
 (4, 'Macaraig', 'Niel', 'BSIT'),
 (5, 'Hombre', 'Alvin', 'BSIT');
-
-
 (1, 'parker', 'peter', 'bsit'),
 (2, 'kent', 'clark', 'bscs');
 
