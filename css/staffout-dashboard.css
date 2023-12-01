@@ -1,0 +1,120 @@
+/* Reset default margin and padding for better consistency */
+@font-face {
+  font-family: "KoHo";
+  src: url(../font/KoHo-Regular.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Apply a basic style to the body */
+body {
+  font-family: "KoHo", Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  background-color: #f8f8f8;
+  color: #333;
+  display: flex; /* Use flex display to align content */
+}
+
+/* Center the content in smaller screens */
+@media (max-width: 768px) {
+  .table-container {
+    width: 100%;
+    margin-left: 0;
+    overflow-x: auto; /* Enable horizontal scrolling */
+  }
+}
+
+/* Style the form container */
+.form-container {
+  margin-left: 20%;
+  /* Add any additional styling you need for the form container */
+}
+
+/* Style the headings */
+.form-container h4 {
+  opacity: 50%;
+}
+.form-container h2,
+.form-container h4 {
+  text-align: left;
+  font-family: "KoHo", Arial, sans-serif;
+  font-weight: lighter;
+  margin-left: 85px;
+  margin-bottom: -7px; /* Adjust the margin-bottom as needed */
+}
+
+.labeled-rectangle {
+  border-radius: 15px;
+  padding: 10px; /* Padding inside the rectangle */
+  margin: 20px 43px; /* Margin for spacing */
+  display: inline-block; /* Keep the label and rectangle in the same line */
+  width: 900px;
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+  background-color: #641212; /* Background color */
+}
+
+/* Style for the label (h2) inside the rectangle */
+.labeled-rectangle h2 {
+  margin: 0; /* Remove default margin for h2 */
+  color: #ffffff; /* Text color */
+  font-size: 17px;
+  font-family: "KoHo", Arial, sans-serif;
+  font-weight: lighter;
+  margin-left: 20px;
+}
+/* Rest of your existing CSS */
+
+/* Style the table container */
+.display-data {
+  width: 65%;
+  margin-left: 200px;
+  margin-top: 60px;
+  overflow: auto; /* Enable horizontal and vertical scrolling */
+  max-height: 400px; /* Set a max height for the scrollable area */
+  top: 0;
+  font-family: "KoHo", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Style the table header */
+.display-data th {
+  background-color: #641212;
+  color: #fff;
+  font-weight: normal;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+/* Style the table body */
+.display-data td {
+  padding: 10px; /* Reduce padding to make the cells smaller */
+  box-sizing: border-box;
+  font-size: 14px; /* Reduce font size for the table cells */
+  margin-top: 20px;
+}
+
+h3,
+p,
+h1 {
+  text-align: center;
+}
+
+/* Center alignment for the "Position" column */
+.display-data td:nth-child(2) {
+  text-align: center;
+}
+
+/* Left alignment for the "Name" column */
+.display-data td:nth-child(odd) {
+  text-align: left;
+}
+.display-data tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
