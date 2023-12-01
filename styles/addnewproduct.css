@@ -1,0 +1,100 @@
+.add-new-products-content {
+    text-align: center;
+    display: flex;
+    height: 470px;
+    max-width: fit-content;
+    justify-content: center; 
+    align-items: center; 
+    border-radius: 50px;
+    position: fixed;
+    top: 50%;
+    left: 58.5%;
+    transform: translate(-50%, -50%); 
+    margin-bottom: 60px;
+    background-color: #f2f2f2;
+    padding: 45px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid #8B0000;
+    cursor: pointer;
+}
+  
+  .container-header {
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin-left: 30px;
+    font-family: popins;
+    margin-top: 10px;
+}
+  
+.add-new-products-content .form-group {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+  
+  .add-new-products-content .label {
+    display: block;
+    margin-bottom: 30px;
+    cursor: pointer;
+
+  }
+  
+  .add-new-products-content .bx {
+    position: relative;
+    display: inline-block;
+    font-size: 25px;
+    line-height: 1;
+    vertical-align: baseline;
+    margin-right: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+
+   }
+
+  /* Input field style */
+.add-new-products-content .input-field {
+  width: 100%;
+  padding: 15px 55px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border: 1px solid #8B0000;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  outline: none;
+  border-radius: 15px;
+  cursor: pointer;
+
+ }
+ 
+ .add-new-products-content .input-field:focus {
+  border: 3px solid #555;
+ }
+  
+  .add-new-products-content .add-button{
+    margin-right: 300px;
+    padding: 17px 40px;
+    border-radius: 10px;
+    border: 0;
+    background-color: rgb(255, 56, 86);
+    letter-spacing: 1.5px;
+    font-size: 15px;
+    transition: all .3s ease;
+    box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
+    color: hsl(0, 0%, 100%);
+    cursor: pointer;
+
+  }
+  
+  .add-new-products-content .add-button:hover {
+    box-shadow: rgb(201, 46, 70) 0px 7px 0px 0px;
+  }
+  
+.add-new-products-content .add-button:active {
+    background-color: rgb(255, 56, 86);
+    box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
+    transform: translateY(5px);
+    transition: 200ms;
+  }

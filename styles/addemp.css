@@ -1,0 +1,106 @@
+/* CREATE ACCOUNT CSS */
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.add-officers-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px; /* Optional: Add border-radius for rounded corners */
+}
+
+.add-officers-content:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increase box shadow for a subtle lift effect */
+}
+
+.empinfo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.userinput {
+    margin-bottom: 15px;
+}
+
+.userinput label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.userinput select,
+.userinput input {
+    height: 40px;
+    width: 100%;
+    border-radius: 7px;
+    outline: none;
+    border: 2px solid black;
+    padding: 0 10px;
+}
+
+.createbtn {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    text-align: center; /* Centers the button within the container */
+}
+
+.createbtn input {
+    margin-right: 20px;
+    padding: 15px 25px;
+    border-radius: 10px;
+    border: 0;
+    background-color: rgb(255, 56, 86);
+    letter-spacing: 1.5px;
+    font-size: 15px;
+    transition: all .3s ease;
+    box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
+    color: hsl(0, 0%, 100%);
+    cursor: pointer;
+}
+
+.createbtn input:hover {
+    box-shadow: rgb(201, 46, 70) 0px 7px 0px 0px;
+}
+
+.createbtn input:active {
+    background-color: rgb(255, 56, 86);
+    box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
+    transform: translateY(5px);
+    transition: 200ms;
+}
+
+.input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+
+
+
+@media (max-width: 600px) {
+    .container {
+        min-width: 280px;
+    }
+
+    .userinput {
+        margin-bottom: 12px;
+        width: 100%;
+    }
+
+    .userinput:nth-child(even) {
+        justify-content: space-between;
+    }
+
+    .empinfo {
+        max-height: 380px;
+        overflow: auto;
+    }
+}
