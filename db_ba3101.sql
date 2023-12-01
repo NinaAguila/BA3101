@@ -3,8 +3,12 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
+<<<<<<< HEAD
 -- Generation Time: Nov 23, 2023 at 03:40 AM
 -- Generation Time: Nov 23, 2023 at 02:35 AM
+=======
+-- Generation Time: Nov 30, 2023 at 12:36 PM
+>>>>>>> origin/Group-3
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 -- Host: localhost
@@ -32,6 +36,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `tbempaccount`
 --
 
+<<<<<<< HEAD
 CREATE TABLE `tbempaccount` (
   `empaccountId` int(11) NOT NULL,
   `empid` int(11) NOT NULL,
@@ -56,6 +61,17 @@ CREATE TABLE IF NOT EXISTS `tbempinfo` (
   `department` varchar(20) NOT NULL,
   PRIMARY KEY (`empid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+DROP TABLE IF EXISTS `tbadmin`;
+CREATE TABLE IF NOT EXISTS `tbadmin` (
+  `admin_ID` int NOT NULL AUTO_INCREMENT,
+  `admin_user` varchar(30) NOT NULL,
+  `admin_pass` varchar(30) NOT NULL,
+  `empid` int NOT NULL,
+  PRIMARY KEY (`admin_ID`),
+  KEY `empid` (`empid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+>>>>>>> origin/Group-3
 
 --
 -- Dumping data for table `tbempinfo`
@@ -72,6 +88,7 @@ INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
 -- Table structure for table `tbstudentaccount`
 --
 
+<<<<<<< HEAD
 CREATE TABLE `tbstudentaccount` (
   `studaccountid` int(11) NOT NULL,
   `studid` int(11) NOT NULL,
@@ -95,6 +112,19 @@ CREATE TABLE IF NOT EXISTS `tbstudinfo` (
   `course` varchar(20) NOT NULL,
   PRIMARY KEY (`studid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+DROP TABLE IF EXISTS `tbborrow`;
+CREATE TABLE IF NOT EXISTS `tbborrow` (
+  `borrow_ID` int NOT NULL AUTO_INCREMENT,
+  `studid` int NOT NULL,
+  `equipment_quantity` int NOT NULL,
+  `equipment_ID` int NOT NULL,
+  `date_borrowed` date NOT NULL,
+  PRIMARY KEY (`borrow_ID`),
+  KEY `studid` (`studid`),
+  KEY `equipment_ID` (`equipment_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+>>>>>>> origin/Group-3
 
 --
 -- Dumping data for table `tbstudinfo`
@@ -570,7 +600,11 @@ CREATE TABLE IF NOT EXISTS `tbempinfo` (
 --
 
 INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
+<<<<<<< HEAD
 (1, 'Cerezo', 'Ezekiel Eisen', 'CICS');
+=======
+(1, 'aguila', 'nina', 'cics');
+>>>>>>> origin/Group-3
 
 -- --------------------------------------------------------
 
@@ -578,6 +612,7 @@ INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
 -- Table structure for table `tbl_employeeaccount`
 --
 
+<<<<<<< HEAD
 DROP TABLE IF EXISTS `tbl_employeeaccount`;
 CREATE TABLE IF NOT EXISTS `tbl_employeeaccount` (
   `employeeCount` int NOT NULL AUTO_INCREMENT,
@@ -609,6 +644,18 @@ CREATE TABLE IF NOT EXISTS `tbl_products` (
   `productName` varchar(255) NOT NULL,
   `productImage` blob NOT NULL,
   PRIMARY KEY (`productID`)
+=======
+DROP TABLE IF EXISTS `tbequipment`;
+CREATE TABLE IF NOT EXISTS `tbequipment` (
+  `equipment_ID` int NOT NULL AUTO_INCREMENT,
+  `equipment_name` varchar(30) NOT NULL,
+  `equipment_quantity` int NOT NULL,
+  `equipment_description` varchar(200) NOT NULL,
+  `equip_photos` blob NOT NULL,
+  `is_active` tinyint(1) DEFAULT '1',
+  `date_arrived` date NOT NULL,
+  PRIMARY KEY (`equipment_ID`)
+>>>>>>> origin/Group-3
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -617,6 +664,7 @@ CREATE TABLE IF NOT EXISTS `tbl_products` (
 -- Table structure for table `tbl_size`
 --
 
+<<<<<<< HEAD
 DROP TABLE IF EXISTS `tbl_size`;
 CREATE TABLE IF NOT EXISTS `tbl_size` (
   `sizeID` int NOT NULL AUTO_INCREMENT,
@@ -625,6 +673,17 @@ CREATE TABLE IF NOT EXISTS `tbl_size` (
   `productPrice` decimal(10,2) NOT NULL,
   PRIMARY KEY (`sizeID`),
   KEY `productID` (`productID`)
+=======
+DROP TABLE IF EXISTS `tbstaff`;
+CREATE TABLE IF NOT EXISTS `tbstaff` (
+  `staff_ID` int NOT NULL AUTO_INCREMENT,
+  `staff_user` varchar(30) NOT NULL,
+  `staff_pass` varchar(30) NOT NULL,
+  `staff_position` varchar(30) NOT NULL,
+  `empid` int NOT NULL,
+  PRIMARY KEY (`staff_ID`),
+  KEY `empid` (`empid`)
+>>>>>>> origin/Group-3
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -633,6 +692,7 @@ CREATE TABLE IF NOT EXISTS `tbl_size` (
 -- Table structure for table `tbl_stockin`
 --
 
+<<<<<<< HEAD
 DROP TABLE IF EXISTS `tbl_stockin`;
 CREATE TABLE IF NOT EXISTS `tbl_stockin` (
   `stockInID` int NOT NULL AUTO_INCREMENT,
@@ -672,6 +732,15 @@ CREATE TABLE IF NOT EXISTS `tbl_stockout` (
   KEY `employeeID` (`employeeID`),
   KEY `productID` (`productID`),
   KEY `productSize` (`productSize`)
+=======
+DROP TABLE IF EXISTS `tbstudent`;
+CREATE TABLE IF NOT EXISTS `tbstudent` (
+  `sr_ID` int NOT NULL AUTO_INCREMENT,
+  `sr_code` varchar(30) NOT NULL,
+  `studid` int NOT NULL,
+  PRIMARY KEY (`sr_ID`),
+  KEY `studid` (`studid`)
+>>>>>>> origin/Group-3
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
