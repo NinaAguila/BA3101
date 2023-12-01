@@ -135,11 +135,6 @@ CREATE TABLE IF NOT EXISTS `tbadmin` (
 -- Dumping data for table `tbadmin`
 --
 
-INSERT INTO `tbadmin` (`adminID`, `adminno`, `adminpass`, `empid`) VALUES
-(4, 'Cruzy', 'oisdahfeuw', 2),
-(5, 'heyo', 'dgfregher', 4),
-(6, '1', 'adminpass1', 0),
-(7, '2', 'adminpass2', 0);
 
 -- --------------------------------------------------------
 
@@ -163,11 +158,6 @@ CREATE TABLE IF NOT EXISTS `tbborrow` (
 -- Dumping data for table `tbborrow`
 --
 
-INSERT INTO `tbborrow` (`borrow_ID`, `studid`, `equipment_quantity`, `equipment_ID`, `date_borrowed`) VALUES
-(140, 7, 5, 19, '2023-11-29'),
-(141, 6, 5, 20, '2023-11-30'),
-(142, 7, 5, 22, '2023-11-29'),
-(143, 8, 2, 22, '2023-11-30');
 
 -- --------------------------------------------------------
 
@@ -207,12 +197,6 @@ CREATE TABLE IF NOT EXISTS `tbcoun` (
 -- Dumping data for table `tbcoun`
 --
 
-INSERT INTO `tbcoun` (`counno`, `counpass`, `empid`) VALUES
-('1', 'counselorpass1', '1'),
-('2', 'counselorpass2', '2'),
-('3', 'counselorpass3', '3'),
-('4', 'counselorpass4', '4'),
-('5', 'counselorpass5', '5');
 
 -- --------------------------------------------------------
 
@@ -254,13 +238,7 @@ CREATE TABLE IF NOT EXISTS `tbempinfo` (
 -- Dumping data for table `tbempinfo`
 --
 
-INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
-(1, 'aguila', 'nina', 'cics'),
-(2, 'Cruz', 'Mark', 'cics'),
-(3, 'Miranda', 'Rocky', 'cics'),
-(4, 'Peloramas', 'Angela', 'cics'),
-(5, 'Dela Pena', 'Leo', 'cics'),
-(6, 'Macalla', 'Dorothy', 'cics');
+
 
 -- --------------------------------------------------------
 
@@ -284,12 +262,6 @@ CREATE TABLE IF NOT EXISTS `tbequipment` (
 -- Dumping data for table `tbequipment`
 --
 
-INSERT INTO `tbequipment` (`equipment_ID`, `equipment_name`, `equipment_quantity`, `equipment_description`, `equip_photos`, `is_active`, `date_arrived`) VALUES
-(19, 'Futsal Ball', 7, 'small, typically low-bounce ball used in the sport of futsal', 0x2e2e2f696d616765732f696d6167652d6571702f363536366361333336633636395f62616c6c2e6a7067, 1, '2023-11-29'),
-(20, 'Ping Pong Table', 8, 'specialized surface used for playing the sport of table tennis', 0x2e2e2f696d616765732f696d6167652d6571702f70696e672d706f6e672d7461626c652d586c654e4c39432d3630302d72656d6f766562672d70726576696577202831292e706e67, 1, '2023-11-12'),
-(22, 'Volleyball', 7, 'a spherical ball made of leather or synthetic leather and inflated with air', 0x363536323233333332363261655f62616c6c5f322e6a666966, 1, '2023-11-11'),
-(23, 'Shuttlecock', 10, ' also known as a birdie, is a small, feathered projectile used in the sport of badminton.', 0x2e2e2f696d616765732f696d6167652d6571702f706e672d7472616e73706172656e742d77686974652d73687574746c65636f636b2d696c6c757374726174696f6e2d626c61636b2d616e642d77686974652d73687574746c65636f636b2d67616d652d77686974652d73706f72745f5f315f2d72656d6f766562672d707265766965772e706e67, 1, '2023-11-09'),
-(24, 'Piwjegurwh', 2, 'ewgr', 0x2e2e2f696d616765732f696d6167652d6571702f37315a6139304e4f71374c2d72656d6f766562672d70726576696577202831292e706e67, 1, '2023-11-30');
 
 -- --------------------------------------------------------
 
@@ -358,8 +330,7 @@ CREATE TABLE IF NOT EXISTS `tbl_employeeaccount` (
 -- Dumping data for table `tbl_employeeaccount`
 --
 
-INSERT INTO `tbl_employeeaccount` (`employeeCount`, `employeeID`, `employeePassword`, `employeeEmail`, `employeeRole`, `resetCode`) VALUES
-(1, '21-34994', 'admin', '21-34994@g.batstate-u.edu.ph', 'Admin', NULL);
+
 
 -- --------------------------------------------------------
 
@@ -472,8 +443,7 @@ CREATE TABLE IF NOT EXISTS `tbl_stockin` (
 -- Dumping data for table `tbl_stockin`
 --
 
-INSERT INTO `tbl_stockin` (`stockInID`, `recordDate`, `employeeID`, `productID`, `productSize`, `quantityIn`) VALUES
-(1, '0000-00-00 00:00:00', '21-34994', 1, 'Medium', 50);
+
 
 -- --------------------------------------------------------
 
@@ -519,14 +489,6 @@ CREATE TABLE IF NOT EXISTS `tbreports` (
 -- Dumping data for table `tbreports`
 --
 
-INSERT INTO `tbreports` (`reportno`, `reporttype`, `report`, `studno`, `status`, `remarks`, `datefiled`, `dateresolved`) VALUES
-(1, 'Bullying', 'I was bullied by a blockmate.', '21-39325', 'Pending', NULL, '2023-11-22 20:45:44', NULL),
-(2, 'Academic Appeal', 'I received a failing grade in my class, is there something I can do about it?', '21-39325', 'Pending', NULL, '2023-11-22 20:46:10', NULL),
-(3, 'Harassment & Discrimination', 'I was harassed.', '21-39325', 'Pending', NULL, '2023-11-22 20:46:44', NULL),
-(4, 'Course Availability & Scheduling', 'No professor in 1 subject.', '21-39325', 'Resolved', 'Done.', '2023-11-22 20:46:55', '2023-11-22 20:49:14'),
-(5, 'Harassment & Discrimination', 'I was harassed.', '21-39325', 'Pending', NULL, '2023-11-22 20:47:08', NULL),
-(6, 'Course Availability & Scheduling', 'No professor in 1 subject.', '21-30073', 'In Progress', 'Will look into this, thanks.', '2023-11-22 20:48:14', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -551,8 +513,7 @@ CREATE TABLE IF NOT EXISTS `tbreturned` (
 -- Dumping data for table `tbreturned`
 --
 
-INSERT INTO `tbreturned` (`return_ID`, `borrow_ID`, `returned_date`, `studid`, `returned_quantity`, `equipment_damaged`, `equipment_missing`) VALUES
-(53, 143, '2023-11-30', 8, 1, 0, 13);
+
 
 -- --------------------------------------------------------
 
@@ -575,8 +536,6 @@ CREATE TABLE IF NOT EXISTS `tbstaff` (
 -- Dumping data for table `tbstaff`
 --
 
-INSERT INTO `tbstaff` (`staff_ID`, `staff_user`, `staff_pass`, `staff_position`, `empid`) VALUES
-(1, 'dfberfb', 'ewfgrwgwr', 'IN', 3);
 
 -- --------------------------------------------------------
 
@@ -597,12 +556,7 @@ CREATE TABLE IF NOT EXISTS `tbstud` (
 -- Dumping data for table `tbstud`
 --
 
-INSERT INTO `tbstud` (`studno`, `studpass`, `studid`) VALUES
-('21-34780', 'bonjlaygo', '2134780'),
-('21-39414', 'ivanrubion', '2139414'),
-('21-30073', 'belletrayfalgar', '2130073'),
-('21-39325', 'johnronaldlopez', '2139325'),
-('21-31054', 'sethtada', '2131054');
+
 
 -- --------------------------------------------------------
 
@@ -643,20 +597,7 @@ CREATE TABLE IF NOT EXISTS `tbstudinfo` (
 -- Dumping data for table `tbstudinfo`
 --
 
-INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`, `sr_code`) VALUES
-(2139414, 'Rubion', 'Ivan Gabriel', 'BSIT-BA-3101', NULL),
-(2131054, 'Tada', 'Seth Aldous', 'BSIT-BA-3101', NULL),
-(2130073, 'Trayfalgar', 'Belle Colleen', 'BSIT-BA-3101', NULL),
-(2139325, 'Lopez', 'John Ronald', 'BSIT-BA-3101', NULL),
-(2134780, 'Laygo', 'Bonjohn Benedict', 'BSIT-BA-3101', NULL),
-(1, 'parker', 'peter', 'bsit', '21-39032'),
-(2, 'kent', 'clark', 'bscs', '29-76854'),
-(3, 'Valencia', 'Arnold', 'bscs', '21-34256'),
-(4, 'Reyes', 'Marvin', 'bsit', '23-98765'),
-(5, 'Dela Cruz', 'Leomar', 'bsba', '15-98126'),
-(6, 'manalo', 'zeus', 'bsit', '21-39828'),
-(7, 'Macalla', 'Dorothy', 'bsit', '21-32471'),
-(8, 'De Chavez', 'Jhuncen', 'bsit', '21-35519');
+
 
 -- --------------------------------------------------------
 
@@ -717,10 +658,6 @@ CREATE TABLE IF NOT EXISTS `tb_department` (
 -- Dumping data for table `tb_department`
 --
 
-INSERT INTO `tb_department` (`department_id`, `department_name`) VALUES
-(1, 'CICS'),
-(2, 'CABE'),
-(3, 'CAS');
 
 -- --------------------------------------------------------
 
@@ -797,10 +734,6 @@ CREATE TABLE IF NOT EXISTS `tb_roles` (
 --
 -- Dumping data for table `tb_roles`
 --
-
-INSERT INTO `tb_roles` (`role_id`, `role_name`) VALUES
-(1, 'Admin'),
-(2, 'Teacher');
 
 -- --------------------------------------------------------
 
