@@ -1,5 +1,3 @@
-# BA3101
-
 PE Equipment Borrowing System:
 
 Welcome to the PE Equipment Borrowing System repository! This project aims to streamline the process of managing and lending physical education equipment 
