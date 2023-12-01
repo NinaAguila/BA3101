@@ -1,0 +1,129 @@
+/* Styles for the Product Stock IN Reports section */
+.stock-reports-box {
+  background-color: #f8f9fa;
+  border: 5px solid #ccc;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 15%;
+  width: 40%; /* Adjusted the width to 40% */
+  border-collapse: collapse;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.stock-reports-box h3 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 1.5em;
+}
+
+#stockTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+#stockTable th,
+#stockTable td {
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+#stockTable th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: left;
+}
+
+#stockTable tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#stockTable tbody tr:hover {
+  background-color: #e6f7ff;
+}
+
+#stockTable th,
+#stockTable td {
+  text-align: center;
+}
+
+.stock-reports-box table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.stock-reports-box table th,
+.stock-reports-box table td {
+  border: 5px solid #ccc;
+}
+
+/* Styles for the Product Stock OUT Reports section */
+.stock-reports-box1 {
+  background-color: #f8f9fa;
+  border: 5px solid #ccc;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 40%;
+  width: 40%; /* Adjusted the width to 40% */
+  border-collapse: collapse;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.stock-reports-box1 h3 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 1.5em;
+}
+
+#stockoutTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+#stockoutTable th,
+#stockoutTable td {
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+#stockoutTable th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: left;
+  border-top: 2px solid #ddd;
+  border-bottom: 2px solid #ddd;
+}
+
+#stockoutTable tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#stockoutTable tbody tr:hover {
+  background-color: #e6f7ff;
+}
+
+#stockoutTable th,
+#stockoutTable td {
+  text-align: center;
+}
+
+.stock-reports-box1 table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.stock-reports-box1 table th,
+.stock-reports-box1 table td {
+  border: 5px solid #ccc;
+}

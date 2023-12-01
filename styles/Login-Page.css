@@ -1,0 +1,236 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+.background {
+	position: fixed;
+	display: block;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	background-image: url("/Inventory-Tracking-System/images/Background-Image.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	width: 60%;
+	z-index: 1;
+	border-radius: 20px;
+	box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.2);
+	background-color: rgba(0, 0, 0, 0.075);
+	backdrop-filter: blur(5px);
+}
+
+.left-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 50%;
+	padding: 15px 10px;
+}
+
+.left-container img {
+	width: 65%;
+}
+
+.office-name {
+	text-align: center;
+	font-size: 14px;
+	margin: 15px 0;
+}
+
+.right-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	width: 50%;
+	padding: 15px 10px;
+}
+
+.right-container h2 {
+	font-size: 32px;
+	margin-top: 24px;
+	color: black;
+}
+
+.error-message {
+	position: relative;
+	top: 90px;
+	color: rgb(255, 0, 0);
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: absolute;
+	width: 70%;
+	top: 35%;
+}
+
+.input-email,
+.input-password {
+	position: relative;
+	margin: 7.5px;
+}
+.input-box {
+	position: relative;
+	width: 100%;
+	padding: 24px 40px 24px 24px;
+	background: none;
+	outline: none;
+	border: 2px solid #000000;
+	border-radius: 9.5px;
+	color: #000000;
+	font-size: 16px;
+}
+
+.username-label,
+.password-label {
+	position: absolute;
+	pointer-events: none;
+	left: 8px;
+	top: 18px;
+	white-space: nowrap;
+	overflow: hidden;
+	line-height: 32px;
+	padding-left: 16px;
+	font-size: 16px;
+	color: #000000;
+	transition: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input-box:focus ~ label,
+input:valid ~ label {
+	top: -6px;
+	left: -5px;
+	font-size: 14px;
+	color: rgba(0, 0, 0, 0.75);
+}
+
+.show-password label {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	cursor: pointer;
+	right: 24px;
+	top: 25px;
+	user-select: none;
+}
+
+.show-off {
+	position: absolute;
+	height: 0;
+	animation: keyframes-fill 0.5s;
+	display: none;
+	color: #000000;
+}
+
+.show-on {
+	position: absolute;
+	height: 0;
+	animation: keyframes-fill 0.5s;
+	color: #000000;
+}
+
+.show-password input:not(:checked) ~ .show-on {
+	display: none;
+}
+
+.show-password input:not(:checked) ~ .show-off {
+	display: block;
+}
+
+.show-password input {
+	position: absolute;
+	opacity: 0;
+	height: 0;
+	width: 0;
+}
+
+@keyframes keyframes-fill {
+	0% {
+		transform: scale(0);
+		opacity: 0;
+	}
+
+	50% {
+		transform: scale(1.2);
+	}
+}
+
+button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	font-size: 16px;
+	margin: 25px auto;
+	width: 90%;
+	height: 48px;
+	padding: 16px 40px;
+	border: none;
+	color: #ffffff;
+	background: #000000;
+	cursor: pointer;
+	transition: all 0.1s linear;
+}
+
+button:active {
+	transform: scale(.95);
+}
+
+button .border {
+	position: absolute;
+	border: 2.4px solid #000000;
+	transition: all 0.3s 0.08s linear;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	height: 48px;
+	transform: translate(-50%, -50%);
+}
+
+button:hover .border {
+	display: block;
+	width: 102.5%;
+	height: 58px;
+}
+
+.button {
+	border-radius: 32px;
+}
+
+.forgot-password {
+	display: grid;
+	justify-content: center;
+	grid-template-columns: 145px 80px;
+	column-gap: 5px;
+}
+
+.forgot-password a {
+	font-weight: bold;
+	text-decoration: none;
+	color: #000000;
+}
