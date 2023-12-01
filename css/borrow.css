@@ -1,0 +1,174 @@
+/* Reset default margin and padding for better consistency */
+@font-face {
+  font-family: "KoHo";
+  src: url(../font/KoHo-Regular.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "KoHo", Arial, Helvetica, sans-serif;
+  background-color: #f8f8f8;
+  color: #333;
+  display: flex;
+}
+
+/* Font size and family adjustments */
+h3, p, h1,
+.display-data th, .display-data td,
+.borrow-container label,
+input, textarea, form select,
+input[type="submit"], .delete-form input[type="submit"] {
+  font-family: "KoHo", Arial, sans-serif;
+}
+
+/* Font size adjustments */
+h3, p, h1,
+.display-data th, .display-data td,
+
+input, textarea, form select,
+input[type="submit"], .delete-form input[type="submit"] {
+  font-size: 14px; /* Set font size to 14px */
+}
+.borrow-container label{
+  font-size: 16px;
+}
+/* Reset other styles for readability */
+.form-container {
+  margin-left: 20%;
+}
+
+.form-container h4 {
+  opacity: 50%;
+  margin-bottom: -10px; /* Adjust the margin-bottom as needed */
+}
+
+.form-container h2,
+.form-container h4 {
+  text-align: left;
+  font-weight: lighter;
+  margin-left: 85px;
+}
+
+.labeled-rectangle {
+  border-radius: 15px;
+  padding: 10px; /* Padding inside the rectangle */
+  margin: 20px 43px; /* Margin for spacing */
+  display: inline-block; /* Keep the label and rectangle in the same line */
+  width: 900px;
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+  background-color: #641212; /* Background color */
+}
+
+.labeled-rectangle h2 {
+  margin: 0; /* Remove default margin for h2 */
+  color: #ffffff; /* Text color */
+  font-size: 17px; /* Set font size to 14px */
+  font-weight: lighter;
+  margin-left: 20px;
+}
+
+.borrow-container {
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 43px 205px auto auto;
+  width: 600px;
+  min-width: 0cm;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+ 
+}
+
+input, textarea, form select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: none;
+  background-color: #d9d9d9;
+  font-size: 14px; /* Set font size to 14px */
+  resize: none;
+}
+
+input[type="submit"], .delete-form input[type="submit"] {
+  background-color: #641212;
+  color: #fff;
+  border-radius: 9px;
+  cursor: pointer;
+  border: none;
+  margin-top: 20px;
+  font-size: 16px; /* Set font size to 14px */
+}
+
+textarea {
+  resize: none;
+}
+
+h3 {
+  text-align: center;
+}
+
+.display-data {
+  width: 65%;
+  margin-left: 200px;
+  margin-top: 60px;
+  overflow: auto; /* Enable horizontal and vertical scrolling */
+  max-height: 400px; /* Set a max height for the scrollable area */
+  top: 0;
+  font-family: "KoHo", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.display-data th {
+  background-color: #641212;
+  color: #fff;
+  font-weight: normal;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.display-data td {
+  padding: 10px; /* Reduce padding to make the cells smaller */
+  box-sizing: border-box;
+  margin-top: 20px;
+}
+
+.display-data tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Responsive media styles */
+@media (max-width: 768px) {
+  .display-data {
+    box-shadow: none;
+  }
+
+  .display-data th, .display-data td {
+    padding: 15px;
+  }
+}
+.button {
+  background-color: #641212;
+  color: #fff;
+  border-radius: 9px;
+  cursor: pointer;
+  border: none;
+ margin-left:75px;
+  margin-top: 20px;
+  height: 35px;
+  width: 100px;
+  align-items: center;
+  font-size: 14px; 
+}

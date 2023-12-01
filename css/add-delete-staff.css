@@ -1,0 +1,140 @@
+/* Style the form container */
+.form-container {
+  margin-left: 20%;
+  /* Add any additional styling you need for the form container */
+}
+.flex {
+  display: flex;
+}
+
+/* Style the headings */
+.form-container h4 {
+  opacity: 50%;
+}
+.form-container h2,
+.form-container h4 {
+  text-align: left;
+  font-family: "KoHo", Arial, sans-serif;
+  font-weight: lighter;
+  margin-left: 85px;
+
+  margin-bottom: -25px; /* Adjust the margin-bottom as needed */
+}
+.labeled-rectangle {
+  border-radius: 15px;
+  padding: 10px; /* Padding inside the rectangle */
+  margin: 20px 43px; /* Margin for spacing */
+  display: inline-block; /* Keep the label and rectangle in the same line */
+  width: 900px;
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+  background-color: #641212; /* Background color */
+}
+
+/* Style for the label (h2) inside the rectangle */
+.labeled-rectangle h2 {
+  margin: 0; /* Remove default margin for h2 */
+  color: #ffffff; /* Text color */
+  font-size: 17px;
+  font-family: "KoHo", Arial, sans-serif;
+  font-weight: lighter;
+  margin-left: 20px;
+}
+
+.delete-form {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 244px;
+  height: 320px;
+  float: right; /* Float the delete form to the right */
+  margin-top: 75px; /* Adjusted margin for better spacing */
+  margin-left: 166px; /* Adjusted margin for better spacing */
+  padding-top: 16px;
+}
+.delete-form h2 {
+  font-size: 20px;
+}
+.contain-form {
+  background-color: #fff;
+  padding: 15px;
+  height: 420px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 304px;
+  margin-left: 150px;
+  margin-top: 72px;
+}
+.contain-form h2 {
+  font-size: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: none;
+  background-color: #d9d9d9;
+  resize: none;
+}
+
+input[type="submit"] {
+  background-color: #641212;
+  color: #fff;
+  border-radius: 9px;
+  cursor: pointer;
+  border: none;
+  margin-top: 20px;
+}
+
+.delete-form input[type="submit"] {
+  margin-top: 20px;
+}
+
+
+textarea {
+  resize: none;
+}
+/* Add the following styles to your existing CSS file */
+form select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px;
+  background-color: #d9d9d9;
+  font-size: 14px;
+}
+
+/* Optional: Style the arrow icon in the select */
+form select::-ms-expand {
+  display: none;
+}
+
+form select::after {
+  content: "\25BC";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.delete-form form input[type="submit"] {
+  background-color: #641212; /* Change the background color for the delete button */
+  color: #fff; /* Change the text color for the delete button */
+}
+
+h3 {
+  text-align: center;
+}
