@@ -2,32 +2,30 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+
 -- Host: 127.0.0.1:3306
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+
 -- Generation Time: Nov 23, 2023 at 03:40 AM
-=======
+
 -- Generation Time: Nov 30, 2023 at 12:36 PM
->>>>>>> Group-3
-=======
+
+
 -- Generation Time: Nov 23, 2023 at 02:35 AM
->>>>>>> origin/group-6
+
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
-=======
+
 -- Host: localhost
 -- Generation Time: Nov 30, 2023 at 11:28 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
->>>>>>> origin/Group-8
-=======
+
 -- Host: 127.0.0.1:3306
 -- Generation Time: Nov 30, 2023 at 01:44 AM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.13
->>>>>>> origin/Group-4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,20 +39,19 @@ SET time_zone = "+00:00";
 
 --
 -- Database: `db_ba3101`
-<<<<<<< HEAD
+
 --
-=======
->>>>>>> origin/Group-8
+
 --
 
 -- --------------------------------------------------------
 
 --
-<<<<<<< HEAD
+
 -- Table structure for table `tbempaccount`
 --
 
-<<<<<<< HEAD
+
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
   `adminID` int NOT NULL AUTO_INCREMENT,
@@ -228,7 +225,7 @@ INSERT INTO `tbcoun` (`counno`, `counpass`, `empid`) VALUES
 ('3', 'counselorpass3', '3'),
 ('4', 'counselorpass4', '4'),
 ('5', 'counselorpass5', '5');
-=======
+
 CREATE TABLE `tbempaccount` (
   `empaccountId` int(11) NOT NULL,
   `empid` int(11) NOT NULL,
@@ -238,13 +235,12 @@ CREATE TABLE `tbempaccount` (
   `emp_password` varchar(255) NOT NULL,
   `role_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
->>>>>>> origin/Group-8
+
 
 -- --------------------------------------------------------
 
 --
-=======
->>>>>>> origin/Group-4
+
 -- Table structure for table `tbempinfo`
 --
 
@@ -262,17 +258,14 @@ CREATE TABLE IF NOT EXISTS `tbempinfo` (
 --
 
 INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
-<<<<<<< HEAD
-<<<<<<< HEAD
 (1, 'aguila', 'nina', 'cics'),
 (2, 'Guidance_lastname', 'Guidance_Firstname', 'CICS'),
 (17, 'test_guidance', 'test_guidance', 'CICS');
-=======
+
 (1, 'aguila', 'nina', 'cics');
->>>>>>> origin/Group-8
-=======
+
 (1, 'Cerezo', 'Ezekiel Eisen', 'CICS');
->>>>>>> origin/Group-4
+
 
 -- --------------------------------------------------------
 
@@ -280,8 +273,7 @@ INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
 -- Table structure for table `tbl_employeeaccount`
 --
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 DROP TABLE IF EXISTS `tbequipment`;
 CREATE TABLE IF NOT EXISTS `tbequipment` (
   `equipment_ID` int NOT NULL AUTO_INCREMENT,
@@ -292,7 +284,7 @@ CREATE TABLE IF NOT EXISTS `tbequipment` (
   `is_active` tinyint(1) DEFAULT '1',
   `date_arrived` date NOT NULL,
   PRIMARY KEY (`equipment_ID`)
-=======
+
 DROP TABLE IF EXISTS `tbl_employeeaccount`;
 CREATE TABLE IF NOT EXISTS `tbl_employeeaccount` (
   `employeeCount` int NOT NULL AUTO_INCREMENT,
@@ -324,13 +316,13 @@ CREATE TABLE IF NOT EXISTS `tbl_products` (
   `productName` varchar(255) NOT NULL,
   `productImage` blob NOT NULL,
   PRIMARY KEY (`productID`)
->>>>>>> origin/Group-4
+
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
-<<<<<<< HEAD
+
 -- Table structure for table `tbstaff`
 --
 
@@ -343,7 +335,7 @@ CREATE TABLE IF NOT EXISTS `tbstaff` (
   `empid` int NOT NULL,
   PRIMARY KEY (`staff_ID`),
   KEY `empid` (`empid`)
-=======
+
 -- Table structure for table `tbl_size`
 --
 
@@ -355,13 +347,13 @@ CREATE TABLE IF NOT EXISTS `tbl_size` (
   `productPrice` decimal(10,2) NOT NULL,
   PRIMARY KEY (`sizeID`),
   KEY `productID` (`productID`)
->>>>>>> origin/Group-4
+
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
-<<<<<<< HEAD
+
 -- Table structure for table `tbstudent`
 --
 
@@ -373,7 +365,7 @@ CREATE TABLE IF NOT EXISTS `tbstudent` (
   PRIMARY KEY (`sr_ID`),
   KEY `studid` (`studid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-=======
+
 -- Table structure for table `tbl_stockin`
 --
 
@@ -397,12 +389,12 @@ CREATE TABLE IF NOT EXISTS `tbl_stockin` (
 
 INSERT INTO `tbl_stockin` (`stockInID`, `recordDate`, `employeeID`, `productID`, `productSize`, `quantityIn`) VALUES
 (1, '0000-00-00 00:00:00', '21-34994', 1, 'Medium', 50);
->>>>>>> origin/Group-4
+
 
 -- --------------------------------------------------------
 
 --
-<<<<<<< HEAD
+
 -- Table structure for table `tbreports`
 --
 
@@ -457,7 +449,7 @@ INSERT INTO `tbstud` (`studno`, `studpass`, `studid`) VALUES
 ('21-30073', 'belletrayfalgar', '2130073'),
 ('21-39325', 'johnronaldlopez', '2139325'),
 ('21-31054', 'sethtada', '2131054');
-=======
+
 CREATE TABLE `tbstudentaccount` (
   `studaccountid` int(11) NOT NULL,
   `studid` int(11) NOT NULL,
@@ -466,8 +458,7 @@ CREATE TABLE `tbstudentaccount` (
   `student_profile` longblob DEFAULT NULL,
   `student_password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
->>>>>>> origin/Group-8
-=======
+
 -- Table structure for table `tbl_stockout`
 --
 
@@ -484,7 +475,7 @@ CREATE TABLE IF NOT EXISTS `tbl_stockout` (
   KEY `productID` (`productID`),
   KEY `productSize` (`productSize`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
->>>>>>> origin/Group-4
+
 
 -- --------------------------------------------------------
 
@@ -500,29 +491,28 @@ CREATE TABLE IF NOT EXISTS `tbstudinfo` (
   `course` varchar(20) NOT NULL,
   PRIMARY KEY (`studid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-<<<<<<< HEAD
+
 
 --
 -- Dumping data for table `tbstudinfo`
 --
 INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 (1, 'parker', 'peter', 'bsit'),
 (2, 'kent', 'clark', 'bscs'),
 (3, 'Solis', 'Roberto', 'BSIT'),
 (4, 'Macaraig', 'Niel', 'BSIT'),
 (5, 'Hombre', 'Alvin', 'BSIT');
 
-=======
+
 (1, 'parker', 'peter', 'bsit'),
 (2, 'kent', 'clark', 'bscs');
->>>>>>> origin/Group-8
+
 
 -- --------------------------------------------------------
 
 --
-<<<<<<< HEAD
+
 -- Table structure for table `tb_admin`
 --
 
@@ -543,7 +533,7 @@ CREATE TABLE IF NOT EXISTS `tb_admin` (
 INSERT INTO `tb_admin` (`Admin_ID`, `Admin_User`, `Admin_Password`, `empid`) VALUES
 (1, 'adm_user', 'adm_pass', 1),
 (16, 'testadm', 'testadm', 16);
-=======
+
 -- Table structure for table `tb_attendees`
 --
 
@@ -553,12 +543,12 @@ CREATE TABLE `tb_attendees` (
   `student_id` int(11) DEFAULT NULL,
   `empid` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
->>>>>>> origin/Group-8
+
 
 -- --------------------------------------------------------
 
 --
-<<<<<<< HEAD
+
 -- Table structure for table `tb_guidance`
 --
 
@@ -579,7 +569,7 @@ CREATE TABLE IF NOT EXISTS `tb_guidance` (
 INSERT INTO `tb_guidance` (`Guidance_ID`, `Guidance_User`, `Guidance_Password`, `empid`) VALUES
 (1, 'gui_user', 'gui_pass', 2),
 (17, 'testgui', 'testgui', 17);
-=======
+
 -- Table structure for table `tb_department`
 --
 
@@ -596,12 +586,12 @@ INSERT INTO `tb_department` (`department_id`, `department_name`) VALUES
 (1, 'CICS'),
 (2, 'CABE'),
 (3, 'CAS');
->>>>>>> origin/Group-8
+
 
 -- --------------------------------------------------------
 
 --
-<<<<<<< HEAD
+
 -- Table structure for table `tb_studentacc`
 --
 
@@ -625,7 +615,7 @@ INSERT INTO `tb_studentacc` (`Student_Acc_ID`, `Student_User`, `Student_Password
 (3, 'solis', 'solis_pass', 3),
 (4, 'niel', 'niel_pass', 4),
 (5, 'alvin', 'alvin_pass', 5);
-=======
+
 -- Table structure for table `tb_event`
 --
 
@@ -638,12 +628,12 @@ CREATE TABLE `tb_event` (
   `department_id` int(11) DEFAULT NULL,
   `status` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
->>>>>>> origin/Group-8
+
 
 -- --------------------------------------------------------
 
 --
-<<<<<<< HEAD
+
 -- Table structure for table `tb_studentinfo`
 --
 
@@ -727,7 +717,7 @@ CREATE TABLE `tbclient` (
   `fileName` varchar(50) NOT NULL,
   `filePath` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-=======
+
 -- Table structure for table `tb_event_images`
 --
 
@@ -736,7 +726,7 @@ CREATE TABLE `tb_event_images` (
   `event_id` int(11) DEFAULT NULL,
   `image_filename` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
->>>>>>> origin/Group-8
+
 
 -- --------------------------------------------------------
 
@@ -976,13 +966,13 @@ ALTER TABLE `hr`
 --
 ALTER TABLE `jobpost`
   ADD CONSTRAINT `jobpost_ibfk_1` FOREIGN KEY (`adminID`) REFERENCES `admin` (`adminID`);
-=======
+
 (2139325, 'Lopez', 'John Ronald', 'BSIT-BA-3101'),
 (2130073, 'Trayfalgar', 'Belle Colleen', 'BSIT-BA-3101'),
 (2131054, 'Tada', 'Seth Aldous', 'BSIT-BA-3101'),
 (2139414, 'Rubion', 'Ivan Gabriel', 'BSIT-BA-3101'),
 (2134780, 'Laygo', 'Bonjohn Benedict', 'BSIT-BA-3101');
->>>>>>> origin/group-6
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
@@ -1101,8 +1091,7 @@ ALTER TABLE `tbl_reqhistory`
 --
 ALTER TABLE `tbl_requests`
   ADD CONSTRAINT `userID(tbl_req)` FOREIGN KEY (`userID`) REFERENCES `tbl_account` (`userID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-=======
->>>>>>> origin/Group-4
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
