@@ -1,0 +1,119 @@
+/* admin.css */
+@font-face {
+  font-family: "KoHo";
+  src: url(../font/KoHo-Regular.ttf);
+}
+
+.display-data {
+  width: 100%; /* Use 100% width for the table */
+  border-spacing: 0;
+  border-collapse: collapse;
+  background-color: var(--tableBgColor, #fff);
+}
+
+/* Style the table header */
+.display-data th {
+  background-color: #641212;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  position: sticky; /* Make the header sticky */
+  top: 0; /* Stick to the top of the container */
+}
+
+/* Style the table body */
+.display-data {
+  width: 65%;
+  margin-left: 200px;
+  margin-top: 60px;
+  overflow: auto; /* Enable horizontal and vertical scrolling */
+  max-height: 400px; /* Set a max height for the scrollable area */
+  top: 0;
+  font-family: "KoHo", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Style the table header */
+.display-data th {
+  background-color: #641212;
+  color: #fff;
+  font-weight: normal;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+/* Style the table body */
+.display-data td {
+  padding: 10px; /* Reduce padding to make the cells smaller */
+  box-sizing: border-box;
+  font-size: 14px; /* Reduce font size for the table cells */
+  margin-top: 20px;
+}
+
+h3,
+p,
+h1 {
+  text-align: center;
+}
+
+/* Center alignment for the "Position" column */
+.display-data td:nth-child(2) {
+  text-align: center;
+}
+
+/* Left alignment for the "Name" column */
+.display-data td:nth-child(odd) {
+  text-align: left;
+}
+.display-data tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+/* Responsive media styles */
+@media (max-width: 768px) {
+  .display-data {
+    box-shadow: none;
+  }
+
+  .display-data th,
+  .display-data td {
+    padding: 15px;
+  }
+}
+
+.count-boxes {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 162px auto auto;
+  max-width: 600px;
+  padding-left: 150px;
+}
+
+.count-box {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #ccc;
+  text-align: center;
+  background-color: #561414; /* Change this to the desired color */
+  border: 1px solid white; /* Change the border color */
+  color: white; /* Change the text color */
+  border-radius: 50px;
+}
+
+.count-box h4 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.count-box p {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px 0;
+}

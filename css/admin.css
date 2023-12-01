@@ -1,0 +1,108 @@
+@font-face {
+  font-family: "KoHo";
+  src: url(../font/KoHo-Regular.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "KoHo", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background-color: #f8f8f8;
+  display: flex; /* Use flex display to align content */
+}
+
+.form-container {
+  margin-left: 20%;
+  /* Add any additional styling you need for the form container */
+}
+
+/* Style the headings */
+.form-container h4 {
+  opacity: 50%;
+}
+.form-container h2,
+.form-container h4 {
+  text-align: left;
+  font-family: "KoHo", Arial, sans-serif;
+  font-weight: lighter;
+  margin-left: 85px;
+  margin-bottom: -7px; /* Adjust the margin-bottom as needed */
+}
+
+.labeled-rectangle {
+  border-radius: 15px;
+  padding: 10px; /* Padding inside the rectangle */
+  margin: 20px 43px; /* Margin for spacing */
+  display: inline-block; /* Keep the label and rectangle in the same line */
+  width: 900px;
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+  background-color: #641212; /* Background color */
+}
+
+/* Style for the label (h2) inside the rectangle */
+.labeled-rectangle h2 {
+  margin: 0; /* Remove default margin for h2 */
+  color: #ffffff; /* Text color */
+  font-size: 17px;
+  font-family: "KoHo", Arial, sans-serif;
+  font-weight: lighter;
+  margin-left: 20px;
+}
+
+.sidebar {
+  height: 100%;
+  width: 276px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #561414;
+  padding-top: 20px;
+  overflow: auto;
+  font-family: "KoHo", Arial, sans-serif;
+}
+
+.sidebar img {
+  width: 150px; /* Adjust the size of the image as needed */
+  display: block;
+  margin: 0 auto 20px; /* Adjust the margin as needed */
+}
+
+.sidebar a {
+  padding: 10px 7px; /* Adjust padding for better alignment */
+  text-decoration: none;
+  font-size: 12px;
+  color: #fff;
+  display: flex; /* Use flexbox to align items horizontally */
+  align-items: center; /* Center items vertically */
+  margin-left: 20px;
+}
+
+.sidebar a:hover {
+  background-color: #555;
+}
+
+.fa-solid,
+.fas {
+  padding: 10px;
+  font-size: 32px;
+  margin-right: 10px; /* Add margin to separate the icon from text */
+}
+
+/* Responsive media styles */
+@media (max-width: 768px) {
+  .display-data {
+    box-shadow: none;
+  }
+
+  .display-data th,
+  .display-data td {
+    padding: 15px;
+  }
+}
