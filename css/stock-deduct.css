@@ -1,0 +1,106 @@
+@font-face {
+  font-family: "KoHo";
+  src: url(../font/KoHo-Regular.ttf);
+}
+
+body {
+  font-family: "KoHo", Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  background-color: #f8f8f8;
+  color: #333;
+  display: flex; /* Use flex display to align content */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.form-container {
+  margin-left: 20%;
+  /* Add any additional styling you need for the form container */
+}
+
+/* Style the headings */
+.form-container h4 {
+  opacity: 50%;
+}
+
+.form-container h2,
+.form-container h4 {
+  text-align: left;
+  font-family: "KoHo", Arial, sans-serif;
+  font-weight: lighter;
+  margin-left: 85px;
+  margin-bottom: -7px; /* Adjust the margin-bottom as needed */
+}
+
+.labeled-rectangle {
+  border-radius: 15px;
+  padding: 10px; /* Padding inside the rectangle */
+  margin: 20px 43px; /* Margin for spacing */
+  display: inline-block; /* Keep the label and rectangle in the same line */
+  width: 900px;
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+  background-color: #641212; /* Background color */
+}
+
+/* Style for the label (h2) inside the rectangle */
+.labeled-rectangle h2 {
+  margin: 0; /* Remove default margin for h2 */
+  color: #ffffff; /* Text color */
+  font-size: 16px; /* Updated font size */
+  font-family: "KoHo", Arial, sans-serif;
+  font-weight: lighter;
+  margin-left: 20px;
+}
+
+form {
+  background-color: #fff;
+  padding: 15px;
+  height: 311px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 600px;
+  margin-left: 200px;
+  margin-top: 72px;
+  font-family: "KoHo", Arial, Helvetica, sans-serif;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-family: "KoHo", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-size: 16px; /* Updated font size */
+  color: #641212;
+}
+
+select,
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+border: none;
+  border-radius: 5px;
+  background-color: #d9d9d9;
+  font-size: 16px; /* Updated font size */
+  font-family: "KoHo", Arial, Helvetica, sans-serif;
+}
+
+input[type="submit"] {
+  width: 297px;
+  height: 40px;
+  margin: 8px 0 auto 0;
+  padding: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #641212;
+  color: #fff;
+  border-radius: 9px;
+  margin-left: 125px;
+  cursor: pointer;
+  border: none;
+  font-family: "KoHo", Arial, Helvetica, sans-serif;
+  font-size: 16px; /* Updated font size */
+}
