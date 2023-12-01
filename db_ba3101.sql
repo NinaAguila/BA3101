@@ -261,8 +261,7 @@ INSERT INTO `tbempinfo` (`empid`, `lastname`, `firstname`, `department`) VALUES
 (1, 'aguila', 'nina', 'cics'),
 (2, 'Guidance_lastname', 'Guidance_Firstname', 'CICS'),
 (17, 'test_guidance', 'test_guidance', 'CICS');
-(1, 'aguila', 'nina', 'cics');
-(1, 'Cerezo', 'Ezekiel Eisen', 'CICS');
+
 
 
 -- --------------------------------------------------------
@@ -500,8 +499,7 @@ INSERT INTO `tbstudinfo` (`studid`, `lastname`, `firstname`, `course`) VALUES
 (3, 'Solis', 'Roberto', 'BSIT'),
 (4, 'Macaraig', 'Niel', 'BSIT'),
 (5, 'Hombre', 'Alvin', 'BSIT');
-(1, 'parker', 'peter', 'bsit'),
-(2, 'kent', 'clark', 'bscs');
+
 
 
 -- --------------------------------------------------------
